@@ -23,7 +23,7 @@ class DropDownListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initAutoComplite(requireContext(),autocompleteText,getTemplateList()){
+        initAutoComplite(requireContext(), autocompleteText, AutoCompleteList.getList()) {
             Log.i("tag_DropDown", "initAutoComplite: ${it}")
         }
     }
@@ -61,12 +61,15 @@ class DropDownListFragment : Fragment() {
         view.setAdapter(adapter)
     }
 
-    private fun getTemplateList(): List<String> {
-        return PhoneTemplate.values().map { it.rawValue }
-    }
 
-    enum class PhoneTemplate(val rawValue: String) {
+    enum class AutoCompleteList(val rawValue: String) {
         Australia("+61 (Australia)"),
-        NewZealand("+63 (New Zealand)")
+        NewZealand("+63 (New Zealand)");
+
+        companion object {
+             fun getList(): List<String> {
+                return values().map { it.rawValue }
+            }
+        }
     }
 }
