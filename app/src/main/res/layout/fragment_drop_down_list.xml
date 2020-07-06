@@ -7,6 +7,15 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
+    <com.example.help_code.start.ActionBarView
+        android:id="@+id/actionBarCustom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_height="50dp" />
+    <!--    <include-->
+    <!--        android:id="@+id/toolbar_merge"-->
+    <!--        layout="@layout/action_bar_custom" />-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

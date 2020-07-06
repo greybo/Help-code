@@ -10,4 +10,8 @@ class CodeHelpRoute(private val controller: NavController) {
             FragmentName.DropDown -> controller.navigate(R.id.dropDownListFragment)
         }
     }
+
+    fun onBackPress() {
+        controller.popBackStack()
+    }
 }

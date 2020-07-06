@@ -10,9 +10,21 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.navigation.Navigation
+import com.example.help_code.start.ActionBarView
+import com.example.help_code.start.CodeHelpRoute
+import com.example.help_code.start.ToolbarModel
 import kotlinx.android.synthetic.main.fragment_drop_down_list.*
 
 class DropDownListFragment : Fragment() {
+
+    private val route: CodeHelpRoute by lazy {
+        CodeHelpRoute(
+            Navigation.findNavController(
+                requireView()
+            )
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,9 +35,21 @@ class DropDownListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar(actionBarCustom)
         initAutoComplite(requireContext(), autocompleteText, AutoCompleteList.getList()) {
             Log.i("tag_DropDown", "initAutoComplite: ${it}")
         }
+    }
+
+    private fun initToolbar(layout: ActionBarView) {
+        layout.setData(
+            ToolbarModel(
+                homeCallback = {
+                    route.onBackPress()
+                },
+                title = "DropDownFragment"
+            )
+        )
     }
 
     private fun initAutoComplite(
@@ -67,7 +91,7 @@ class DropDownListFragment : Fragment() {
         NewZealand("+63 (New Zealand)");
 
         companion object {
-             fun getList(): List<String> {
+            fun getList(): List<String> {
                 return values().map { it.rawValue }
             }
         }
