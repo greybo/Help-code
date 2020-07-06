@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.help_code.R
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment() {
+class MainFragment : BaseFragment() {
 
-    private val route: CodeHelpRoute by lazy {
+    override val route: CodeHelpRoute by lazy {
         CodeHelpRoute(
             Navigation.findNavController(requireView())
         )
@@ -28,8 +27,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (actionBarCustom as ActionBarView).setData(ToolbarModel(title = "Help-code"))
-
+        initToolbar(actionBarCustom)
         initAdapter()
     }
 
@@ -39,6 +37,10 @@ class MainFragment : Fragment() {
             MainAdapter(FragmentName.getList()) {
                 route.navigation(it)
             }
+    }
+
+    override fun initToolbar(layout: ActionBarView) {
+        layout.setData(ToolbarModel(title = "Help-code"))
     }
 }
 

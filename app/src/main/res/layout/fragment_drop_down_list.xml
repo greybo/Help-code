@@ -11,10 +11,7 @@
         android:id="@+id/actionBarCustom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_height="50dp" />
-    <!--    <include-->
-    <!--        android:id="@+id/toolbar_merge"-->
-    <!--        layout="@layout/action_bar_custom" />-->
+        tools:layout_height="?attr/actionBarSize" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

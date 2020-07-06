@@ -3,22 +3,21 @@ package com.example.help_code
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.navigation.Navigation
 import com.example.help_code.start.ActionBarView
+import com.example.help_code.start.BaseFragment
 import com.example.help_code.start.CodeHelpRoute
 import com.example.help_code.start.ToolbarModel
 import kotlinx.android.synthetic.main.fragment_drop_down_list.*
 
-class DropDownListFragment : Fragment() {
+class DropDownListFragment : BaseFragment() {
 
-    private val route: CodeHelpRoute by lazy {
+    override val route: CodeHelpRoute by lazy {
         CodeHelpRoute(
             Navigation.findNavController(
                 requireView()
@@ -41,12 +40,10 @@ class DropDownListFragment : Fragment() {
         }
     }
 
-    private fun initToolbar(layout: ActionBarView) {
+    override fun initToolbar(layout: ActionBarView) {
         layout.setData(
             ToolbarModel(
-                homeCallback = {
-                    route.onBackPress()
-                },
+                homeCallback = homeToolbarCallback,
                 title = "DropDownFragment"
             )
         )
@@ -58,30 +55,16 @@ class DropDownListFragment : Fragment() {
         list: List<String>,
         callback: (String?) -> Unit
     ) {
-        var check = 0
-        view.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                Log.i("face_tag_template", "onNothingSelected")
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                if (check++ > 0) {
-                    val template = list.getOrNull(position)
-                    callback(template)
-                    Log.i("face_tag_template", "template: ${template}")
-                }
-            }
-        }
         val adapter: ArrayAdapter<*> = ArrayAdapter(
             context,
             R.layout.item_drop_down_autocomplete, R.id.phoneTemplateText, list
         )
-
+        view.setOnItemClickListener { parent, view, position, id ->
+            val template = list.getOrNull(position)
+            callback(template)
+            Log.i("face_tag_template", "template: ${template}")
+        }
+        view.setDropDownBackgroundResource(R.drawable.bg_button_default)
         view.setAdapter(adapter)
     }
 
