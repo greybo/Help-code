@@ -15,8 +15,6 @@
         <item name="boxStrokeColor">@color/pin_reset_color_hint</item>
         <item name="boxStrokeWidth">2dp</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
         <item name="android:textColorHint">@color/pin_reset_color_hint</item>
         <item name="hintTextAppearance">@style/Enter_OTP_HintTextAppearance</item>
         <item name="errorTextAppearance">@style/EnterOtpTextAppearanceError</item>
