@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.help_code.R
+import com.example.help_code.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : BaseFragment() {
@@ -33,10 +34,9 @@ class MainFragment : BaseFragment() {
 
     private fun initAdapter() {
         mainRecyclerView.layoutManager = LinearLayoutManager(context)
-        mainRecyclerView.adapter =
-            MainAdapter(FragmentName.getList()) {
-                route.navigation(it)
-            }
+        mainRecyclerView.adapter = MainAdapter(FragmentName.getList()) {
+            route.navigation(it)
+        }
     }
 
     override fun initToolbar(layout: ActionBarView) {
@@ -45,7 +45,9 @@ class MainFragment : BaseFragment() {
 }
 
 enum class FragmentName(val rawValue: String) {
-    DropDown("DropDown");
+    DropDown("Drop Down"),
+    PagerFragment("Pager Fragment"),
+    ;
 
     companion object {
         fun getList(): MutableList<String> {

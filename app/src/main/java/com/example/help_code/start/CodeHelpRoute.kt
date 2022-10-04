@@ -8,6 +8,8 @@ class CodeHelpRoute(private val controller: NavController) {
     fun navigation(name: String) {
         when (FragmentName.values().find { it.rawValue == name }) {
             FragmentName.DropDown -> controller.navigate(R.id.dropDownListFragment)
+            FragmentName.PagerFragment -> controller.navigate(R.id.toPagerMainFragment)
+            else -> {}
         }
     }
 

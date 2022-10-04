@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbarRootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="10dp">
+
+<!--        android:background="@color/transparency"-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/customToolbar"
+            style="@style/ToolbarDefaultStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentInsetStart="40dp"
+            app:navigationIcon="@null"
+            tools:title="Title"
+            tools:titleTextColor="@color/black">
+<!--            tools:background="@color/__background_darker"-->
+            <!--            tools:navigationIcon="@drawable/ic_arrow_back_black_24dp"-->
+
+            <Button
+                android:id="@+id/customToolbarButtonRight"
+                style="@style/Button_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:background="?android:selectableItemBackground"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:text="cancel" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:id="@+id/customToolbarShadow"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/text_disable" />
+        <!--        android:background="@color/__shadow_toolbar_signup" />-->
+    </LinearLayout>
+
+</com.google.android.material.appbar.AppBarLayout>
+

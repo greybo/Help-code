@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.navigation.Navigation
 import com.example.help_code.start.ActionBarView
-import com.example.help_code.start.BaseFragment
+import com.example.help_code.base.BaseFragment
 import com.example.help_code.start.CodeHelpRoute
 import com.example.help_code.start.ToolbarModel
 import kotlinx.android.synthetic.main.fragment_drop_down_list.*

@@ -10,8 +10,23 @@
         android:name="com.example.help_code.start.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
+
     <fragment
         android:id="@+id/dropDownListFragment"
         android:name="com.example.help_code.DropDownListFragment"
         android:label="DropDownListFragment" />
+
+    <action
+        android:id="@+id/toPagerMainFragment"
+        app:destination="@+id/PagerMainFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/PagerMainFragment"
+        android:name="com.example.help_code.pager.PagerMainFragment"
+        android:label="PagerMainFragment"
+        tools:layout="@layout/pager_main_fragment"/>
 </navigation>

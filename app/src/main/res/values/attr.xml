@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomToolbarView">
+        <attr name="title" format="string" />
+        <attr name="rightButton" format="string" />
+        <attr name="navIcon" format="reference" />
+        <attr name="themeType" format="enum">
+            <enum name="light" value="0" />
+            <enum name="dark" value="1" />
+            <enum name="liteCross" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>
