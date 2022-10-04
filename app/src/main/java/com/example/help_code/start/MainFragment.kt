@@ -4,16 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.help_code.R
+import com.example.help_code.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment() {
+class MainFragment : BaseFragment() {
 
-    private val route: CodeHelpRoute by lazy {
-        CodeHelpRoute(
+    override val route: MainRouter by lazy {
+        MainRouter(
             Navigation.findNavController(requireView())
         )
     }
@@ -28,20 +28,26 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar(actionBarCustom)
         initAdapter()
     }
 
     private fun initAdapter() {
         mainRecyclerView.layoutManager = LinearLayoutManager(context)
-        mainRecyclerView.adapter =
-            MainAdapter(FragmentName.getList()) {
-                route.navigation(it)
-            }
+        mainRecyclerView.adapter = MainAdapter(FragmentName.getList()) {
+            route.navigation(it)
+        }
+    }
+
+    override fun initToolbar(layout: ActionBarView) {
+        layout.setData(ToolbarModel(title = "Help-code"))
     }
 }
 
 enum class FragmentName(val rawValue: String) {
-    DropDown("DropDown");
+    DropDown("Drop Down"),
+    PagerFragment("Pager Fragment"),
+    ;
 
     companion object {
         fun getList(): MutableList<String> {

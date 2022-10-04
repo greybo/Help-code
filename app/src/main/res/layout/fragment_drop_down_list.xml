@@ -7,6 +7,12 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
+    <com.example.help_code.start.ActionBarView
+        android:id="@+id/actionBarCustom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_height="?attr/actionBarSize" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,7 +21,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/dropDownTextInputLayout1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/ExposedDropdownMenuTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -35,7 +41,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/dropDownTextInputLayout2"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/DefaultTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -57,7 +63,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/confirmEditDetailsEmailLayout3"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/DefaultTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
