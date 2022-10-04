@@ -12,15 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
-import com.example.help_code.start.ActionBarView
-import com.example.help_code.start.CodeHelpRoute
+import com.example.help_code.start.MainRouter
 import com.example.help_code.utilty.Inflate
 import com.example.help_code.utilty.hideKeyboard
 
 abstract class BaseBindingFragment<VB : ViewBinding>(private val bindingInflater: Inflate<VB>) :
     Fragment() {
 
-    abstract val route: CodeHelpRoute
+//    abstract val route: MainRouter
 //    abstract fun initToolbar(layout: ActionBarView)
 //    val homeToolbarCallback = {
 //        route.onBackPress()

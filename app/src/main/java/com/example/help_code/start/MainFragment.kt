@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : BaseFragment() {
 
-    override val route: CodeHelpRoute by lazy {
-        CodeHelpRoute(
+    override val route: MainRouter by lazy {
+        MainRouter(
             Navigation.findNavController(requireView())
         )
     }

@@ -4,23 +4,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.help_code.R
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.PagerMainFragmentBinding
-import com.example.help_code.start.CodeHelpRoute
-import com.google.android.material.tabs.TabLayout
+import com.example.help_code.start.MainRouter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class PagerMainFragment :
     BaseBindingFragment<PagerMainFragmentBinding>(PagerMainFragmentBinding::inflate) {
 
-    override val route: CodeHelpRoute
-        get() = TODO("Not yet implemented")
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//    val router by getRouter<MainRouter>()
+     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.pagerActionBarCustom.getBuilder()
             .title("Pager")

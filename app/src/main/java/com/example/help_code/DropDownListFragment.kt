@@ -11,14 +11,14 @@ import android.widget.AutoCompleteTextView
 import androidx.navigation.Navigation
 import com.example.help_code.start.ActionBarView
 import com.example.help_code.base.BaseFragment
-import com.example.help_code.start.CodeHelpRoute
+import com.example.help_code.start.MainRouter
 import com.example.help_code.start.ToolbarModel
 import kotlinx.android.synthetic.main.fragment_drop_down_list.*
 
 class DropDownListFragment : BaseFragment() {
 
-    override val route: CodeHelpRoute by lazy {
-        CodeHelpRoute(
+    override val route: MainRouter by lazy {
+        MainRouter(
             Navigation.findNavController(
                 requireView()
             )
@@ -59,7 +59,7 @@ class DropDownListFragment : BaseFragment() {
             context,
             R.layout.item_drop_down_autocomplete, R.id.phoneTemplateText, list
         )
-        view.setOnItemClickListener { parent, view, position, id ->
+        view.setOnItemClickListener { _, _, position, id ->
             val template = list.getOrNull(position)
             callback(template)
             Log.i("face_tag_template", "template: ${template}")
