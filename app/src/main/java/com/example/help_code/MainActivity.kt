@@ -2,6 +2,7 @@ package com.example.help_code
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 
@@ -11,12 +12,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navController = Navigation.findNavController(this, R.id.main_host_fragment)
-
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
-    override fun onBackPressed() {
-        if (navController.currentDestination?.id == R.id.mainFragment)
-            super.onBackPressed()
-        else navController.popBackStack()
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            if (navController.currentDestination?.id == R.id.mainFragment)
+                onBackPressedDispatcher.onBackPressed()
+            else navController.popBackStack()
+        }
+
     }
 }

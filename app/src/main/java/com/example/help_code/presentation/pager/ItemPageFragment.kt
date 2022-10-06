@@ -1,10 +1,9 @@
-package com.example.help_code.pager
+package com.example.help_code.presentation.pager
 
 import android.os.Bundle
 import android.view.View
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.PagerItem1FragmentBinding
-import com.example.help_code.start.MainRouter
 
 class ItemPageFragment :
     BaseBindingFragment<PagerItem1FragmentBinding>(PagerItem1FragmentBinding::inflate) {

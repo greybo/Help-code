@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/pageFragment1"
-        android:name="com.example.help_code.pager.ItemPageFragment"
+        android:name="com.example.help_code.presentation.pager.ItemPageFragment"
         android:label="ItemPageFragment1">
         <argument
             android:name="id"
@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/pageFragment2"
-        android:name="com.example.help_code.pager.ItemPageFragment"
+        android:name="com.example.help_code.presentation.pager.ItemPageFragment"
         android:label="ItemPageFragment2">
         <argument
             android:name="id"
@@ -50,7 +50,7 @@
 
     <fragment
         android:id="@+id/pageFragment3"
-        android:name="com.example.help_code.pager.ItemPageFragment"
+        android:name="com.example.help_code.presentation.pager.ItemPageFragment"
         android:label="ItemPageFragment3">
         <argument
             android:name="id"

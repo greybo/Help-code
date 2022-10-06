@@ -1,6 +1,5 @@
-package com.example.help_code.start
+package com.example.help_code.views
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
@@ -16,7 +15,7 @@ class ActionBarView @JvmOverloads constructor(
         View.inflate(context, R.layout.action_bar_custom, this)
     }
 
-    fun setData(model: ToolbarModel) {
+    fun setData(model: ActionBarModel) {
         model.homeCallback?.let {
             toolbar.setNavigationIcon(ArrowId.Black.id)
             toolbar.setNavigationOnClickListener {
@@ -27,7 +26,7 @@ class ActionBarView @JvmOverloads constructor(
     }
 }
 
-data class ToolbarModel(
+data class ActionBarModel(
     val homeCallback: (() -> Unit)? = null,
     val title: String? = null
 )

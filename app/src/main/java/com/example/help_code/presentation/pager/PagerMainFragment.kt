@@ -1,4 +1,4 @@
-package com.example.help_code.pager
+package com.example.help_code.presentation.pager
 
 import android.os.Bundle
 import android.view.View
@@ -8,14 +8,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.PagerMainFragmentBinding
-import com.example.help_code.start.MainRouter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class PagerMainFragment :
     BaseBindingFragment<PagerMainFragmentBinding>(PagerMainFragmentBinding::inflate) {
 
-//    val router by getRouter<MainRouter>()
-     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    private val args by lazy { arguments?.let { PagerMainFragmentArgs.fromBundle(it) } }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.pagerActionBarCustom.getBuilder()
             .title("Pager")
@@ -33,7 +33,9 @@ class PagerMainFragment :
                 else -> "Tab 3"
             }
         }.attach()
-
+        args?.tabNumber?.let {
+            binding.pagerViewPager2.currentItem = it.toInt()
+        }
     }
 
     inner class PageAdapter(frg: Fragment) : FragmentStateAdapter(frg) {
