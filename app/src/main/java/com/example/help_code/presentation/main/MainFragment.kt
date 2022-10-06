@@ -36,6 +36,7 @@ class MainFragment : BaseBindingFragment<FragmentMainBinding>(FragmentMainBindin
 enum class FragmentName(val rawValue: String) {
     DropDown("InputTextViews"),
     PagerFragment("Pager Fragment"),
+    ScannerFragment("Scanner QR"),
     ;
 
     companion object {

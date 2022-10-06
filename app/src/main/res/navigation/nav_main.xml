@@ -36,10 +36,25 @@
         android:id="@+id/PagerMainFragment"
         android:name="com.example.help_code.presentation.pager.PagerMainFragment"
         android:label="PagerMainFragment"
-        tools:layout="@layout/pager_main_fragment">
+        tools:layout="@layout/fragment_pager_main">
 
         <argument
             android:name="tab_number"
             app:argType="string" />
+    </fragment>
+
+    <action
+        android:id="@+id/toBarcodeScanningFragment"
+        app:destination="@+id/BarcodeScanningFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/BarcodeScanningFragment"
+        android:name="com.example.help_code.presentation.scanner.BarcodeScanningFragment"
+        android:label="BarcodeScanningFragment"
+        tools:layout="@layout/fragment_barcode_scanning">
     </fragment>
 </navigation>

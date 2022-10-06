@@ -6,4 +6,7 @@
     <dimen name="button_text_size">16sp</dimen>
     <item name="button_letter_spacing" type="integer" format="float">0.05</item>
 
+    <dimen name="barcode_reticle_stroke_width">4dp</dimen>
+    <dimen name="barcode_reticle_corner_radius">8dp</dimen>
+
 </resources>

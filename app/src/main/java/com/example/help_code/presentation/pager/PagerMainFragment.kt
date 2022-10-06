@@ -7,11 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.help_code.base.BaseBindingFragment
-import com.example.help_code.databinding.PagerMainFragmentBinding
+import com.example.help_code.databinding.FragmentPagerMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 class PagerMainFragment :
-    BaseBindingFragment<PagerMainFragmentBinding>(PagerMainFragmentBinding::inflate) {
+    BaseBindingFragment<FragmentPagerMainBinding>(FragmentPagerMainBinding::inflate) {
 
     private val args by lazy { arguments?.let { PagerMainFragmentArgs.fromBundle(it) } }
 
