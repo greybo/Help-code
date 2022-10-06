@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:hint="@string/result"
-        app:hintTextColor="@android:color/black"
-        app:boxStrokeColor="@android:color/black"
-        android:layout_margin="16dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="@string/result"
+        app:boxStrokeColor="@android:color/black"
+        app:hintTextColor="@android:color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtResult"
-            android:enabled="false"
-            android:textColor="@android:color/black"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:textColor="@android:color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCopy"
-        android:text="@string/copy"
-        android:insetTop="0dp"
-        app:cornerRadius="0dp"
-        app:backgroundTint="@color/colorCopyButton"
-        android:insetBottom="0dp"
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        app:iconGravity="textStart"
-        app:icon="@drawable/ic_copy"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:backgroundTint="@color/colorCopyButton"
+        app:cornerRadius="0dp"
+        app:icon="@drawable/ic_copy"
+        app:iconGravity="textStart"
+        tools:text="open" />
 
 </LinearLayout>

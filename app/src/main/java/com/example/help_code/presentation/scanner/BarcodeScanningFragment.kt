@@ -5,15 +5,19 @@ import android.util.Size
 import android.view.OrientationEventListener
 import android.view.Surface
 import android.view.View
+import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
 import androidx.camera.core.TorchState
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.example.help_code.R
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentBarcodeScanningBinding
+import com.example.help_code.permission.cameraPermissionLaunch
+import com.example.help_code.permission.isPermissionCamera
 import com.google.common.util.concurrent.ListenableFuture
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -26,9 +30,24 @@ class BarcodeScanningFragment :
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
     private var flashEnabled = false
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (isPermissionCamera) {
+            startCamera()
+        } else cameraPermissionLaunch {
+            if (it) {
+                startCamera()
+            } else {
+                Toast.makeText(requireContext(), "Camera Permission Denied", Toast.LENGTH_SHORT)
+                    .show()
+                findNavController().popBackStack()
+            }
+        }
+    }
+
+    private fun startCamera() {
         cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
         // Initialize our background executor
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -136,6 +155,7 @@ class BarcodeScanningFragment :
     override fun onDestroy() {
         super.onDestroy()
         // Shut down our background executor
-        cameraExecutor.shutdown()
+        if (::cameraExecutor.isInitialized)
+            cameraExecutor.shutdown()
     }
 }

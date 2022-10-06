@@ -7,7 +7,9 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,14 +17,14 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.main_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
-
     }
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            if (navController.currentDestination?.id == R.id.mainFragment)
-                onBackPressedDispatcher.onBackPressed()
-            else navController.popBackStack()
+            navController.popBackStack()
+//            if (navController.currentDestination?.id == R.id.mainFragment)
+//                onBackPressed()
+//            else navController.popBackStack()
         }
 
     }
