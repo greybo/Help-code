@@ -37,6 +37,7 @@ enum class FragmentName(val rawValue: String) {
     DropDown("InputTextViews"),
     PagerFragment("Pager Fragment"),
     ScannerFragment("Scanner QR"),
+    Video("ExoPlayer"),
     ;
 
     companion object {

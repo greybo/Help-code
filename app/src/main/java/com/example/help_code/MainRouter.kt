@@ -14,7 +14,8 @@ class MainRouter(private val controller: NavController) {
                 bundleOf("tab_number" to "2")
             )
             FragmentName.ScannerFragment -> controller.navigate(R.id.toBarcodeScanningFragment)
-
+            FragmentName.Video -> controller.navigate(R.id.toVideoPlayerFragment)
+            else -> TODO()
         }
     }
 
