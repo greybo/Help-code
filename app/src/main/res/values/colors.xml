@@ -14,6 +14,7 @@
     <color name="barcode_reticle_background">#99000000</color>
     <color name="barcode_reticle_stroke">#ffffff</color>
     <color name="colorCopyButton">#00897B</color>
+    <color name="gray">#AFAFAF</color>
     <!--     QR code scanner colors end-->
 
 
