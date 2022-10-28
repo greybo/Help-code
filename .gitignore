@@ -15,4 +15,4 @@
 /app/src/androidTest/java/com/example/help_code/
 /app/src/test/java/com/example/help_code/
 /.idea/
-/gradle/wrapper/
+/gradle/wrapper/gradle-wrapper.jar
