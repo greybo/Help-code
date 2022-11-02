@@ -24,7 +24,7 @@
         android:layout_gravity="center"
         android:background="#000000"
         app:auto_show="true"
-        app:controller_layout_id="@layout/custom_layout_2"
+        app:controller_layout_id="@layout/player_control_layout"
         app:repeat_toggle_modes="none"
         app:resize_mode="fixed_width"
         app:surface_type="surface_view"

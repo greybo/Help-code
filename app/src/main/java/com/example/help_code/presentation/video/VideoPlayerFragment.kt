@@ -23,7 +23,7 @@ class VideoPlayerFragment :
     BaseBindingFragment<FragmentVideoPlayerBinding>(FragmentVideoPlayerBinding::inflate) {
 
     private val viewModel: VideoPlayerViewModel by viewModels()
-    private var player: ExoPlayer? = null
+    private var mMediaPlayer: ExoPlayer? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,7 +31,7 @@ class VideoPlayerFragment :
     }
 
     private fun initializePlayer() {
-        player = ExoPlayer.Builder(requireContext())
+        mMediaPlayer = ExoPlayer.Builder(requireContext())
             .build()
             .also { exoPlayer ->
                 binding.videoView.player = exoPlayer
@@ -63,8 +63,8 @@ class VideoPlayerFragment :
 
     private fun changeStatePlaying() {
         if (viewModel.videoPlaying) {
-            player?.play()
-        } else player?.pause()
+            mMediaPlayer?.play()
+        } else mMediaPlayer?.pause()
     }
 
     override fun onStart() {
@@ -78,7 +78,7 @@ class VideoPlayerFragment :
         super.onResume()
 //        hideSystemUi()
         changeStatePlaying()
-        if ((SDK_INT <= 23 || player == null)) {
+        if ((SDK_INT <= 23 || mMediaPlayer == null)) {
             initializePlayer()
         }
     }
@@ -125,13 +125,13 @@ class VideoPlayerFragment :
     }
 
     private fun releasePlayer() {
-        player?.let { exoPlayer ->
+        mMediaPlayer?.let { exoPlayer ->
             viewModel.playbackPosition = exoPlayer.currentPosition
             viewModel.currentItem = exoPlayer.currentMediaItemIndex
             viewModel.playWhenReady = exoPlayer.playWhenReady
             exoPlayer.removeListener(playerListener)
             exoPlayer.release()
         }
-        player = null
+        mMediaPlayer = null
     }
 }
