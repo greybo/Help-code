@@ -87,4 +87,18 @@
         android:name="com.example.help_code.presentation.behavior.BehaviorFragment"
         android:label="fragment_behavior"
         tools:layout="@layout/fragment_behavior" />
+
+    <action
+        android:id="@+id/toSwipeFragment"
+        app:destination="@+id/swipeFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/swipeFragment"
+        android:name="com.example.help_code.presentation.swipe.SwipeFragment"
+        android:label="fragment_swipe"
+        tools:layout="@layout/fragment_swipe" />
 </navigation>
