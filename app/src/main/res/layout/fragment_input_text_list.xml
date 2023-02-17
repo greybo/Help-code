@@ -7,8 +7,8 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
-    <com.example.help_code.start.ActionBarView
-        android:id="@+id/actionBarCustom"
+    <com.example.help_code.views.CustomToolbarView
+        android:id="@+id/mainToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_height="?attr/actionBarSize" />
@@ -35,7 +35,8 @@
                 android:id="@+id/autocompleteText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textVisiblePassword" />
+                android:inputType="textVisiblePassword"
+                tools:ignore="LabelFor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

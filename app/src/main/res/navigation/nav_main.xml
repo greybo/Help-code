@@ -7,13 +7,21 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.help_code.start.MainFragment"
+        android:name="com.example.help_code.presentation.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
 
+    <action
+        android:id="@+id/toDropDownListFragment"
+        app:destination="@+id/dropDownListFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
     <fragment
         android:id="@+id/dropDownListFragment"
-        android:name="com.example.help_code.DropDownListFragment"
+        android:name="com.example.help_code.presentation.inputtext.InputTextViewFragment"
         android:label="DropDownListFragment" />
 
     <action
@@ -26,7 +34,71 @@
 
     <fragment
         android:id="@+id/PagerMainFragment"
-        android:name="com.example.help_code.pager.PagerMainFragment"
+        android:name="com.example.help_code.presentation.pager.PagerMainFragment"
         android:label="PagerMainFragment"
-        tools:layout="@layout/pager_main_fragment"/>
+        tools:layout="@layout/fragment_pager_main">
+
+        <argument
+            android:name="tab_number"
+            app:argType="string" />
+    </fragment>
+
+    <action
+        android:id="@+id/toBarcodeScanningFragment"
+        app:destination="@+id/BarcodeScanningFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/BarcodeScanningFragment"
+        android:name="com.example.help_code.presentation.scanner.BarcodeScanningFragment"
+        android:label="BarcodeScanningFragment"
+        tools:layout="@layout/fragment_barcode_scanning">
+    </fragment>
+
+
+    <action
+        android:id="@+id/toVideoPlayerFragment"
+        app:destination="@+id/VideoPlayerFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/VideoPlayerFragment"
+        android:name="com.example.help_code.presentation.video.VideoPlayerFragment"
+        android:label="VideoPlayerFragment"
+        tools:layout="@layout/fragment_video_player">
+    </fragment>
+
+    <action
+        android:id="@+id/toBehaviorFragment"
+        app:destination="@+id/behaviorFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/behaviorFragment"
+        android:name="com.example.help_code.presentation.behavior.BehaviorFragment"
+        android:label="fragment_behavior"
+        tools:layout="@layout/fragment_behavior" />
+
+    <action
+        android:id="@+id/toSwipeFragment"
+        app:destination="@+id/swipeFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/swipeFragment"
+        android:name="com.example.help_code.presentation.swipe.SwipeFragment"
+        android:label="fragment_swipe"
+        tools:layout="@layout/fragment_swipe" />
 </navigation>
