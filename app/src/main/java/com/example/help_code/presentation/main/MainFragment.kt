@@ -38,6 +38,7 @@ enum class FragmentName(val rawValue: String) {
     PagerFragment("Pager Fragment"),
     ScannerFragment("Scanner QR"),
     Video("ExoPlayer"),
+    Behavior("Behavior"),
     ;
 
     companion object {

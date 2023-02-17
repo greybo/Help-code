@@ -15,6 +15,7 @@ class MainRouter(private val controller: NavController) {
             )
             FragmentName.ScannerFragment -> controller.navigate(R.id.toBarcodeScanningFragment)
             FragmentName.Video -> controller.navigate(R.id.toVideoPlayerFragment)
+            FragmentName.Behavior -> controller.navigate(R.id.toBehaviorFragment)
             else -> TODO()
         }
     }

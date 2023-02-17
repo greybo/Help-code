@@ -73,4 +73,18 @@
         android:label="VideoPlayerFragment"
         tools:layout="@layout/fragment_video_player">
     </fragment>
+
+    <action
+        android:id="@+id/toBehaviorFragment"
+        app:destination="@+id/behaviorFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/behaviorFragment"
+        android:name="com.example.help_code.presentation.behavior.BehaviorFragment"
+        android:label="fragment_behavior"
+        tools:layout="@layout/fragment_behavior" />
 </navigation>

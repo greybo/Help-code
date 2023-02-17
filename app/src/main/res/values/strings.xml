@@ -4,7 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-<!--    QR code scanner start -->
+    <!--    QR code scanner start -->
     <string name="start_scanning">Start Scanning</string>
     <string name="turn_flash_on_off">Turn Flash On/Off</string>
     <string name="view_finder">View Finder</string>
@@ -15,6 +15,6 @@
     <string name="scan_with_ml_kit">Scan with ML Kit</string>
     <string name="scan_with_zxing">Scan with ZXing</string>
     <string name="developed_by_maulik_hirani">Developed by Maulik Hirani</string>
-<!--    QR code scanner end -->
+    <!--    QR code scanner end -->
 
 </resources>
