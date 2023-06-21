@@ -55,8 +55,7 @@
         android:id="@+id/BarcodeScanningFragment"
         android:name="com.example.help_code.presentation.scanner.BarcodeScanningFragment"
         android:label="BarcodeScanningFragment"
-        tools:layout="@layout/fragment_barcode_scanning">
-    </fragment>
+        tools:layout="@layout/fragment_barcode_scanning"></fragment>
 
 
     <action
@@ -71,8 +70,7 @@
         android:id="@+id/VideoPlayerFragment"
         android:name="com.example.help_code.presentation.video.VideoPlayerFragment"
         android:label="VideoPlayerFragment"
-        tools:layout="@layout/fragment_video_player">
-    </fragment>
+        tools:layout="@layout/fragment_video_player"></fragment>
 
     <action
         android:id="@+id/toBehaviorFragment"
@@ -101,4 +99,17 @@
         android:name="com.example.help_code.presentation.swipe.SwipeFragment"
         android:label="fragment_swipe"
         tools:layout="@layout/fragment_swipe" />
+    <action
+        android:id="@+id/toPhoneFormatting"
+        app:destination="@+id/PhoneFormattingFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/PhoneFormattingFragment"
+        android:name="com.example.help_code.PhoneFormattingFragment"
+        android:label="phone_formatting"
+        tools:layout="@layout/fragment_phone_formatting" />
 </navigation>

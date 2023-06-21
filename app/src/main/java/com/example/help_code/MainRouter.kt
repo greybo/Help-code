@@ -17,6 +17,7 @@ class MainRouter(private val controller: NavController) {
             FragmentName.Video -> controller.navigate(R.id.toVideoPlayerFragment)
             FragmentName.Behavior -> controller.navigate(R.id.toBehaviorFragment)
             FragmentName.Swipe -> controller.navigate(R.id.toSwipeFragment)
+            FragmentName.FormattingPhone -> controller.navigate(R.id.toPhoneFormatting)
             else -> TODO()
         }
     }

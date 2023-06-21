@@ -40,6 +40,7 @@ enum class FragmentName(val rawValue: String) {
     Video("ExoPlayer"),
     Behavior("Behavior"),
     Swipe("Swipe"),
+    FormattingPhone("Formatting phone"),
     ;
 
     companion object {
