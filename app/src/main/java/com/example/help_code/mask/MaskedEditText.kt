@@ -1,11 +1,10 @@
-package com.example.help_code.utilty
+package com.example.help_code.mask
 
 import android.content.Context
 import android.text.*
 import android.util.AttributeSet
 import android.widget.EditText
 import com.example.help_code.R
-import com.example.help_code.utilty.MaskedEditText
 
 class MaskedEditText @JvmOverloads constructor(context: Context, attr: AttributeSet?, mask: String = "", placeholder: Char = ' ') : EditText(context, attr) {
     private var mask: String

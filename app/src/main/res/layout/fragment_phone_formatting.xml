@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:text="MaskedEditText Test" />
 
-    <com.example.help_code.utilty.MaskedEditText
+    <com.example.help_code.mask.MaskedEditText
         android:id="@+id/txtMaskedEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,15 +29,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+
     <EditText
-        android:id="@+id/txtEditText"
+        android:id="@+id/txtEditText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLength="5" />
+        android:layout_marginTop="24dp"
+        android:inputType="phone"
+        android:maxLength="18"
+        tools:text="123456789" />
 
-    <TextView
-        android:id="@+id/lblTextWatcherCount2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
+    <EditText
+        android:id="@+id/txtEditText4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:inputType="phone"
+        android:maxLength="10"
+        tools:text="123456789" />
 </LinearLayout>
