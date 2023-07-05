@@ -16,6 +16,7 @@
     <color name="colorCopyButton">#00897B</color>
     <color name="gray">#AFAFAF</color>
     <!--     QR code scanner colors end-->
+    <color name="gold">#968756</color>
 
 
 </resources>

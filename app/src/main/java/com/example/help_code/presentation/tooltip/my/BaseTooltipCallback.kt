@@ -1,9 +1,13 @@
 package au.com.crownresorts.crma.view.tooltip
 
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import au.com.crownresorts.crma.R
+import com.example.help_code.R
+import com.example.help_code.presentation.tooltip.my.ToolTipView
+import com.example.help_code.presentation.tooltip.my.TooltipHandler
+
 
 interface BaseTooltipCallback {
     fun initTooltip(callback: (() -> Unit)? = null): TooltipHandler?
@@ -14,14 +18,17 @@ fun Fragment.tooltipInit(callback: (() -> Unit)?): TooltipHandler? {
 }
 
 fun Fragment.getTooltipHandler(
-    message: String = "text",
+    message: String = "You cannot view this statement until you view your oldest unread statement",
     direction: ArrowDirection = ArrowDirection.TOP,
     wightPercent: Float = 0.8f,
     arrowOffset: Int = resources.getDimension(R.dimen.tooltip_edit_detail).toInt(),
     marginLeft: Int = resources.getDimension(R.dimen.tooltip_edit_detail).toInt(),
     dismissCallback: (() -> Unit)? = null
 ): TooltipHandler? {
-    var tooltipView: ToolTipView? = requireActivity().findViewById(R.id.toolTipView)
+    var tooltipView: ToolTipView? = ToolTipView(requireContext())
+//    var tooltipView: ToolTipView? = requireActivity().findViewById(R.id.toolTipView)
+    val viewGroup = (requireActivity().findViewById(android.R.id.content) as ViewGroup).getChildAt(0) as ViewGroup
+    viewGroup.addView(tooltipView)
     tooltipView ?: return null
     tooltipView.getBuilder()
         .addWightPercent(wightPercent)

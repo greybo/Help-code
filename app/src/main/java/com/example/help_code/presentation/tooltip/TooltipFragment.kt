@@ -2,20 +2,17 @@ package com.example.help_code.presentation.tooltip
 
 import android.os.Bundle
 import android.view.Gravity
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import au.com.crownresorts.crma.view.tooltip.getTooltipHandler
 import com.example.help_code.R
 import com.example.help_code.base.BaseBindingFragment
-import com.example.help_code.databinding.FragmentSwipeBinding
 import com.example.help_code.databinding.FragmentTooltipBinding
 import com.skydoves.balloon.*
 
 
 class TooltipFragment : BaseBindingFragment<FragmentTooltipBinding>(FragmentTooltipBinding::inflate) {
 
-//    private val profileBalloon by balloon<ProfileBalloonFactory>()
+    private val profileBalloon by balloon<ProfileBalloonFactory>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,9 +42,12 @@ class TooltipFragment : BaseBindingFragment<FragmentTooltipBinding>(FragmentTool
 
             .build()
 
-
-        binding.tooltipAnchorIcon.setOnClickListener {
+        val myTooltip = getTooltipHandler()
+        binding.tooltipAnchorIcon1.setOnClickListener {
             balloon.showAlignTop(it)
+        }
+        binding.tooltipAnchorIcon2.setOnClickListener {
+            myTooltip?.show(it)
         }
         binding.tooltipAnchorText.setOnClickListener {
             balloon.showAlignBottom(it)
