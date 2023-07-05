@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.help_code.R
 import kotlinx.android.synthetic.main.item_fragment_name.view.*
 
-class MainAdapter(enumItem: Array<FragmentName>, val callback: (FragmentName) -> Unit) :
+class MainAdapter(enumItem: Array<FragmentNameEnum>, val callback: (FragmentNameEnum) -> Unit) :
     RecyclerView.Adapter<MainAdapter.Holder>() {
 
-    private val listItems: List<FragmentName> = enumItem.toList()
+    private val listItems: List<FragmentNameEnum> = enumItem.toList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return Holder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_fragment_name, parent, false)
@@ -26,7 +26,7 @@ class MainAdapter(enumItem: Array<FragmentName>, val callback: (FragmentName) ->
     }
 
     inner class Holder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(s: FragmentName) {
+        fun bind(s: FragmentNameEnum) {
             itemView.mainfragmentText1.text = s.rawValue
             itemView.mainfragmentText1.setOnClickListener {
                 callback(s)

@@ -8,5 +8,6 @@
 
     <dimen name="barcode_reticle_stroke_width">4dp</dimen>
     <dimen name="barcode_reticle_corner_radius">8dp</dimen>
+    <dimen name="tooltip_offset_4">4dp</dimen>
 
 </resources>

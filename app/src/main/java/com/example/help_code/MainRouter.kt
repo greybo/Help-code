@@ -2,22 +2,23 @@ package com.example.help_code
 
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
-import com.example.help_code.presentation.main.FragmentName
+import com.example.help_code.presentation.main.FragmentNameEnum
 
 class MainRouter(private val controller: NavController) {
 
-    fun navigation(name: FragmentName) {
+    fun navigation(name: FragmentNameEnum) {
         when (name) {
-            FragmentName.DropDown -> controller.navigate(R.id.toDropDownListFragment)
-            FragmentName.PagerFragment -> controller.navigate(
+            FragmentNameEnum.DropDown -> controller.navigate(R.id.toDropDownListFragment)
+            FragmentNameEnum.PagerFragment -> controller.navigate(
                 R.id.toPagerMainFragment,
                 bundleOf("tab_number" to "2")
             )
-            FragmentName.ScannerFragment -> controller.navigate(R.id.toBarcodeScanningFragment)
-            FragmentName.Video -> controller.navigate(R.id.toVideoPlayerFragment)
-            FragmentName.Behavior -> controller.navigate(R.id.toBehaviorFragment)
-            FragmentName.Swipe -> controller.navigate(R.id.toSwipeFragment)
-            FragmentName.FormattingPhone -> controller.navigate(R.id.toPhoneFormatting)
+            FragmentNameEnum.ScannerFragment -> controller.navigate(R.id.toBarcodeScanningFragment)
+            FragmentNameEnum.Video -> controller.navigate(R.id.toVideoPlayerFragment)
+            FragmentNameEnum.Behavior -> controller.navigate(R.id.toBehaviorFragment)
+            FragmentNameEnum.Swipe -> controller.navigate(R.id.toSwipeFragment)
+            FragmentNameEnum.FormattingPhone -> controller.navigate(R.id.toPhoneFormatting)
+            FragmentNameEnum.TooltipFragment -> controller.navigate(R.id.toTooltipFragment)
             else -> TODO()
         }
     }

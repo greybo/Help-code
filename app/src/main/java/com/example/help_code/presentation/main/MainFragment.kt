@@ -27,26 +27,9 @@ class MainFragment : BaseBindingFragment<FragmentMainBinding>(FragmentMainBindin
 
     private fun initAdapter() {
         mainRecyclerView.layoutManager = LinearLayoutManager(context)
-        mainRecyclerView.adapter = MainAdapter(FragmentName.values()) {
+        mainRecyclerView.adapter = MainAdapter(FragmentNameEnum.values()) {
             route.navigation(it)
         }
     }
 }
 
-enum class FragmentName(val rawValue: String) {
-    DropDown("InputTextViews"),
-    PagerFragment("Pager Fragment"),
-    ScannerFragment("Scanner QR"),
-    Video("ExoPlayer"),
-    Behavior("Behavior"),
-    Swipe("Swipe"),
-    FormattingPhone("Formatting phone"),
-    ;
-
-    companion object {
-        fun getList(): MutableList<String> {
-            return values().map { it.rawValue }.toMutableList()
-        }
-    }
-
-}
