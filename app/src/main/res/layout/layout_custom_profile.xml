@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolTipLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/toolTipMessageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="4dp"
+        android:paddingBottom="16dp"
+        android:text="We need to collect some details for Anti-Money Laundering and Counter-Terrorism Financing purposes"
+        android:textColor="@color/white"
+        tools:textColor="@color/black" />
+
+    <ImageView
+        android:id="@+id/toolTipCloseButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_weight="0"
+        android:padding="10dp"
+        android:src="@drawable/ic_across_close"
+        tools:ignore="ContentDescription"
+        tools:tint="@color/black" />
+
+</LinearLayout>

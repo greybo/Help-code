@@ -87,7 +87,7 @@ class ToolTipView @JvmOverloads constructor(
         this.blockingClickListener {
             clearView()
         }
-        arrowView?.background = ArrowDrawable(context.getColorSafe(R.color.gray), direction.ordinal)
+        arrowView?.background = ArrowDrawable(context.getColorSafe(R.color.grey), direction.ordinal)
         this.invisible()
     }
 
@@ -231,7 +231,6 @@ class ToolTipView @JvmOverloads constructor(
         }
     }
 
-    @SuppressLint("InternalInsetResource", "DiscouragedApi")
     private fun getStatusBarSize(): Int {
         val resource = context.resources.getIdentifier("status_bar_height", "dimen", "android")
         return if (resource > 0) {

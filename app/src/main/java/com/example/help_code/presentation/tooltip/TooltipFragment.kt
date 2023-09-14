@@ -1,56 +1,47 @@
 package com.example.help_code.presentation.tooltip
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.View
-import au.com.crownresorts.crma.view.tooltip.getTooltipHandler
 import com.example.help_code.R
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentTooltipBinding
-import com.skydoves.balloon.*
+import com.skydoves.balloon.balloon
+import timber.log.Timber
 
 
 class TooltipFragment : BaseBindingFragment<FragmentTooltipBinding>(FragmentTooltipBinding::inflate) {
 
     private val profileBalloon by balloon<ProfileBalloonFactory>()
+    private val messageText = "You cannot view this statement until you view your oldest unread statement"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val balloon = Balloon.Builder(requireContext())
-            .setWidthRatio(1.0f)
-            .setText("You cannot view this statement until you view your oldest unread statement")
-            .setTextColorResource(R.color.white)
-            .setTextSize(15f)
-            .setTextGravity(Gravity.START)
-//            .setIconDrawableResource(R.drawable.ic_copy)
-            .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
-            .setArrowOrientation(ArrowOrientation.BOTTOM)
-            .setArrowSize(10)
-            .setArrowPosition(0.5f)
-            .setWidthRatio(0.6f)
-            .setPadding(12)
-            .setCornerRadius(8f)
-            .setBackgroundColorResource(R.color.gray)
-            .setBalloonAnimation(BalloonAnimation.OVERSHOOT)
-            .setLifecycleOwner(viewLifecycleOwner)
 
-//            .setWidth(20)
-//            .setHeight(20)
-            .setWidth(BalloonSizeSpec.WRAP)
-            .setHeight(BalloonSizeSpec.WRAP)
+//        val myTooltip = getTooltipHandler()
+//        binding.tooltipAnchorIcon2.setOnClickListener {
+//            myTooltip?.show(it)
+//        }
 
-            .build()
+        val balloon1 = getTooltipBalloon(messageText)
+        val balloon2 = profileBalloon
+        val balloon3 = getTooltipBalloonCustom(messageText, R.drawable.ic_across_close)
+        val balloon4 = getTooltipBalloonCustom("4  $messageText") {
+            Timber.d("getTooltipBalloonCustom 4")
+        }
 
-        val myTooltip = getTooltipHandler()
-        binding.tooltipAnchorIcon1.setOnClickListener {
-            balloon.showAlignTop(it)
+        binding.tooltipAnchorText1.setOnClickListener {
+            balloon1.showAlignBottom(it)
         }
         binding.tooltipAnchorIcon2.setOnClickListener {
-            myTooltip?.show(it)
+            balloon2.showAlignTop(it)
         }
-        binding.tooltipAnchorText.setOnClickListener {
-            balloon.showAlignBottom(it)
+
+        binding.tooltipAnchorIcon3.setOnClickListener {
+            balloon3.showAlignBottom(it)
+        }
+        binding.tooltipAnchorIcon4.setOnClickListener {
+            balloon4.showAlignBottom(it)
         }
     }
 
