@@ -9,6 +9,7 @@ enum class FragmentNameEnum(val rawValue: String) {
     Swipe("Swipe"),
     FormattingPhone("Formatting phone"),
     TooltipFragment("Tooltip"),
+    ReactiveFragment("Reactive"),
     ;
 
     companion object {

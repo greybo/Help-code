@@ -127,4 +127,18 @@
         android:label="tooltip_fragment"
         tools:layout="@layout/fragment_tooltip" />
 
+    <action
+        android:id="@+id/toReactiveFragment"
+        app:destination="@+id/ReactiveFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/ReactiveFragment"
+        android:name="com.example.help_code.presentation.reactive.ReactiveFragment"
+        android:label="tooltip_fragment"
+        tools:layout="@layout/fragment_tooltip" />
+
 </navigation>
