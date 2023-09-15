@@ -4,7 +4,7 @@ package com.example.help_code.presentation.tooltip
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.help_code.R
-import com.example.help_code.databinding.LayoutCustomProfileBinding
+import com.example.help_code.databinding.LayoutTooltipBalloonCustomBinding
 import com.example.help_code.utilty.gone
 import com.example.help_code.utilty.visible
 import com.skydoves.balloon.*
@@ -15,10 +15,10 @@ import timber.log.Timber
 
 fun Fragment.getTooltipBalloonCustom(
     message: String,
-    iconRes: Int? = null,//= R.drawable.ic_across_close,
+    iconRes: Int? = null,
     dismissCallback: (() -> Unit)? = null
 ): Balloon {
-    val binding = LayoutCustomProfileBinding.inflate(layoutInflater, null, false)
+    val binding = LayoutTooltipBalloonCustomBinding.inflate(layoutInflater, null, false)
 
     binding.toolTipMessageText.text = message
 

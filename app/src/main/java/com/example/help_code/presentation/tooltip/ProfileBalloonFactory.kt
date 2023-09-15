@@ -11,7 +11,7 @@ class ProfileBalloonFactory : Balloon.Factory() {
     override fun create(context: Context, lifecycle: LifecycleOwner?): Balloon {
 
         return createBalloon(context) {
-            setLayout(R.layout.layout_custom_tooltip)
+            setLayout(R.layout.layout_tooltip_balloon_factory)
             setArrowSize(10)
             setArrowOrientation(ArrowOrientation.TOP)
             setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
