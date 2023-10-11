@@ -77,4 +77,7 @@ dependencies {
     implementation "com.github.skydoves:balloon:1.5.4"
     //Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // Biometric
+    implementation "androidx.biometric:biometric-ktx:1.2.0-alpha05"
 }

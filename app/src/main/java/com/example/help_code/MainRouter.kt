@@ -20,6 +20,7 @@ class MainRouter(private val controller: NavController) {
             FragmentNameEnum.FormattingPhone -> controller.navigate(R.id.toPhoneFormatting)
             FragmentNameEnum.TooltipFragment -> controller.navigate(R.id.toTooltipFragment)
             FragmentNameEnum.ReactiveFragment -> controller.navigate(R.id.toReactiveFragment)
+            FragmentNameEnum.BiometricFragment -> controller.navigate(R.id.toBiometricFragment)
             else -> TODO()
         }
     }
