@@ -6,39 +6,60 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.biometric.BiometricManager
-import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
-import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
+import androidx.biometric.BiometricManager.Authenticators.*
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
-import com.example.help_code.HelpCodeApplication
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.BiometricFragmentBinding
+import java.nio.charset.Charset
+import java.util.concurrent.Executor
 
-@RequiresApi(Build.VERSION_CODES.R)
+
 class BiometricFragment : BaseBindingFragment<BiometricFragmentBinding>(BiometricFragmentBinding::inflate) {
-    val REQUEST_CODE: Int = 1
+    private lateinit var executor: Executor
+    private lateinit var biometricPrompt: BiometricPrompt
+    private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    private val listAllowedBiometric = mutableListOf<BiometricType>()
+    private val stringBuffer = mutableListOf<String>()
+
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        toast("registerForActivityResult: ${it.resultCode}")
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val executor = ContextCompat.getMainExecutor(requireContext())
-        val biometricPrompt = BiometricPrompt(this, executor,
+
+        checkBiometric()
+
+        executor = ContextCompat.getMainExecutor(requireContext())
+        biometricPrompt = BiometricPrompt(this, executor,
             object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationError(
                     errorCode: Int,
                     errString: CharSequence
                 ) {
                     super.onAuthenticationError(errorCode, errString)
-                    toast("Authentication error: $errString")
+                    toast("Authentication error: $errorCode :: $errString")
+                    if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+                        toast("loginWithPassword()") // Because negative button says use application password
+                    }
                 }
 
                 override fun onAuthenticationSucceeded(
                     result: BiometricPrompt.AuthenticationResult
                 ) {
                     super.onAuthenticationSucceeded(result)
-                    toast("Authentication succeeded!")
+                    // plaintext-string text is whatever data the developer would like
+                    // to encrypt. It happens to be plain-text in this example, but it
+                    // can be anything
+                    val encryptedInfo: ByteArray? = result.cryptoObject?.cipher?.doFinal(
+                        "plaintext-string".toByteArray(Charset.defaultCharset())
+                    )
+                    toast("Authentication succeeded! - $encryptedInfo")
                 }
 
                 override fun onAuthenticationFailed() {
@@ -46,73 +67,86 @@ class BiometricFragment : BaseBindingFragment<BiometricFragmentBinding>(Biometri
                     toast("Authentication failed")
                 }
             })
+    }
 
-        val promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Biometric login for my app")
-            .setSubtitle("Log in using your biometric credential")
-            .setNegativeButtonText("Use account password")
-            .build()
 
-        // Prompt appears when user clicks "Log in".
-        // Consider integrating with the keystore to unlock cryptographic operations,
-        // if needed by your app.
-        binding.biometricButton.setOnClickListener {
-            biometricPrompt.authenticate(promptInfo)
+    enum class BiometricType(val idType: Int) {
+        BiometricWeak(BIOMETRIC_WEAK),
+        BiometricStrong(BIOMETRIC_STRONG),
+        DeviceCredential(DEVICE_CREDENTIAL);
+
+        companion object {
+            fun get() = values().map { it.idType }
         }
-        binding.biometricButtonCheck.setOnClickListener {
-            checkBiometric()
+
+        fun getPromptInfo(credential: Boolean): BiometricPrompt.PromptInfo {
+            val prompt = BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Biometric login for my app")
+                .setSubtitle("Log in using your biometric credential")
+                .setAllowedAuthenticators(idType)
+
+            val negativeText = if (credential) "Use account password" else "cancel"
+            return when (this) {
+                BiometricStrong,
+                BiometricWeak -> prompt.setNegativeButtonText(negativeText)
+
+                DeviceCredential -> prompt
+            }.build()
         }
     }
 
-    val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        toast("registerForActivityResult: ${it.resultCode}")
-    }
-
+    @RequiresApi(Build.VERSION_CODES.R)
     private fun checkBiometric() {
+        listAllowedBiometric.clear()
         val biometricManager = BiometricManager.from(requireContext())
-        val messageAllowed = when (biometricManager.canAuthenticate(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)) {
-            BiometricManager.BIOMETRIC_SUCCESS ->
+        BiometricType.values().map { type ->
+            val checkAllowed = biometricManager.canAuthenticate(type.idType)
+            val messageAllowed = if (checkAllowed == BiometricManager.BIOMETRIC_SUCCESS) {
+                listAllowedBiometric.add(type)
                 "App can authenticate using biometrics."
-
-            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->
-                "No biometric features available on this device."
-
-            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE ->
-                "Biometric features are currently unavailable."
-
-            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-                // Prompts the user to create credentials that your app accepts.
-                val enrollIntent = Intent(Settings.ACTION_BIOMETRIC_ENROLL).apply {
-                    putExtra(
-                        Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
-                        BIOMETRIC_STRONG or DEVICE_CREDENTIAL
-                    )
-                }
-                launcher.launch(enrollIntent)
-                "BIOMETRIC_ERROR_NONE_ENROLLED"
-            }
-
-            BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED -> {
-                "BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED"
-            }
-
-            BiometricManager.BIOMETRIC_ERROR_UNSUPPORTED -> {
-                "BIOMETRIC_ERROR_UNSUPPORTED"
-            }
-
-            BiometricManager.BIOMETRIC_STATUS_UNKNOWN -> {
-                "BIOMETRIC_STATUS_UNKNOWN"
-            }
-
-            else -> {
-                "UNKNOWN"
-            }
+            } else getState(checkAllowed)
+            toast("${type.name}: $messageAllowed")
         }
-        toast(messageAllowed)
+        adapterUpdate(listAllowedBiometric)
+    }
+
+    private fun adapterUpdate(listAllowedBiometric: MutableList<BiometricType>) {
+        val credential = listAllowedBiometric.contains(BiometricType.DeviceCredential)
+        toast("allowed credential: $credential")
+        val adapter = BiometricAdapter(listAllowedBiometric) {
+            biometricPrompt.authenticate(it.getPromptInfo(credential))
+        }
+        binding.biometricRecyclerView.adapter = adapter
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    private fun getState(result: Int) = when (result) {
+//        BiometricManager.BIOMETRIC_SUCCESS -> "App can authenticate using biometrics."
+        BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> "No biometric features available on this device."
+        BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> "Biometric features are currently unavailable."
+        BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
+            // Prompts the user to create credentials that your app accepts.
+            val enrollIntent = Intent(Settings.ACTION_BIOMETRIC_ENROLL).apply {
+                putExtra(
+                    Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
+                    BIOMETRIC_STRONG or DEVICE_CREDENTIAL
+                )
+            }
+            launcher.launch(enrollIntent)
+            "BIOMETRIC_ERROR_NONE_ENROLLED"
+        }
+
+        BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED -> "BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED"
+        BiometricManager.BIOMETRIC_ERROR_UNSUPPORTED -> "BIOMETRIC_ERROR_UNSUPPORTED"
+        BiometricManager.BIOMETRIC_STATUS_UNKNOWN -> "BIOMETRIC_STATUS_UNKNOWN"
+        else -> "UNKNOWN"
     }
 
     private fun toast(message: String) {
-        Toast.makeText(HelpCodeApplication.instance, message, Toast.LENGTH_LONG).show()
+        stringBuffer.add("\n-$message")
+
+//        Toast.makeText(HelpCodeApplication.instance, message, Toast.LENGTH_LONG).show()
         Log.d("MY_APP_TAG", message)
+        binding.biometricLog.text = stringBuffer.asReversed().joinToString(" "/*, prefix = "Start\n"*/)
     }
 }

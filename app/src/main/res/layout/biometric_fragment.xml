@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
 
-    <Button
-        android:id="@+id/biometricButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Biometric"
-        app:layout_constraintBottom_toTopOf="@+id/biometricButtonCheck"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/biometricRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Check Biometric"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHeight_percent="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_bias="0" />
 
-    <Button
-        android:id="@+id/biometricButtonCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Check Biometric"
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/biometricRecyclerView" />
+
+    <TextView
+        android:id="@+id/biometricLog"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/biometricButton" />
+        app:layout_constraintTop_toBottomOf="@+id/biometricRecyclerView"
+        tools:text="Check Biometric" />
 </androidx.constraintlayout.widget.ConstraintLayout>
