@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.help_code.databinding.BiometricAdapterItemSimpleBinding
 import com.example.help_code.utilty.inflateAdapter
 
-class BiometricAdapter(private val list: List<BiometricFragment.BiometricType>, private val callback: (BiometricFragment.BiometricType) -> Unit) :
+class BiometricAdapter(private val list: List<BiometricItems>, private val callback: (BiometricItems) -> Unit) :
     RecyclerView.Adapter<BiometricAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -21,8 +21,8 @@ class BiometricAdapter(private val list: List<BiometricFragment.BiometricType>, 
     }
 
     inner class Holder(private val binding: BiometricAdapterItemSimpleBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: BiometricFragment.BiometricType) {
-            binding.itemText.text = item.name
+        fun bind(item: BiometricItems) {
+            binding.itemText.text = item.itemText
             itemView.setOnClickListener {
                 callback.invoke(item)
             }

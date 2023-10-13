@@ -22,8 +22,10 @@ class BiometricFragment : BaseBindingFragment<BiometricFragmentBinding>(Biometri
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
-    private val listAllowedBiometric = mutableListOf<BiometricType>()
+    private val listAllowedBiometric = mutableListOf<BiometricItems>()
     private val stringBuffer = mutableListOf<String>()
+    private val biometricManager by lazy { BiometricManager.from(requireContext()) }
+
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         toast("registerForActivityResult: ${it.resultCode}")
@@ -97,31 +99,41 @@ class BiometricFragment : BaseBindingFragment<BiometricFragmentBinding>(Biometri
 
     @RequiresApi(Build.VERSION_CODES.R)
     private fun checkBiometricAllowed() {
-        listAllowedBiometric.clear()
-        val biometricManager = BiometricManager.from(requireContext())
-        BiometricType.values().map { type ->
-            val checkAllowed = biometricManager.canAuthenticate(type.idType)
-            val messageAllowed = if (checkAllowed == BiometricManager.BIOMETRIC_SUCCESS) {
-                listAllowedBiometric.add(type)
-                "App can authenticate using biometrics."
-            } else getState(checkAllowed)
-            toast("${type.name}: $messageAllowed")
+        val list = BiometricType.values().filter {
+            biometricManager.canAuthenticate(it.idType).run {
+                toast("${it.name}: ${getState(this)}")
+                this == BiometricManager.BIOMETRIC_SUCCESS
+            }
         }
-        adapterUpdate(listAllowedBiometric)
-    }
-
-    private fun adapterUpdate(listAllowedBiometric: MutableList<BiometricType>) {
-        val credential = listAllowedBiometric.contains(BiometricType.DeviceCredential)
-        toast("allowed credential: $credential")
-        val adapter = BiometricAdapter(listAllowedBiometric) {
-            biometricPrompt.authenticate(it.getPromptInfo(credential))
-        }
-        binding.biometricRecyclerView.adapter = adapter
+        adapterUpdate(list)
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
+    private fun adapterUpdate(listAllowedBiometric: List<BiometricType>) {
+        val credential = listAllowedBiometric.contains(BiometricType.DeviceCredential)
+        toast("allowed credential: $credential")
+
+        val items = mutableListOf(
+            BiometricItems.CheckBiometric(),
+            BiometricItems.OpenBiometricSettings()
+        ).apply {
+            addAll(listAllowedBiometric.map { BiometricItems.CanType(it) })
+        }
+
+        val adapter = BiometricAdapter(items) {
+            when (it) {
+                is BiometricItems.CanType -> biometricPrompt.authenticate(it.type.getPromptInfo(credential))
+                is BiometricItems.CheckBiometric -> checkBiometricAllowed()
+                is BiometricItems.OpenBiometricSettings -> openBiometricSetting()
+                else -> {}
+            }
+        }
+
+        binding.biometricRecyclerView.adapter = adapter
+    }
+
     private fun getState(result: Int) = when (result) {
-//        BiometricManager.BIOMETRIC_SUCCESS -> "App can authenticate using biometrics."
+        BiometricManager.BIOMETRIC_SUCCESS -> "App can authenticate using biometrics."
         BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> "No biometric features available on this device."
         BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> "Biometric features are currently unavailable."
         BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> "BIOMETRIC_ERROR_NONE_ENROLLED" //open biometric setting -> openBiometricSetting()
