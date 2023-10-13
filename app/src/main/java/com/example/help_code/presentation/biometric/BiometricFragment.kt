@@ -33,7 +33,7 @@ class BiometricFragment : BaseBindingFragment<BiometricFragmentBinding>(Biometri
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        checkBiometric()
+        checkBiometricAllowed()
 
         executor = ContextCompat.getMainExecutor(requireContext())
         biometricPrompt = BiometricPrompt(this, executor,
@@ -79,13 +79,13 @@ class BiometricFragment : BaseBindingFragment<BiometricFragmentBinding>(Biometri
             fun get() = values().map { it.idType }
         }
 
-        fun getPromptInfo(credential: Boolean): BiometricPrompt.PromptInfo {
+        fun getPromptInfo(isDeviceCredential: Boolean): BiometricPrompt.PromptInfo {
             val prompt = BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Biometric login for my app")
                 .setSubtitle("Log in using your biometric credential")
                 .setAllowedAuthenticators(idType)
 
-            val negativeText = if (credential) "Use account password" else "cancel"
+            val negativeText = if (isDeviceCredential) "Use devise password" else "cancel"
             return when (this) {
                 BiometricStrong,
                 BiometricWeak -> prompt.setNegativeButtonText(negativeText)
@@ -96,7 +96,7 @@ class BiometricFragment : BaseBindingFragment<BiometricFragmentBinding>(Biometri
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
-    private fun checkBiometric() {
+    private fun checkBiometricAllowed() {
         listAllowedBiometric.clear()
         val biometricManager = BiometricManager.from(requireContext())
         BiometricType.values().map { type ->
@@ -124,22 +124,23 @@ class BiometricFragment : BaseBindingFragment<BiometricFragmentBinding>(Biometri
 //        BiometricManager.BIOMETRIC_SUCCESS -> "App can authenticate using biometrics."
         BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> "No biometric features available on this device."
         BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> "Biometric features are currently unavailable."
-        BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-            // Prompts the user to create credentials that your app accepts.
-            val enrollIntent = Intent(Settings.ACTION_BIOMETRIC_ENROLL).apply {
-                putExtra(
-                    Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
-                    BIOMETRIC_STRONG or DEVICE_CREDENTIAL
-                )
-            }
-            launcher.launch(enrollIntent)
-            "BIOMETRIC_ERROR_NONE_ENROLLED"
-        }
-
+        BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> "BIOMETRIC_ERROR_NONE_ENROLLED" //open biometric setting -> openBiometricSetting()
         BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED -> "BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED"
         BiometricManager.BIOMETRIC_ERROR_UNSUPPORTED -> "BIOMETRIC_ERROR_UNSUPPORTED"
         BiometricManager.BIOMETRIC_STATUS_UNKNOWN -> "BIOMETRIC_STATUS_UNKNOWN"
         else -> "UNKNOWN"
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    fun openBiometricSetting() {
+        // Prompts the user to create credentials that your app accepts.
+        val enrollIntent = Intent(Settings.ACTION_BIOMETRIC_ENROLL).apply {
+            putExtra(
+                Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
+                BIOMETRIC_STRONG or DEVICE_CREDENTIAL
+            )
+        }
+        launcher.launch(enrollIntent)
     }
 
     private fun toast(message: String) {
