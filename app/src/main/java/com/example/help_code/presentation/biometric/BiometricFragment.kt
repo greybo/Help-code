@@ -149,7 +149,7 @@ class BiometricFragment : BaseBindingFragment<BiometricFragmentBinding>(Biometri
         val enrollIntent = Intent(Settings.ACTION_BIOMETRIC_ENROLL).apply {
             putExtra(
                 Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
-                BIOMETRIC_STRONG or DEVICE_CREDENTIAL
+                BIOMETRIC_STRONG or BIOMETRIC_WEAK or DEVICE_CREDENTIAL
             )
         }
         launcher.launch(enrollIntent)
