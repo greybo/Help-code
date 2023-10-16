@@ -24,7 +24,7 @@ abstract class BaseBindingFragment<VB : ViewBinding>(private val bindingInflater
 //        route.onBackPress()
 //    }
 
-    private var _binding: ViewBinding? = null
+    protected var _binding: ViewBinding? = null
 
     @Suppress("UNCHECKED_CAST")
     protected open val binding: VB
@@ -45,9 +45,9 @@ abstract class BaseBindingFragment<VB : ViewBinding>(private val bindingInflater
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
         handlerDelayed = null
+        super.onDestroyView()
     }
 
     private var runnableDelay: Runnable? = null

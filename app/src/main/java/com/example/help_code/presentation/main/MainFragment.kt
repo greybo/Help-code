@@ -31,5 +31,10 @@ class MainFragment : BaseBindingFragment<FragmentMainBinding>(FragmentMainBindin
             route.navigation(it)
         }
     }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
 }
 

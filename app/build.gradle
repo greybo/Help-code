@@ -84,6 +84,8 @@ dependencies {
     // recyclerview-animators kotlin
     implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
 
+    //LeakCanary
     // debugImplementation because LeakCanary should only run in debug builds.
+    //https://square.github.io/leakcanary/getting_started/
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
 }
