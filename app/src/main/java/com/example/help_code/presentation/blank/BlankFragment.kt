@@ -15,16 +15,25 @@ import com.example.help_code.databinding.FragmentBlankBinding
 
 class BlankFragment : BaseBindingFragment<FragmentBlankBinding>(FragmentBlankBinding::inflate) {
 
+    private val REQUEST_CODE_LOCATION_PERMISSION: Int = 1
     private val viewModel: BlankViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.blankFragmentButton.setOnClickListener {
-            openLocationPermissionSettingsForApp(requireContext())
+            openLocationPermissionSettingsForApp2(requireContext())
 //            requireActivity().run {
 //                startActivity(intentSettingsApp)
 //            }
         }
+    }
+
+    private fun openLocationPermissionSettingsForApp2(context: Context) {
+        val packageName = context.packageName
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        intent.data = Uri.fromParts("package", packageName, null)
+        intent.addCategory("android.intent.category.LOCATION")
+        startActivityForResult(intent, REQUEST_CODE_LOCATION_PERMISSION)
     }
 
     private fun openLocationPermissionSettingsForApp(context: Context) {
