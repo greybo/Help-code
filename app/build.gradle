@@ -80,4 +80,7 @@ dependencies {
 
     // Biometric
     implementation "androidx.biometric:biometric-ktx:1.2.0-alpha05"
+
+    // recyclerview-animators kotlin
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
 }
