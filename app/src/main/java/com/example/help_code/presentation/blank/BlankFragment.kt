@@ -1,10 +1,13 @@
 package com.example.help_code.presentation.blank
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import com.example.help_code.base.BaseBindingFragment
@@ -17,15 +20,23 @@ class BlankFragment : BaseBindingFragment<FragmentBlankBinding>(FragmentBlankBin
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.blankFragmentButton.setOnClickListener {
-            requireActivity().run {
-                startActivity(intentSettingsApp)
-            }
+            openLocationPermissionSettingsForApp(requireContext())
+//            requireActivity().run {
+//                startActivity(intentSettingsApp)
+//            }
         }
     }
 
+    private fun openLocationPermissionSettingsForApp(context: Context) {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        intent.data = Uri.fromParts("package", context.packageName, null)
+        intent.addCategory("android.intent.category.LOCATION")
+        context.startActivity(intent)
+    }
 }
 
 val FragmentActivity.intentSettingsApp: Intent
+    @RequiresApi(Build.VERSION_CODES.O)
     get() = this.run {
         Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {//ACTION_LOCATION_SOURCE_SETTINGS
             addCategory(Intent.CATEGORY_DEFAULT)
