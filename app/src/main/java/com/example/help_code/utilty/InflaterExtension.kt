@@ -46,7 +46,7 @@ fun <VB> bindingDialog(context: Context, layoutInflater: Inflate<VB>): VB {
     return layoutInflater.invoke(LayoutInflater.from(context), null, false)
 }
 
-fun <VB> ViewGroup.inflateCustomView(context: Context, layoutInflater: Inflate<VB>): VB {
+fun <VB> ViewGroup.inflateCustomView( layoutInflater: Inflate<VB>): VB {
     return layoutInflater.invoke(LayoutInflater.from(context), this, true)
 }
 
@@ -61,8 +61,4 @@ fun ViewGroup.inflate(@LayoutRes layout: Int): View {
 
 fun <VB> bindingDialog(layoutInflater: LayoutInflater, viewInflater: Inflate<VB>): VB {
     return viewInflater.invoke(layoutInflater, null, false)
-}
-
-fun <VB> ViewGroup.bindingCustomView(context: Context, layoutInflater: Inflate<VB>): VB {
-    return layoutInflater.invoke(LayoutInflater.from(context), this, true)
 }

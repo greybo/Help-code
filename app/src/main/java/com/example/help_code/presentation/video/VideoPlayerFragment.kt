@@ -3,7 +3,6 @@ package com.example.help_code.presentation.video
 import android.annotation.SuppressLint
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -20,6 +19,7 @@ import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 // https://developer.android.com/codelabs/exoplayer-intro?hl=ru#2
 // ID's name  https://exoplayer.dev/doc/reference/com/google/android/exoplayer2/ui/StyledPlayerControlView.html
@@ -31,10 +31,11 @@ class VideoPlayerFragment :
 
     private val viewModel: VideoPlayerViewModel by viewModels()
     private var mMediaPlayer: ExoPlayer? = null
+    private val timber = Timber.tag("VideoPlayerFragment")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.i("VideoPlayerFragment", "onViewCreated: ")
+        timber.i("onViewCreated: ")
 
         initializePlayer()
     }
@@ -72,10 +73,10 @@ class VideoPlayerFragment :
             lifecycleScope.launch {
                 if (isPlaying) pollCurrentDuration()
                     .catch {
-                        Log.e("VideoPlayerFragment", "pollCurrentDuration: ${it.message}", it)
+                        timber.e(it, "pollCurrentDuration: %s", it.message)
                     }
                     .onEach {
-                        Log.i("VideoPlayerFragment", "pollCurrentDuration: $it")
+                        timber.i("pollCurrentDuration: $it")
                     }
             }
         }
@@ -83,13 +84,15 @@ class VideoPlayerFragment :
     }
     val DURATION_OFFSET = 500
     val DEFAULT_DELAY_MS: (Boolean) -> Unit = {
-        Log.i("VideoPlayerFragment", "DEFAULT_DELAY_MS: $it")
+        timber.i("DEFAULT_DELAY_MS: $it")
     }
 
     private fun pollCurrentDuration() = flow {
-        Log.i("VideoPlayerFragment", "pollCurrentDuration:")
-        while (((player?.currentPosition ?: 0) + DURATION_OFFSET) <= (player?.duration ?: 0)) {
-            emit((player?.currentPosition ?: 0) + DURATION_OFFSET)
+        timber.i("pollCurrentDuration:")
+        val check = (((mMediaPlayer?.currentPosition ?: 0) + DURATION_OFFSET)
+                <= (mMediaPlayer?.duration ?: 0))
+        while (check) {
+            emit((mMediaPlayer?.currentPosition ?: 0) + DURATION_OFFSET)
             delay(DEFAULT_DELAY_MS)
         }
     }.conflate()
