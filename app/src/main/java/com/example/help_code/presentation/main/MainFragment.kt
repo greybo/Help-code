@@ -7,13 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.help_code.MainRouter
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentMainBinding
-import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : BaseBindingFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
 
-    private val route: MainRouter by lazy {
-        MainRouter(findNavController())
-    }
+    private val route: MainRouter by lazy { MainRouter(findNavController()) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,10 +23,11 @@ class MainFragment : BaseBindingFragment<FragmentMainBinding>(FragmentMainBindin
     }
 
     private fun initAdapter() {
-        mainRecyclerView.layoutManager = LinearLayoutManager(context)
-        mainRecyclerView.adapter = MainAdapter(FragmentNameEnum.values()) {
-            route.navigation(it)
-        }
+        binding.mainRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.mainRecyclerView.adapter =
+            com.example.help_code.presentation.main.MainAdapter(FragmentNameEnum.values()) {
+                route.navigation(it)
+            }
     }
 
     override fun onDestroyView() {
