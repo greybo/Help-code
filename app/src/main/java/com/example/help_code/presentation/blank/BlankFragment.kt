@@ -1,61 +1,65 @@
 package com.example.help_code.presentation.blank
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.view.View
-import androidx.annotation.RequiresApi
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentBlankBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.zip
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class BlankFragment : BaseBindingFragment<FragmentBlankBinding>(FragmentBlankBinding::inflate) {
 
-    private val REQUEST_CODE_LOCATION_PERMISSION: Int = 1
     private val viewModel: BlankViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.blankFragmentButton.setOnClickListener {
-            openLocationPermissionSettingsForApp2(requireContext())
-//            requireActivity().run {
-//                startActivity(intentSettingsApp)
-//            }
+//        test2()
+        viewModel.test3()
+//        binding.blankFragmentButton.setOnClickListener { }
+    }
+
+    val list = listOf(
+        Pair("one", 4000L),
+        Pair("two", 5000L),
+        Pair("three", 100L),
+    )
+
+    fun test2() = runBlocking<Unit> {
+        val map = list.map {
+            async { runTask(it.first, it.second) }
+        }.awaitAll()
+        Timber.i("index -> ${map}")
+    }
+
+    fun test() = runBlocking<Unit> {
+        val nums = (1..3).asFlow() // numbers 1..3
+        val strs = flowOf(
+            async { runTask("one", 1000) },//.await(),
+            async { runTask("two", 2000) },//.await(),
+            async { runTask("three", 100) },//.await()
+        ) // strings
+        nums.zip(strs) { index, data ->
+            Timber.i("$index -> ${data.await()}")
+            index != 3
+        } // compose a single string
+            .collect {
+                Timber.i(it.toString())
+            } // collect and print
+    }
+
+    private suspend fun runTask(s: String, time: Long): String {
+        return withContext(Dispatchers.IO) {
+            Timber.i("start: $s")
+            kotlinx.coroutines.delay(time)
+            s
         }
-    }
-
-    private fun openLocationPermissionSettingsForApp2(context: Context) {
-        val packageName = context.packageName
-        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-        intent.data = Uri.fromParts("package", packageName, null)
-        intent.addCategory("android.intent.category.LOCATION")
-        startActivityForResult(intent, REQUEST_CODE_LOCATION_PERMISSION)
-    }
-
-    private fun openLocationPermissionSettingsForApp(context: Context) {
-        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-        intent.data = Uri.fromParts("package", context.packageName, null)
-        intent.addCategory("android.intent.category.LOCATION")
-        context.startActivity(intent)
     }
 }
-
-val FragmentActivity.intentSettingsApp: Intent
-    @RequiresApi(Build.VERSION_CODES.O)
-    get() = this.run {
-        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {//ACTION_LOCATION_SOURCE_SETTINGS
-            addCategory(Intent.CATEGORY_DEFAULT)
-            data = Uri.parse("package:$packageName")
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
-        }
-    }
-
-//putExtra(
-//   Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
-//   BIOMETRIC_STRONG or BIOMETRIC_WEAK or DEVICE_CREDENTIAL
-//)
