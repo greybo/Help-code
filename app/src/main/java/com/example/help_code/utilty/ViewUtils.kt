@@ -4,14 +4,11 @@ package com.example.help_code.utilty
 import android.content.Context
 import android.content.res.Resources
 import android.text.TextUtils
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.LayoutRes
 import com.google.android.material.textfield.TextInputLayout
 
 /**
@@ -109,3 +106,11 @@ fun View.setTextOrGoneByResId(idString: Int?) {
 
 val DP_IN_PX = Resources.getSystem().displayMetrics.density
 val SP_IN_PX = Resources.getSystem().displayMetrics.scaledDensity
+
+fun View.getButtonName(): String {
+    return when (this) {
+        is TextView -> this.text.toString()
+        else -> ""
+    }
+}
+

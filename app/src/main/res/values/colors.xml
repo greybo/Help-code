@@ -10,7 +10,7 @@
     <color name="text_disable">#B3B3B3</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
-<!--     QR code scanner colors -->
+    <!--     QR code scanner colors -->
     <color name="barcode_reticle_background">#99000000</color>
     <color name="barcode_reticle_stroke">#ffffff</color>
     <color name="colorCopyButton">#00897B</color>
@@ -19,6 +19,8 @@
     <color name="gold">#968756</color>
     <color name="transparency_50">#80000000</color>
     <color name="text_color_inverted">@color/white</color>
-
+    <color name="text_color">@color/maud_black</color>
+    <color name="maud_black">#0E0909</color>
+    <color name="background_charcoal">@color/white</color>
 
 </resources>
