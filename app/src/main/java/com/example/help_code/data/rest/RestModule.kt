@@ -14,7 +14,7 @@ const val cacheSize = (10 * 1024 * 1024).toLong()
 
 fun createNetworkClient(): Retrofit {
     return Retrofit.Builder()
-//        .baseUrl(Configuration.shared.property.digitalURL + "/")
+        .baseUrl("https://rdsig.yahoo.co.jp/")
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(
             GsonConverterFactory.create(
