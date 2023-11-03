@@ -13,8 +13,8 @@ class BlankFragment : BaseBindingFragment<FragmentBlankBinding>(FragmentBlankBin
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.mainTest()
-        binding.blankFragmentButton.setOnClickListener { viewModel.mainTest() }
+        viewModel.runTask()
+        binding.blankFragmentButton.setOnClickListener { viewModel.runTask() }
 
     }
 }
