@@ -4,9 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.help_code.data.testgateway.CMSGateway
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.zip
 import retrofit2.HttpException
 import timber.log.Timber
 import java.io.IOException
@@ -32,12 +30,15 @@ class BlankViewModel : ViewModel() {
     fun mainTest() {
         timber.w("mainTest Start")
         viewModelScope.launch {
-            testGateway()
+//           val result =  mergeArray()
+//            timber.w("end: $result")
+
+            mergeArray2()
         }
 //        timber.w("end")
     }
 
-    private suspend fun testGateway() = supervisorScope {
+    private suspend fun mergeArray() = supervisorScope {
         val mapResult = listUrl.map { url ->
             async {
                 try {
@@ -65,100 +66,26 @@ class BlankViewModel : ViewModel() {
         true
     }
 
-    private suspend fun test2() = supervisorScope {
-
-        val mapResult = list.mapIndexed { index, pair ->
+    suspend fun mergeArray2() = runBlocking {
+        val result = listUrl.map { url ->
+//            supervisorScope {
             async {
-                if (index != 2) {
-                    runTask("${pair.first} - ${pair.second}", pair.second)
-                } else {
-                    runTaskException("${pair.first} - ${pair.second}", pair.second)
+                kotlin.runCatching {
+                    val response = gateway.getCMSCall(url)
+                    if (response.code() == 200) {
+                        response
+                    } else throw HttpException(response)
+                }.onSuccess {
+                    // do something with success response
+                    timber.d("success call: $it")
+                }.onFailure {
+                    timber.e("runCatching: $it")
                 }
+//                }
             }
         }.awaitAll()
-
-        mapResult.filter {
-            it.isFailure
-        }.map {
-            timber.e("filter error: ${it.exceptionOrNull()}")
-        }
-
-        timber.i("index -> ${mapResult}")
-        true
+        timber.w("finally result: $result")
     }
-
-
-    fun test() = runBlocking<Unit> {
-        val nums = (1..3).asFlow() // numbers 1..3
-        val strs = flowOf(
-            async { runTask("one", 1000) },//.await(),
-            async { runTaskException("two", 2000) },//.await(),
-            async { runTask("three", 100) },//.await()
-        ) // strings
-        nums.zip(strs) { index, data ->
-            timber.i("$index -> ${data.await()}")
-            index != 3
-        } // compose a single string
-            .collect {
-                timber.i(it.toString())
-            } // collect and print
-    }
-
-    //    private suspend fun runTask(s: String, time: Long): String {
-//        return withContext(Dispatchers.IO) {
-//            timber.i("start: $s")
-//            kotlinx.coroutines.delay(time)
-//            s
-//        }
-//    }
-    suspend fun runTasksWithException() = coroutineScope { // this: CoroutineScope
-        timber.w("Must complete 3 tasks with exception")
-        launch { runTask("task 1", 3000) }
-        try {
-            launch { runTaskException("task 2", 4000) }
-        } catch (e: Exception) {
-            timber.e("try with exception: $e")
-        }
-        launch { runTask("task 3", 5000) }
-    }
-
-    suspend fun doTasks() = coroutineScope { // this: CoroutineScope
-        timber.w("Must complete 2 tasks with first exception")
-        async {
-            runTaskException("Task 1", 5000L)
-        }.await()
-        async {
-            runTask("Task 2", 1000L)
-        }.await()
-        timber.d("Hello")
-    }
-
-
-    suspend fun runCatchingTest() = runBlocking {
-
-        kotlin.runCatching {
-            supervisorScope {
-                listTasks.map {
-                    async {
-                        it.run()
-                    }
-                }.awaitAll().all { it }
-            }
-
-
-//            runTasksWithException()
-//            async {
-//                runTaskException("Task 1", 5000L)
-//            }.await()
-
-        }.onSuccess {
-            // do something with success response
-            timber.d("success call: $it")
-        }.onFailure {
-            timber.e("runCatching: $it")
-        }
-    }
-
 }
 
 val listFlow = flowOf(
@@ -207,12 +134,4 @@ suspend fun runTaskException(message: String, delay: Long = 1000): Result<Throwa
         throw HttpRetryException("test exception: ${message}", 400)
 //        throw Throwable("test exception")
     }
-
-//    return try {
-//
-//
-//    } catch (e: Throwable) {
-//        timber.e("runTaskException: $e")
-//        e
-//    }
 }
