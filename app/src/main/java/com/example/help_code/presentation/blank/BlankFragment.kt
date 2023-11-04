@@ -5,15 +5,18 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentBlankBinding
+import com.example.help_code.presentation.blank.coroutine.LatestNewsViewModel
 
 class BlankFragment : BaseBindingFragment<FragmentBlankBinding>(FragmentBlankBinding::inflate) {
 
     private val viewModel: BlankViewModel by viewModels()
+    private val viewModel2: LatestNewsViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.runTask()
+//        viewModel.runTask()
+        viewModel2.fetch()
         binding.blankFragmentButton.setOnClickListener { viewModel.runTask() }
 
     }
