@@ -3,6 +3,8 @@ package com.example.help_code.data.testgateway
 
 import com.example.help_code.data.rest.createNetworkClient
 import com.example.help_code.data.rest.getJsonHeader
+import com.example.help_code.data.rest.getJsonHeaderVault
+import com.example.help_code.presentation.blank.LoginVault
 import okhttp3.ResponseBody
 import retrofit2.HttpException
 import retrofit2.Response
@@ -11,10 +13,14 @@ interface ICMSGateway {
     suspend fun getCMSCall(url: String): Response<ResponseBody>
 }
 
-class CMSGateway(private val cmsApi: CMSApi = createNetworkClient().create(CMSApi::class.java)) :
+class CMSGateway(private val gatewayApi: GatewayApi = createNetworkClient().create(GatewayApi::class.java)) :
     ICMSGateway {
+    suspend fun postVault(url: String, body: LoginVault): Response<ResponseBody> {
+        return gatewayApi.postTest(url = url, body, headerMap = getJsonHeaderVault())//.getOrThrow()
+    }
+
     override suspend fun getCMSCall(url: String): Response<ResponseBody> {
-        return cmsApi.getTest(url = url, headerMap = getJsonHeader()).getOrThrow()
+        return gatewayApi.getTest(url = url, headerMap = getJsonHeader()).getOrThrow()
     }
 
     private fun Response<ResponseBody>.getOrThrow(): Response<ResponseBody> {

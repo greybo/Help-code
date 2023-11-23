@@ -12,13 +12,14 @@ class BlankFragment : BaseBindingFragment<FragmentBlankBinding>(FragmentBlankBin
     private val viewModel: BlankViewModel by viewModels()
     private val viewModel2: LatestNewsViewModel by viewModels()
     private val viewModel3: BlankViewModel3 by viewModels()
+    private val vaultViewModel: VaultViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel3.runTask()
-//        viewModel2.fetch()
-//        binding.blankFragmentButton.setOnClickListener { viewModel.runTask() }
+        vaultViewModel.runTask()
+
+        binding.blankFragmentButton.setOnClickListener { vaultViewModel.runTask() }
 
     }
 }

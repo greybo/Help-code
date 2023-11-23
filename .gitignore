@@ -17,3 +17,4 @@
 /.idea/
 /gradle/wrapper/gradle-wrapper.jar
 /maskededittext/
+/app/google-services.json

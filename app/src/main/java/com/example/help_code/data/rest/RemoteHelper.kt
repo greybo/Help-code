@@ -2,6 +2,7 @@ package com.example.help_code.data.rest
 
 import com.google.gson.annotations.SerializedName
 
+fun getJsonHeaderVault() = mapOf(Header.contentType to "application/json", "Accept" to "application/json")
 fun getJsonHeader() = mapOf(Header.contentType to "application/json", "accept" to "application/json")
 
 fun getBaseHeader(): Map<String, String> {
