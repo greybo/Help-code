@@ -9,19 +9,23 @@ import timber.log.Timber
 
 class HelpCodeApplication : Application() {
     private val LOG_TAG = "SampleApplication"
+
     companion object {
         lateinit var instance: HelpCodeApplication
     }
+
 
     override fun onCreate() {
 //        setStrictMode()
         super.onCreate()
         instance = this
         Timber.plant(Timber.DebugTree())
+
+
     }
 
     private fun setStrictMode() {
-        Timber.tag(LOG_TAG).d( "Enabling StrictMode policy over Sample application")
+        Timber.tag(LOG_TAG).d("Enabling StrictMode policy over Sample application")
         StrictMode.setThreadPolicy(
             ThreadPolicy.Builder()
                 .detectAll()
