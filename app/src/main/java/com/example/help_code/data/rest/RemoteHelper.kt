@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 fun getJsonHeaderVault() = mapOf(
     Header.contentType to "application/json",
     "Accept" to "application/json",
+    "vmp-api-key" to "8N4GsqNUBHWhJraNUm7K"
 )
 
 fun getJsonHeader() = mapOf(Header.contentType to "application/json", "accept" to "application/json")

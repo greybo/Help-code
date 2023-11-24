@@ -21,7 +21,11 @@ class HelpCodeApplication : Application() {
         instance = this
         Timber.plant(Timber.DebugTree())
 
-
+//        analytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT) {
+//            param(FirebaseAnalytics.Param.ITEM_ID, id);
+//            param(FirebaseAnalytics.Param.ITEM_NAME, name);
+//            param(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+//        }
     }
 
     private fun setStrictMode() {

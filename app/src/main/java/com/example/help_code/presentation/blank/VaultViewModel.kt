@@ -24,18 +24,11 @@ class VaultViewModel : ViewModel() {
         myTimber.e(error)
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun runTask() {
         myTimber.w("coroutine above")
         GlobalScope.launch(Dispatchers.IO) {
-
             tryCall()
-//            kotlin.runCatching {
-
-//            }.onFailure {
-
-//            }.onSuccess {
-//                myTimber.w("success: $it")
-//            }
         }
         myTimber.w("coroutine below")
     }
@@ -43,10 +36,9 @@ class VaultViewModel : ViewModel() {
     private suspend fun tryCall() = runBlocking {
         myTimber.w("request above")
         try {
-//            val call = async { gateway.getCMSCall(url) }
-//            val response = call.await()
-            val response = gateway.postRedeemCardVault(urlRedeem, RedeemCardVault())
-//            val response = gateway.postLoginVault(url, LoginVault())
+
+//            val response = gateway.postRedeemCardVault(urlRedeem, RedeemCardVault())
+            val response = gateway.postLoginVault(urlLogin, LoginVault())
             myTimber.w("request: ${response.body()}")
 
         } catch (e: Exception) {
