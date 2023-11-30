@@ -12,6 +12,7 @@ class VaultViewModel : ViewModel() {
 
     val myTimber = Timber
 
+    val urlCreateRedeem = "https://vault-esp-staging-au-kvwr4chkta-ts.a.run.app/v1/cards/create-redeemed"
     val urlRedeem = "https://vault-esp-staging-au-kvwr4chkta-ts.a.run.app/v1/cardholder/redeem/sms"
     val urlLogin = "https://vault-esp-staging-au-kvwr4chkta-ts.a.run.app/v1/users/login"
 //    val url = "https://rdsig.yahoo.co.jp/smptop/topi/test"

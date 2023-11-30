@@ -4,6 +4,8 @@ import android.app.Application
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.os.StrictMode.VmPolicy
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
 import timber.log.Timber
 
 
@@ -20,6 +22,7 @@ class HelpCodeApplication : Application() {
         super.onCreate()
         instance = this
         Timber.plant(Timber.DebugTree())
+        Firebase.initialize(context = this)
 
 //        analytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT) {
 //            param(FirebaseAnalytics.Param.ITEM_ID, id);
