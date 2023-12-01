@@ -52,4 +52,4 @@ class VaultViewModel : ViewModel() {
 }
 
 data class LoginVault(val username: String = "sergeybotl@gmail.com", val password: String = "@Sergey29")
-data class RedeemCardVault(val phone: String = "+61555555555", val code: String = "123456", val email: String = "sergeybotl@gmail.com")
+data class RedeemCardVault(val phone: String = "+61 555555555", val code: String = "123456", val email: String = "sergeybotl@gmail.com")
