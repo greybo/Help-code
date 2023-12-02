@@ -7,10 +7,10 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import timber.log.Timber
-
 class NewsRepository() {
     private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO
-    private val newsRemoteDataSource: NewsRemoteDataSource = NewsRemoteDataSource()
+    private val newsRemoteDataSource =
+        com.example.help_code.presentation.blank.coroutine.NewsRemoteDataSource()
     private val myTimber2 = Timber.tag("LatestNewsViewModel")
 
     fun fetchTest(time: TimeModel): Flow<TimeModel> =

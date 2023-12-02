@@ -89,7 +89,7 @@ dependencies {
     //LeakCanary
     // debugImplementation because LeakCanary should only run in debug builds.
     //https://square.github.io/leakcanary/getting_started/
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"

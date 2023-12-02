@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
     <title>Your Web Page</title>
     <style>
         #video, #capturedImage {
@@ -39,6 +40,7 @@
         let capturedImageData;
 
 	  document.getElementById('startButton').addEventListener('click', function () {
+	  androidObj.call('hello 1')
             navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
                 .then(function (stream) {
                     video.srcObject = stream;
@@ -51,8 +53,9 @@
 
 
         permissionButton.addEventListener('click', function () {
-        navigator.permissions.query({name: 'camera'}).then(function(result) {
-                           console.error('permissionButton: query');
+		androidObj.call('hello 2')
+        navigator.permissions.query({name: 'camera'}).then(function(result) {        
+			console.error('permissionButton: query');
 				 if (result.state === 'granted') {
                       console.error('permissionButton: granted');
                      navigator.camera.getPicture(function(image) {
