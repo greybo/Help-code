@@ -23,8 +23,6 @@ class BlankFragment : BaseBindingFragment<FragmentBlankBinding>(FragmentBlankBin
         const val TAG = "BlankFragment"
 
         private const val REQ_ONE_TAP = 2 // Can be any integer unique to the Activity.
-        private const val identificator =
-            "firebase-service-account@firebase-sa-management.iam.gserviceaccount.com"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
