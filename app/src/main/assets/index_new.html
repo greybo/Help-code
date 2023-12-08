@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Camera Access</title>
+    <script>
+    function openCamera() {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+            .then(function (stream) {
+                video.srcObject = stream;
+                video.onloadedmetadata = function (e) {
+                    console.log('Video metadata loaded:', e);
+                };
+            })
+            .catch(function (error) {
+                console.error('Error accessing camera:', error);
+            });
+    } else {
+        console.error('getUserMedia is not supported in this environment.');
+    }
+    }
+
+    function takePhoto() {
+      var canvas = document.getElementById('cameraCanvas');
+      var ctx = canvas.getContext('2d');
+
+      var videoElement = document.getElementById('cameraPreview');
+      ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+      var imageData = canvas.toDataURL('image/jpeg');
+      // Send the image data to Java here
+      // ...
+    }
+  </script>
+</head>
+<body>
+<button id="openCameraButton" onclick="openCamera()">Open Camera</button>
+<video id="cameraPreview"></video>
+
+<button id="takePhotoButton" onclick="takePhoto()">Take Photo</button>
+<canvas id="cameraCanvas"></canvas>
+</body>
+</html>

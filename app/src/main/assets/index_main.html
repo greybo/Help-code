@@ -1,10 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-	<meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
     <title>Your Web Page</title>
     <style>
         #video, #capturedImage {
@@ -17,12 +16,10 @@
             padding: 10px 20px;
             margin: 5px;
         }
-
     </style>
 </head>
 <body>
 
-<button id="permissionButton" >Permission</button>
 <button id="startButton">Start Camera</button>
 <button id="takePictureButton" disabled>Take Picture</button>
 <span>  </span>
@@ -35,14 +32,14 @@
         let canvas = document.querySelector('#canvas');
         let capturedImage = document.querySelector('#capturedImage');
         let takePictureButton = document.querySelector('#takePictureButton');
-        let permissionButton = document.querySelector('#permissionButton');
 
         let capturedImageData;
+        let videoStream;
 
-	  document.getElementById('startButton').addEventListener('click', function () {
-	  androidObj.call('hello 1')
+        document.getElementById('startButton').addEventListener('click', function () {
             navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
                 .then(function (stream) {
+                    videoStream = stream;
                     video.srcObject = stream;
                     takePictureButton.disabled = false; // Enable the button once the camera is started
                 })
@@ -50,27 +47,6 @@
                     console.log('Error accessing camera:', error);
                 });
         });
-
-
-        permissionButton.addEventListener('click', function () {
-		androidObj.call('hello 2')
-        navigator.permissions.query({name: 'camera'}).then(function(result) {        
-			console.error('permissionButton: query');
-				 if (result.state === 'granted') {
-                      console.error('permissionButton: granted');
-                     navigator.camera.getPicture(function(image) {
-                      console.error('permissionButton: getPicture');
-                   }, function(error) {
-                         // ??????? ???????
-						console.error('permissionButton:', error);
-                       });
-                   } else {
-                     // ?????????? ?? ????? ??????
-
-					 console.error('permissionButton: else');
-                   }
-           });
-        }
 
         takePictureButton.addEventListener('click', function () {
             // Draw the current video frame onto the canvas
@@ -80,7 +56,7 @@
 
             // Convert the canvas content to a data URL and set it as the source for the image element
             capturedImageData = canvas.toDataURL('image/png');
-            
+
             capturedImage.src = capturedImageData;
 
             // Display the captured image
@@ -89,7 +65,7 @@
             // You can now use the 'capturedImage' element to display or save the captured image
             uploadImage()
         });
-        
+
         function uploadImage() {
             // Check if an image is captured
             if (!capturedImageData) {
@@ -106,19 +82,27 @@
                     'Ocp-Apim-Subscription-Key' : '464dcdeb2107469bb539c1b83a565dce',
                 },
                 body: JSON.stringify({ "img": capturedImageData }),
-            }) 
+            })
             .then(response => {
+                stopMediaStream();
                 alert('Image uploaded successfully.');
-                window.webkit.messageHandlers.yourMessageHandlerName.postMessage("Image uploaded successfully.");
+                window.webkit.messageHandlers.alertHandler.postMessage("Image uploaded successfully.");
             })
             .catch(error => {
+                stopMediaStream();
                 console.error('Error uploading image:', error);
                 alert('Error uploading image.');
-                window.webkit.messageHandlers.yourMessageHandlerName.postMessage("Error uploading image.");
+                window.webkit.messageHandlers.alertHandler.postMessage("Error uploading image.");
             });
         }
 
-</script>
+        function stopMediaStream() {
+            if (videoStream) {
+                let tracks = videoStream.getTracks();
+                tracks.forEach(track => track.stop());
+            }
+        }
+    </script>
 
 </body>
 </html>
