@@ -3,9 +3,12 @@ package com.example.help_code.presentation.webcamera
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.webkit.PermissionRequest
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentWebViewCameraBinding
+
 
 class WebViewCameraFragment :
     BaseBindingFragment<FragmentWebViewCameraBinding>(FragmentWebViewCameraBinding::inflate) {
@@ -16,7 +19,8 @@ class WebViewCameraFragment :
         val bridge = WebViewJavascriptBridge(binding.webView)
         binding.webView.apply {
             settings.javaScriptEnabled = true
-            loadUrl("file:///android_asset/index.html")
+            settings.setAllowFileAccessFromFileURLs(true);
+            getSettings().setAllowUniversalAccessFromFileURLs(true);
 
 //            bridge.registerHandler("receivePhoto", object : Callback {
 //                override fun handle(data: String?, responseCallback: ResponseCallback) {
@@ -27,6 +31,15 @@ class WebViewCameraFragment :
 //                    responseCallback.call(responseData)
 //                }
 //            })
+
+            webChromeClient = object : WebChromeClient() {
+                override fun onPermissionRequest(request: PermissionRequest) {
+                    request.grant(request.resources)
+                }
+            }
+
+            loadUrl("file:///android_asset/index.html")
+
         }
     }
 

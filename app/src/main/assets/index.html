@@ -44,7 +44,7 @@
                     takePictureButton.disabled = false; // Enable the button once the camera is started
                 })
                 .catch(function (error) {
-                    console.log('Error accessing camera:', error);
+                    console.log('Error accessing camera:', error.message);
                 });
         });
 
