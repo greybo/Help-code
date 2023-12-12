@@ -4,10 +4,7 @@ import com.example.help_code.base.CompositeViewModel
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import timber.log.Timber
 
 class ExceptionCoroutineViewModel : CompositeViewModel() {
@@ -32,7 +29,9 @@ class ExceptionCoroutineViewModel : CompositeViewModel() {
                 try {
                     val result = taskException()
                     Timber.d("try runTaskRX: $result")
-                    it.onComplete()
+                    withContext(NonCancellable) {
+                        if (result != null) it.onComplete() else throw NullPointerException()
+                    }
                 } catch (e: Exception) {
                     Timber.e("catch runTaskRX:")
                     Timber.e(e)
