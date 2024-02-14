@@ -1,8 +1,13 @@
 //package com.example.help_code.mask
 //
+//import android.telephony.PhoneNumberUtils
+//import android.text.Editable
+//import android.text.Selection
 //import android.text.TextWatcher
+//import android.util.Log
 //import java.util.*
-//
+//import com.google.i18n.phonenumbers.AsYouTypeFormatter
+//import com.google.i18n.phonenumbers.PhoneNumberUtil
 ///**
 // * Watches a [android.widget.TextView] and if a phone number is entered
 // * will format it.
@@ -43,7 +48,7 @@
 //     */
 //    init {
 //        requireNotNull(countryCode)
-//        mFormatter = PhoneNumberUtil//.getInstance().getAsYouTypeFormatter(countryCode)
+//        mFormatter = PhoneNumberUtil.getInstance().getAsYouTypeFormatter(countryCode)
 //        this.countryCode = countryCode
 //    }
 //
@@ -74,7 +79,7 @@
 //    override fun afterTextChanged(s: Editable) {
 //        if (mStopFormatting) {
 //            // Restart the formatting when all texts were clear.
-//            mStopFormatting = !(s.length() === 0)
+//            mStopFormatting = s.isNotEmpty()
 //            return
 //        }
 //        if (mSelfChange) {
@@ -86,7 +91,7 @@
 //            val rememberedPos = formatted.length
 //            Log.v("rememberedPos", "" + rememberedPos)
 //            mSelfChange = true
-//            s.replace(0, s.length(), formatted, 0, formatted.length)
+//            s.replace(0, s.length, formatted, 0, formatted.length)
 //
 //
 //            // The text could be changed by other TextWatcher after we changed it. If we found the
@@ -111,7 +116,7 @@
 //        mFormatter.clear()
 //        var lastNonSeparator = 0.toChar()
 //        var hasCursor = false
-//        val countryCallingCode = "+" + CountryCodesAdapter.getCode(countryCode)
+//        val countryCallingCode = "+" + "61"//CountryCodesAdapter.getCode(countryCode)
 //        s = countryCallingCode + s
 //        val len = s.length
 //        for (i in 0 until len) {

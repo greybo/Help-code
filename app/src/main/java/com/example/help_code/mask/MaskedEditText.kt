@@ -6,16 +6,18 @@ import android.util.AttributeSet
 import android.widget.EditText
 import com.example.help_code.R
 
-class MaskedEditText @JvmOverloads constructor(context: Context, attr: AttributeSet?, mask: String = "", placeholder: Char = ' ') : EditText(context, attr) {
-    private var mask: String
-    private var placeholder: String
+class MaskedEditText @JvmOverloads constructor(context: Context, attr: AttributeSet?) : EditText(context, attr) {
+    private var mMask: String
+    private var mPlaceholder: String
     private val textWatchers: MutableList<TextWatcher> = ArrayList()
 
+    val defaultMask: String = ""
+    val defaultPlaceholder: Char = ' '
 
 
     init {
-        var mask = mask
-        var placeholder = placeholder
+        var mask = defaultMask
+        var placeholder = defaultPlaceholder
         val a = context.obtainStyledAttributes(attr, R.styleable.MaskedEditText)
         val N = a.indexCount
         for (i in 0 until N) {
@@ -30,27 +32,27 @@ class MaskedEditText @JvmOverloads constructor(context: Context, attr: Attribute
 
         // disable text suggestions since they can influence in the mask
         inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-        this.mask = mask
-        this.placeholder = placeholder.toString()
+        this.mMask = mask
+        this.mPlaceholder = placeholder.toString()
         super.addTextChangedListener(MaskTextWatcher())
         if (mask.length > 0) setText(text) // sets the text to create the mask
     }
 
     fun getMask(): String {
-        return mask
+        return mMask
     }
 
     fun setMask(mask: String) {
-        this.mask = mask
+        this.mMask = mask
         text = text
     }
 
     fun getPlaceholder(): Char {
-        return placeholder[0]
+        return mPlaceholder[0]
     }
 
     fun setPlaceholder(placeholder: Char) {
-        this.placeholder = placeholder.toString()
+        this.mPlaceholder = placeholder.toString()
         text = text
     }
 
@@ -81,13 +83,13 @@ class MaskedEditText @JvmOverloads constructor(context: Context, attr: Attribute
         var treatNextCharAsLiteral = false
         val selection = Any()
         value.setSpan(selection, Selection.getSelectionStart(value), Selection.getSelectionEnd(value), Spanned.SPAN_MARK_MARK)
-        while (i < mask.length) {
-            if (!treatNextCharAsLiteral && isMaskChar(mask[i])) {
+        while (i < mMask.length) {
+            if (!treatNextCharAsLiteral && isMaskChar(mMask[i])) {
                 if (j >= value.length) {
-                    value.insert(j, placeholder)
+                    value.insert(j, mPlaceholder)
                     value.setSpan(PlaceholderSpan(), j, j + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                     j++
-                } else if (!matchMask(mask[i], value[j])) {
+                } else if (!matchMask(mMask[i], value[j])) {
                     value.delete(j, j + 1)
                     i--
                     maskLength--
@@ -95,10 +97,10 @@ class MaskedEditText @JvmOverloads constructor(context: Context, attr: Attribute
                     j++
                 }
                 maskLength++
-            } else if (!treatNextCharAsLiteral && mask[i] == ESCAPE_CHAR) {
+            } else if (!treatNextCharAsLiteral && mMask[i] == ESCAPE_CHAR) {
                 treatNextCharAsLiteral = true
             } else {
-                value.insert(j, mask[i].toString())
+                value.insert(j, mMask[i].toString())
                 value.setSpan(LiteralSpan(), j, j + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                 treatNextCharAsLiteral = false
                 j++
@@ -168,7 +170,7 @@ class MaskedEditText @JvmOverloads constructor(context: Context, attr: Attribute
         private var updating = false
         private var originalValue: String? = null
         override fun afterTextChanged(s: Editable) {
-            if (updating || mask.length == 0) return
+            if (updating || mMask.length == 0) return
             if (!updating) {
                 updating = true
                 stripMaskChars(s)

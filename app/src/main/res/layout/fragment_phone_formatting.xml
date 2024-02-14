@@ -20,8 +20,8 @@
         android:id="@+id/txtMaskedEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Hint text"
-        maskededittext:mask="000 000 000 000 000 000"
+        android:hint="(+61)"
+        maskededittext:mask="(+61) 000 000 000 000 000"
         tools:text="123456789123456789" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_marginTop="24dp"
         android:inputType="phone"
         android:maxLength="18"
-        tools:text="123456789" />
+        tools:text="123 456 789" />
 
 
     <EditText
@@ -47,5 +47,5 @@
         android:layout_marginTop="24dp"
         android:inputType="phone"
         android:maxLength="10"
-        tools:text="123456789" />
+        tools:text="123 456 789" />
 </LinearLayout>
