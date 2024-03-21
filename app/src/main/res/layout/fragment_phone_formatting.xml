@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:text="MaskedEditText Test" />
 
-    <com.example.help_code.mask.MaskedEditText
+    <com.example.help_code.presentation.mask.MaskedEditText
         android:id="@+id/txtMaskedEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -109,7 +109,7 @@
 
     <fragment
         android:id="@+id/PhoneFormattingFragment"
-        android:name="com.example.help_code.mask.PhoneFormattingFragment"
+        android:name="com.example.help_code.presentation.mask.PhoneFormattingFragment"
         android:label="phone_formatting"
         tools:layout="@layout/fragment_phone_formatting" />
 
