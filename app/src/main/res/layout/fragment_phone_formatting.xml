@@ -39,13 +39,26 @@
         android:maxLength="18"
         tools:text="123 456 789" />
 
+    <TextView
+        android:id="@+id/txtEditText3Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="EditText3" />
 
     <EditText
-        android:id="@+id/txtEditText4"
+        android:id="@+id/txtEditText3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:maxLength="10"
+        tools:text="123 456 789" />
+
+    <EditText
+        android:id="@+id/txtEditText_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:inputType="phone"
-        android:maxLength="10"
         tools:text="123 456 789" />
 </LinearLayout>

@@ -5,7 +5,7 @@ import android.text.Selection
 import android.text.Spanned
 import android.text.TextWatcher
 
-class MaskPhoneWatcher : TextWatcher {
+class MaskPhoneWatcher3 : TextWatcher {
 
     private var mask: String = "000 000 000 000 000 000"
     private var placeholder: String = " "

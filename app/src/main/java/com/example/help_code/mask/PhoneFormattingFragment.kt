@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.help_code.databinding.FragmentPhoneFormattingBinding
+import timber.log.Timber
 
 //BaseBindingFragment<FragmentPhoneFormattingBinding>(FragmentPhoneFormattingBinding::inflate)
 class PhoneFormattingFragment : Fragment() {
@@ -39,7 +40,19 @@ class PhoneFormattingFragment : Fragment() {
         })
 
         binding.txtEditText2.addTextChangedListener(object : MaskPhoneWatcher2() {})
-        binding.txtEditText4.addTextChangedListener(MaskPhoneWatcher())
+        binding.txtEditText3.addTextChangedListener(MaskPhoneWatcher3())
+        binding.txtEditText4.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+               val formatted = getFormattedNumber(p0.toString())
+                Timber.d("Formatted phone: $formatted")
+            }
+        })
 
     }
 }
