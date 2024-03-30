@@ -183,4 +183,19 @@
         android:label="web_view_camera_fragment"
         tools:layout="@layout/fragment_web_view_camera" />
 
+    <action
+        android:id="@+id/toJacksonFragment"
+        app:destination="@+id/JacksonFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/JacksonFragment"
+        android:name="com.example.help_code.presentation.jackson.JacksonFragment"
+        android:label="biometric_fragment"
+        tools:layout="@layout/biometric_fragment" />
+
+
 </navigation>

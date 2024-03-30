@@ -13,6 +13,7 @@ class MainRouter(private val controller: NavController) {
                 R.id.toPagerMainFragment,
                 bundleOf("tab_number" to "2")
             )
+
             FragmentNameEnum.ScannerFragment -> controller.navigate(R.id.toBarcodeScanningFragment)
             FragmentNameEnum.Video -> controller.navigate(R.id.toVideoPlayerFragment)
             FragmentNameEnum.Behavior -> controller.navigate(R.id.toBehaviorFragment)
@@ -23,6 +24,7 @@ class MainRouter(private val controller: NavController) {
             FragmentNameEnum.BiometricFragment -> controller.navigate(R.id.toBiometricFragment)
             FragmentNameEnum.BlankFragment -> controller.navigate(R.id.toBlankFragment)
             FragmentNameEnum.WebViewCameraFragment -> controller.navigate(R.id.toWebViewCameraFragment)
+            FragmentNameEnum.JacksonFragment -> controller.navigate(R.id.toJacksonFragment)
             else -> TODO()
         }
     }

@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentBlankBinding
 import com.example.help_code.presentation.blank.coroutine.LatestNewsViewModel
+import com.example.help_code.presentation.jackson.JacksonMapperViewModel
 import timber.log.Timber
 
 
@@ -27,7 +28,6 @@ class BlankFragment : BaseBindingFragment<FragmentBlankBinding>(FragmentBlankBin
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.blankFragmentButton.setOnClickListener {
             exceptionViewModel.runTask()
         }
