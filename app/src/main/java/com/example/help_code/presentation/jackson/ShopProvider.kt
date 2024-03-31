@@ -1,6 +1,9 @@
 package com.example.help_code.presentation.jackson
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 
@@ -10,28 +13,22 @@ class ShopProvider(private val shop: Shop?) {
     val categoryGroupId by lazy { getCategories()?.groupBy { it.id } }
     val categoryGroupParenId by lazy { getCategories()?.groupBy { it.parentId ?: 0 } }
     val categoryHead by lazy { categoryGroupParenId?.get(0) }
-    var rootCategories: List<Category>? = null
-    val secondListCategories = listOf(
-        100698824,
-        61445709,
-        66645614,
-        85398348,
-        85398465
-    )
+    private lateinit var rootCategories: List<Category>
+    private val scope = CoroutineScope(Dispatchers.Default)
 
-    suspend fun buildAsFolder(level: Int = 0): List<List<Int>> {
-        if (rootCategories == null) {
+    init {
+        scope.launch {
             rootCategories = getCategories()?.let {
                 buildCategoriesHierarchy(it)
-            }
+            } ?: emptyList()
         }
-        val root = rootCategories ?: return emptyList()
+    }
 
-
+     fun buildAsFolder(level: Int = 0): List<List<Int>> {
         // Припускаючи, що у вас є список кореневих категорій `rootCategories`
         val allPaths = mutableListOf<String>()
         val allPathsId = mutableListOf<List<Int>>()
-        root.forEach { rootCategory ->
+        rootCategories.forEach { rootCategory ->
             buildPathIDsForCategories(rootCategory, emptyList(), allPathsId)
         }
         allPathsId.map {
