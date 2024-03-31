@@ -16,7 +16,9 @@ data class Currency(
 data class Category(
     val id: Int,
     val parentId: Int?,
-    val name: String
+    val name: String,
+    val subCategories: MutableList<Category> = mutableListOf()
+
 ) {
     override fun toString(): String {
         return "Category(id=$id, parentId=$parentId, name='$name')"
