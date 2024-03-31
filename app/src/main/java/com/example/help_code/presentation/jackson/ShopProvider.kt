@@ -24,9 +24,12 @@ class ShopProvider(private val shop: Shop?) {
         }
     }
 
-     fun buildAsFolder(level: Int = 0): List<List<Int>> {
-        // Припускаючи, що у вас є список кореневих категорій `rootCategories`
-        val allPaths = mutableListOf<String>()
+    fun buildAsFolder(level: Int = 0): List<List<Int>> {
+        getCategories()?.map {
+            Timber.d("Count in category: ${it.countInner}, ${it.id}")
+        }
+
+//        val allPaths = mutableListOf<String>()
         val allPathsId = mutableListOf<List<Int>>()
         rootCategories.forEach { rootCategory ->
             buildPathIDsForCategories(rootCategory, emptyList(), allPathsId)
