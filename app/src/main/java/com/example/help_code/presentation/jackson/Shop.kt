@@ -17,9 +17,11 @@ data class Category(
     val id: Int,
     val parentId: Int?,
     val name: String,
+    var countInner: Int = 0,
     val subCategories: MutableList<Category> = mutableListOf()
 
 ) {
+    fun getPath() = subCategories.joinToString("/") { it.id.toString() }
     override fun toString(): String {
         return "Category(id=$id, parentId=$parentId, name='$name')"
     }

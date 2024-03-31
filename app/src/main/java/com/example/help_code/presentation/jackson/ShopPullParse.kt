@@ -1,5 +1,6 @@
 package com.example.help_code.presentation.jackson
 
+import kotlinx.coroutines.coroutineScope
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
 import timber.log.Timber
@@ -7,13 +8,16 @@ import java.io.InputStream
 
 class ShopPullParse {
     companion object {
-        fun parse(inputStream: InputStream): Shop? {
-            return try {
-                parseXml(inputStream)
-            } catch (e: Throwable) {
-                Timber.e(e)
-                null
+        suspend fun parse(inputStream: InputStream): Shop? {
+            return coroutineScope {
+                try {
+                    parseXml(inputStream)
+                } catch (e: Throwable) {
+                    Timber.e(e)
+                    null
+                }
             }
+
         }
 
         private fun parseXml(inputStream: InputStream): Shop {

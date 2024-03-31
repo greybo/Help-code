@@ -22,22 +22,26 @@ class JacksonFragment :
 //        }
         val fileXmlShop = requireContext().assets.open("sales_drive_db.xml")
         val listProducts2 = viewModel3.fetchData(fileXmlShop)
-
-        listProducts2?.map { category ->
-            Timber.d("categories: name: ${category.name}, id: ${category.id}")
-            Timber.d("subCategories size: ${category.subCategories.size}")
-            category.subCategories.map { category2 ->
-                Timber.d("  categories2: name: ${category2.name}, id: ${category2.id}")
-                Timber.d("  subCategories2 size: ${category2.subCategories.size}")
+        viewModel3.itemLiveData.observe(viewLifecycleOwner) { list ->
+            list?.map { category ->
+                Timber.d("categories: name: ${category.name}, id: ${category.id}, count: ${category.countInner}")
+                Timber.d("subCategories size: ${category.subCategories.size}")
+                Timber.d("subCategories path: ${category.getPath()}")
+                category.subCategories.map { category2 ->
+                    Timber.d("  categories2: name: ${category2.name}, id: ${category2.id}, count: ${category.countInner}")
+                    Timber.d("  subCategories2 size: ${category2.subCategories.size}")
+                    Timber.d("  subCategories2  path: ${category.getPath()}")
 //                Timber.d("  subCategories2: ${category2.subCategories}")
-                category2.subCategories.map { category3 ->
-                    Timber.d("    categories3: name: ${category3.name}, id: ${category3.id}")
-                    Timber.d("    subCategories3 size: ${category3.subCategories.size}")
+                    category2.subCategories.map { category3 ->
+                        Timber.d("    categories3: name: ${category3.name}, id: ${category3.id}, count: ${category.countInner}")
+                        Timber.d("    subCategories3 size: ${category3.subCategories.size}")
+                        Timber.d("    subCategories3 path: ${category.getPath()}")
 //                    Timber.d("    subCategories3: ${category3.subCategories}")
 
+                    }
                 }
+                Timber.d("==================================")
             }
-            Timber.d("==================================")
         }
     }
 }
