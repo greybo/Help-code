@@ -10,24 +10,34 @@ import timber.log.Timber
 class ShopProvider(private val shop: Shop?) {
 
     private val offerGroups by lazy { getOffers()?.groupBy { it.categoryId } }
-    val categoryGroupId by lazy { getCategories()?.groupBy { it.id } }
-    val categoryGroupParenId by lazy { getCategories()?.groupBy { it.parentId ?: 0 } }
+    val categoryGroupId by lazy { categories?.groupBy { it.id } }
+    val categoryGroupParenId by lazy { categories?.groupBy { it.parentId ?: 0 } }
     val categoryHead by lazy { categoryGroupParenId?.get(0) }
     private lateinit var rootCategories: List<Category>
     private val scope = CoroutineScope(Dispatchers.Default)
+    val categories by lazy { shop?.categories /*?: emptyList()*/ }
 
     init {
         scope.launch {
-            rootCategories = getCategories()?.let {
+            rootCategories = categories?.let {
                 buildCategoriesHierarchy(it)
             } ?: emptyList()
         }
     }
 
-    fun buildAsFolder(level: Int = 0): List<List<Int>> {
-        getCategories()?.map {
-            Timber.d("Count in category: ${it.countInner}, ${it.id}")
+    fun buildAsFolder(level: Int = 1): List<List<Int>> {
+        categories?.map {
+            Timber.d(
+                "countInner: ${it.countInner}, " +
+                        "id: ${it.id}, " +
+                        "subCat size: ${it.subCategories.size}, " +
+                        "path: ${
+                            it.subCategories.joinToString("/") { joinCageg ->
+                                joinCageg.id.toString()
+                            }
+                        }")
         }
+
 
 //        val allPaths = mutableListOf<String>()
         val allPathsId = mutableListOf<List<Int>>()
@@ -40,14 +50,18 @@ class ShopProvider(private val shop: Shop?) {
             Timber.d("path list size: ${this.size}")
         }
 
-        val filterList = allPathsId.mapNotNull { it.getOrNull(level) }.run {
-            getCategories()?.filter { it.id in this }
-        } ?: emptyList()
+        val levelIDs = allPathsId.mapNotNull { it.getOrNull(level) }
+        val categoriesByLevel = categories?.filter { it.id in levelIDs } ?: emptyList()
+        val countsList = getCounts(categoriesByLevel)
 
-        val countsList = getCounts(filterList)
         Timber.d("ProductCount size: ${countsList.size}")
         countsList.map {
             Timber.d(" ${it.id},  ${it.count},")
+        }
+        val list = listOf(categories?.find { it.id == 61445709 }!!)
+        getCounts(list).first().let {
+            Timber.d("Count for ${it.id}: ${it.count}")
+
         }
 
         return allPathsId
@@ -119,6 +133,7 @@ class ShopProvider(private val shop: Shop?) {
             val rootCategories = mutableListOf<Category>()
 
             categories.forEach { category ->
+//                if (category.id != 100698820)
                 category.countInner = offerGroups?.get(category.id)?.size ?: 0
                 if (category.parentId != null) {
                     categoriesMap[category.parentId]?.subCategories?.add(category)
@@ -131,9 +146,9 @@ class ShopProvider(private val shop: Shop?) {
     }
 
     val offerSize get() = getOffers()?.size ?: 0
-    fun getCategories(): List<Category>? {
-        return shop?.categories
-    }
+//    fun getCategories(): List<Category>? {
+//        return shop?.categories
+//    }
 
     fun getOffers(): List<Offer>? {
         return shop?.offers
