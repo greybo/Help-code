@@ -1,5 +1,7 @@
 package com.example.help_code.presentation.scanner
 
+import android.graphics.Point
+import android.graphics.RectF
 import android.os.Bundle
 import android.util.Size
 import android.view.OrientationEventListener
@@ -12,6 +14,7 @@ import androidx.camera.core.Preview
 import androidx.camera.core.TorchState
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.toRect
 import androidx.navigation.fragment.findNavController
 import com.example.help_code.R
 import com.example.help_code.base.BaseBindingFragment
@@ -19,6 +22,7 @@ import com.example.help_code.databinding.FragmentBarcodeScanningBinding
 import com.example.help_code.permission.cameraPermissionLaunch
 import com.example.help_code.permission.isPermissionCamera
 import com.google.common.util.concurrent.ListenableFuture
+import timber.log.Timber
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -26,6 +30,8 @@ class BarcodeScanningFragment :
     BaseBindingFragment<FragmentBarcodeScanningBinding>(FragmentBarcodeScanningBinding::inflate) {
 
     private lateinit var cameraProviderFuture: ListenableFuture<ProcessCameraProvider>
+    private var mlKitAnalyzer: MLKitBarcodeAnalyzer? = null
+    private var rectViewOverlay: RectF? = null
 
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
@@ -58,7 +64,14 @@ class BarcodeScanningFragment :
         }, ContextCompat.getMainExecutor(requireContext()))
 
         binding.overlay.post {
-            binding.overlay.setViewFinder()
+            rectViewOverlay = binding.overlay.setViewFinder()
+            setRectOverlay()
+        }
+    }
+
+    private fun setRectOverlay() {
+        if (mlKitAnalyzer != null && rectViewOverlay != null) {
+            mlKitAnalyzer?.rectOverlay = rectViewOverlay?.toRect()
         }
     }
 
@@ -95,6 +108,8 @@ class BarcodeScanningFragment :
                 }
 
                 imageAnalysis.targetRotation = rotation
+                Timber.d("OrientationEventListener: $rotation")
+//                mlKitAnalyzer?.targetRotation = rotation
             }
         }
         orientationEventListener.enable()
@@ -118,10 +133,16 @@ class BarcodeScanningFragment :
                         )
                 }
             }
+
+            override fun setPoints(result: Array<Point>?) {
+                binding.overlay.setDynamicPoints(result)
+            }
         }
 
-        val analyzer: ImageAnalysis.Analyzer = MLKitBarcodeAnalyzer(ScanningListener())
-
+        val analyzer: ImageAnalysis.Analyzer = MLKitBarcodeAnalyzer(ScanningListener()).also {
+            mlKitAnalyzer = it
+            setRectOverlay()
+        }
         imageAnalysis.setAnalyzer(cameraExecutor, analyzer)
 
         preview.setSurfaceProvider(binding.cameraPreview.surfaceProvider)

@@ -1,6 +1,12 @@
 package com.example.help_code.presentation.scanner
+
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Point
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffXfermode
+import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -11,7 +17,16 @@ class ViewFinderOverlay(context: Context, attrs: AttributeSet) : View(context, a
     private val boxPaint: Paint = Paint().apply {
         color = ContextCompat.getColor(context, R.color.barcode_reticle_stroke)
         style = Paint.Style.STROKE
-        strokeWidth = context.resources.getDimensionPixelOffset(R.dimen.barcode_reticle_stroke_width).toFloat()
+        strokeWidth =
+            context.resources.getDimensionPixelOffset(R.dimen.barcode_reticle_stroke_width)
+                .toFloat()
+    }
+    private val pointPaint: Paint = Paint().apply {
+        color = ContextCompat.getColor(context, R.color.yellow)
+        style = Paint.Style.FILL
+        strokeWidth =
+            context.resources.getDimensionPixelOffset(R.dimen.barcode_reticle_corner_radius)
+                .toFloat()
     }
 
     private val scrimPaint: Paint = Paint().apply {
@@ -27,17 +42,26 @@ class ViewFinderOverlay(context: Context, attrs: AttributeSet) : View(context, a
         context.resources.getDimensionPixelOffset(R.dimen.barcode_reticle_corner_radius).toFloat()
 
     private var boxRect: RectF? = null
+    private var pointRectList: Array<Point>? = null
+    fun setDynamicPoints(list: Array<Point>?) {
+        pointRectList = list
+        invalidate()
+    }
 
-    fun setViewFinder() {
+    fun setViewFinder(): RectF {
         val overlayWidth = width.toFloat()
         val overlayHeight = height.toFloat()
         val boxWidth = overlayWidth * 80 / 100
         val boxHeight = overlayHeight * 36 / 100
         val cx = overlayWidth / 2
         val cy = overlayHeight / 2
-        boxRect = RectF(cx - boxWidth / 2, cy - boxHeight / 2, cx + boxWidth / 2, cy + boxHeight / 2)
+        val rect =
+            RectF(cx - boxWidth / 2, cy - boxHeight / 2, cx + boxWidth / 2, cy + boxHeight / 2)
 
-        invalidate()
+        return rect.also {
+            boxRect = it
+            invalidate()
+        }
     }
 
     override fun draw(canvas: Canvas) {
@@ -53,6 +77,9 @@ class ViewFinderOverlay(context: Context, attrs: AttributeSet) : View(context, a
             canvas.drawRoundRect(it, boxCornerRadius, boxCornerRadius, eraserPaint)
             // Draws the box.
             canvas.drawRoundRect(it, boxCornerRadius, boxCornerRadius, boxPaint)
+        }
+        pointRectList?.map {
+            canvas.drawPoint(it.x.toFloat(), it.y.toFloat(), pointPaint)
         }
     }
 
