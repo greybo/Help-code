@@ -4,10 +4,13 @@ import android.app.Application
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.os.StrictMode.VmPolicy
+import androidx.camera.camera2.Camera2Config
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.CameraXConfig
 import timber.log.Timber
 
 
-class HelpCodeApplication : Application() {
+class HelpCodeApplication : Application(), CameraXConfig.Provider {
     private val LOG_TAG = "SampleApplication"
 
     companion object {
@@ -44,5 +47,11 @@ class HelpCodeApplication : Application() {
                 .penaltyLog()
                 .build()
         )
+    }
+
+    override fun getCameraXConfig(): CameraXConfig {
+        return CameraXConfig.Builder.fromConfig(Camera2Config.defaultConfig())
+            .setAvailableCamerasLimiter(CameraSelector.DEFAULT_BACK_CAMERA)
+            .build()
     }
 }

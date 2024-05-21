@@ -1,6 +1,6 @@
 package com.example.help_code.presentation.scanner
 
-import android.graphics.Point
+import android.graphics.Rect
 import android.graphics.RectF
 import android.os.Bundle
 import android.util.Size
@@ -75,6 +75,7 @@ class BarcodeScanningFragment :
         }
     }
 
+    @androidx.annotation.OptIn(androidx.camera.camera2.interop.ExperimentalCamera2Interop::class)
     private fun bindPreview(cameraProvider: ProcessCameraProvider?) {
 
         if (isHidden) {
@@ -96,7 +97,8 @@ class BarcodeScanningFragment :
             .setTargetResolution(Size(binding.cameraPreview.width, binding.cameraPreview.height))
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
             .build()
-
+        Timber.d("Size height: ${binding.cameraPreview.height}")
+        Timber.d("Size width: ${binding.cameraPreview.width}")
         val orientationEventListener = object : OrientationEventListener(requireContext()) {
             override fun onOrientationChanged(orientation: Int) {
                 // Monitors orientation values to determine the target rotation value
@@ -134,8 +136,11 @@ class BarcodeScanningFragment :
                 }
             }
 
-            override fun setPoints(result: Array<Point>?) {
-                binding.overlay.setDynamicPoints(result)
+//            override fun setPoints(result: Array<Point>?) {
+//                binding.overlay.setDynamicPoints(result)
+//            }
+            override fun setDynamicRect(rect: Rect?) {
+                binding.overlay.setDynamicRect(rect)
             }
         }
 
