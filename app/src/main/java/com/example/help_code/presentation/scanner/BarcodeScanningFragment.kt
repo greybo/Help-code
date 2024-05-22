@@ -136,7 +136,7 @@ class BarcodeScanningFragment :
                 }
             }
 
-//            override fun setPoints(result: Array<Point>?) {
+            //            override fun setPoints(result: Array<Point>?) {
 //                binding.overlay.setDynamicPoints(result)
 //            }
             override fun setDynamicRect(rect: Rect?) {
@@ -145,9 +145,9 @@ class BarcodeScanningFragment :
         }
 
         val analyzer: ImageAnalysis.Analyzer = MLKitBarcodeAnalyzer(ScanningListener()).also {
-            mlKitAnalyzer = it
-            setRectOverlay()
-        }
+                mlKitAnalyzer = it
+                setRectOverlay()
+            }
         imageAnalysis.setAnalyzer(cameraExecutor, analyzer)
 
         preview.setSurfaceProvider(binding.cameraPreview.surfaceProvider)
@@ -174,8 +174,6 @@ class BarcodeScanningFragment :
                 }
             }
         }
-
-
     }
 
     override fun onDestroy() {

@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.toRectF
 import com.example.help_code.R
 
-class ViewFinderOverlay(context: Context, attrs: AttributeSet) : View(context, attrs) {
+class ViewFinderOverlayScan(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     private val boxPaint: Paint = Paint().apply {
         color = ContextCompat.getColor(context, R.color.barcode_reticle_stroke)

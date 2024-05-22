@@ -55,7 +55,22 @@
         android:id="@+id/BarcodeScanningFragment"
         android:name="com.example.help_code.presentation.scanner.BarcodeScanningFragment"
         android:label="BarcodeScanningFragment"
-        tools:layout="@layout/fragment_barcode_scanning"></fragment>
+        tools:layout="@layout/fragment_barcode_scanning" />
+
+
+    <action
+        android:id="@+id/toGmsBarcodeScannerFragment"
+        app:destination="@+id/GmsBarcodeScannerFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/GmsBarcodeScannerFragment"
+        android:name="com.example.help_code.presentation.scanner2.GmsBarcodeScannerFragment"
+        android:label="BarcodeScanningFragment"
+        tools:layout="@layout/fragment_barcode_scanning" />
 
 
     <action
@@ -70,7 +85,7 @@
         android:id="@+id/VideoPlayerFragment"
         android:name="com.example.help_code.presentation.video.VideoPlayerFragment"
         android:label="VideoPlayerFragment"
-        tools:layout="@layout/fragment_video_player"></fragment>
+        tools:layout="@layout/fragment_video_player" />
 
     <action
         android:id="@+id/toBehaviorFragment"

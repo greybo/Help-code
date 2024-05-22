@@ -4,6 +4,7 @@ enum class FragmentNameEnum(val rawValue: String) {
     DropDown("InputTextViews"),
     PagerFragment("Pager Fragment"),
     ScannerFragment("Scanner QR"),
+    ScannerFragmentGms("Scanner QR GMS"),
     Video("ExoPlayer"),
     Behavior("Behavior"),
     Swipe("Swipe"),
