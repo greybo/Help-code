@@ -1,5 +1,6 @@
 package com.example.help_code.presentation.scanner
 
+import android.content.res.Resources
 import android.graphics.Rect
 import android.graphics.RectF
 import android.os.Bundle
@@ -145,9 +146,9 @@ class BarcodeScanningFragment :
         }
 
         val analyzer: ImageAnalysis.Analyzer = MLKitBarcodeAnalyzer(ScanningListener()).also {
-                mlKitAnalyzer = it
-                setRectOverlay()
-            }
+            mlKitAnalyzer = it
+            setRectOverlay()
+        }
         imageAnalysis.setAnalyzer(cameraExecutor, analyzer)
 
         preview.setSurfaceProvider(binding.cameraPreview.surfaceProvider)
@@ -183,3 +184,12 @@ class BarcodeScanningFragment :
             cameraExecutor.shutdown()
     }
 }
+val Float.toPx get() = this * Resources.getSystem().displayMetrics.density
+
+val Float.toDp get() = this / Resources.getSystem().displayMetrics.density
+
+
+
+val Int.toPx get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+val Int.toDp get() = (this / Resources.getSystem().displayMetrics.density).toInt()

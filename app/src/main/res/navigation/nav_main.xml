@@ -68,7 +68,7 @@
 
     <fragment
         android:id="@+id/GmsBarcodeScannerFragment"
-        android:name="com.example.help_code.presentation.scanner2.GmsBarcodeScannerFragment"
+        android:name="com.example.help_code.presentation.scannergms.GmsBarcodeScannerFragment"
         android:label="BarcodeScanningFragment"
         tools:layout="@layout/fragment_barcode_scanning" />
 

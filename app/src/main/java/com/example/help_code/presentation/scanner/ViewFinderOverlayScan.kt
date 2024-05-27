@@ -13,6 +13,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.toRectF
 import com.example.help_code.R
+import timber.log.Timber
 
 class ViewFinderOverlayScan(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
@@ -90,7 +91,9 @@ class ViewFinderOverlayScan(context: Context, attrs: AttributeSet) : View(contex
     }
 
     fun setDynamicRect(rect: Rect?) {
+        Timber.d("setDynamicRect: $rect")
         dynamicBoxRect = rect?.toRectF()
+        invalidate()
     }
 
 }

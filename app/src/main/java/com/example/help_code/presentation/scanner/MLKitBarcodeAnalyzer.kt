@@ -6,37 +6,38 @@ import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.GlobalScope
 import timber.log.Timber
 import java.util.Date
 
 class MLKitBarcodeAnalyzer(
     private val listener: ScanningResultListener,
-    val scope: CoroutineScope = GlobalScope
 ) : ImageAnalysis.Analyzer {
 
     private var isScanning: Boolean = false
     var rectOverlay: Rect? = null
     var timestamp: Long = 0
+    private var targetRotation: Int = 0
 
     @ExperimentalGetImage
     override fun analyze(imageProxy: ImageProxy) {
         val mediaImage = imageProxy.image
 
         if (mediaImage != null && !isScanning) {
-            val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
+            targetRotation = imageProxy.imageInfo.rotationDegrees
+            val image = InputImage.fromMediaImage(mediaImage, targetRotation)
             // Pass image to an ML Kit Vision API
             // ...
             val scanner = BarcodeScanning.getClient()
 
             isScanning = true
+//            scanner.
             scanner.process(image).addOnSuccessListener { barcodes ->
                 // Task completed successfully
                 // ...
                 barcodes.firstOrNull().let { barcode ->
 //                    listener.setPoints(barcode?.cornerPoints)
                     val withOffset = plusOffset(barcode?.boundingBox)
+//                    val withOffset = plusOffset(rotate(barcode?.boundingBox))
                     listener.setDynamicRect(withOffset)
                     val rawValue = barcode?.rawValue
                     if (Date().time > timestamp && rectContains(rectOverlay, withOffset)) {
@@ -72,13 +73,25 @@ class MLKitBarcodeAnalyzer(
 
     private fun plusOffset(rect: Rect?): Rect? {
         rect ?: return null
-        Timber.d("Rotate is: $rect")
-        val offset = 200
+        Timber.d("plusOffset rect: $rect")
+        Timber.d("plusOffset rotate: $targetRotation")
+        val offset = 50
         return Rect(
             rect.left - offset,
             rect.top - offset,
             rect.right + offset,
             rect.bottom + offset
         )
+    }
+
+    private fun rotate(rect: Rect?): Rect? {
+        rect ?: return null
+        Timber.d("Rotate is: $targetRotation")
+        return when (targetRotation) {
+            180 -> Rect(rect.top, rect.right, rect.bottom, rect.left)
+            90 -> Rect(rect.right, rect.bottom, rect.left, rect.top)
+            0 -> Rect(rect.bottom, rect.left, rect.top, rect.right)
+            /* 270  */else -> rect
+        }
     }
 }

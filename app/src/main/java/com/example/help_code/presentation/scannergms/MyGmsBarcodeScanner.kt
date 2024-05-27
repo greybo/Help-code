@@ -1,4 +1,4 @@
-package com.example.help_code.presentation.scanner2
+package com.example.help_code.presentation.scannergms
 
 import android.content.Context
 import com.google.mlkit.vision.barcode.common.Barcode
@@ -22,7 +22,9 @@ fun bindBarcodeScanning(context: Context, callback: (String?) -> Unit) {
         .addOnSuccessListener { barcode ->
             Timber.e("addOnSuccessListener: ")
             val rawValue = barcode?.rawValue
+            val boundingBox = barcode?.boundingBox
             Timber.e("Barcode: $rawValue")
+            Timber.e("boundingBox: $boundingBox")
             callback(rawValue)
         }
         .addOnCanceledListener {

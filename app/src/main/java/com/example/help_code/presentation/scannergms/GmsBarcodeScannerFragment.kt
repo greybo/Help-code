@@ -1,4 +1,4 @@
-package com.example.help_code.presentation.scanner2
+package com.example.help_code.presentation.scannergms
 
 import android.os.Bundle
 import android.view.View
