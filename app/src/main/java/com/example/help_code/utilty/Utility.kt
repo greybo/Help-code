@@ -8,6 +8,7 @@ import android.util.DisplayMetrics
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import com.example.help_code.BuildConfig
 
 fun getScreenWidth(context: Context): Int {
     val displayMetrics = DisplayMetrics()
@@ -58,4 +59,8 @@ fun Context.getColorSafe(id: Int): Int {
 fun getColorListSafe(context: Context, resId: Int): ColorStateList {
     val colorInt = context.getColorSafe(resId)
     return ColorStateList.valueOf(colorInt)
+}
+
+fun forDebugBuild(callback: () -> Unit) {
+    if (BuildConfig.DEBUG) callback()
 }

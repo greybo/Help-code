@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
 
 /**
@@ -64,9 +65,15 @@ fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-fun androidx.fragment.app.Fragment.toast(message: String) {
+fun Fragment.toast(message: String) {
     if (context != null)
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+}
+fun Fragment.toastDebug(message: String) {
+    forDebugBuild {
+        if (context != null)
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
 }
 
 fun TextInputLayout.simpleError() {

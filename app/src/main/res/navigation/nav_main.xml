@@ -212,5 +212,17 @@
         android:label="biometric_fragment"
         tools:layout="@layout/biometric_fragment" />
 
+    <action
+        android:id="@+id/toQrScannerActivity"
+        app:destination="@+id/QrScannerActivity"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <activity
+        android:id="@+id/QrScannerActivity"
+        android:name="com.example.help_code.presentation.scanner.QrScannerActivity"
+        android:label="QrScannerActivity" />
+
 
 </navigation>

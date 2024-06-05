@@ -43,6 +43,11 @@
             android:exported="true"
             android:theme="@style/NoActionBar">
         </activity>
+        <activity
+            android:name=".presentation.scanner.QrScannerActivity"
+            android:exported="true"
+            android:theme="@style/NoActionBar">
+        </activity>
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode,model2,model3"/>

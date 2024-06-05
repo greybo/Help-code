@@ -16,6 +16,7 @@ class MainRouter(private val controller: NavController) {
 
             FragmentNameEnum.ScannerFragment -> controller.navigate(R.id.toBarcodeScanningFragment)
             FragmentNameEnum.ScannerFragmentGms -> controller.navigate(R.id.toGmsBarcodeScannerFragment)
+            FragmentNameEnum.ScannerFragmentActivity -> controller.navigate(R.id.toQrScannerActivity)
             FragmentNameEnum.Video -> controller.navigate(R.id.toVideoPlayerFragment)
             FragmentNameEnum.Behavior -> controller.navigate(R.id.toBehaviorFragment)
             FragmentNameEnum.Swipe -> controller.navigate(R.id.toSwipeFragment)
