@@ -1,14 +1,20 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'androidx.navigation.safeargs.kotlin'
-    id 'com.google.gms.google-services'
-//    id 'com.google.firebase.crashlytics'
-    id 'kotlin-kapt'
+//plugins {
+//    id 'com.android.application'
+//    id 'org.jetbrains.kotlin.android'
+//    id 'androidx.navigation.safeargs.kotlin'
+//    id 'com.google.gms.google-services'
+//    id 'kotlin-kapt'
+//
+////    id 'com.google.firebase.crashlytics'
+////    id 'com.google.dagger.hilt.android'
+////    id 'signing-report'
+//}
 
-//    id 'com.google.dagger.hilt.android'
-//    id 'signing-report'
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     namespace 'com.example.help_code'
@@ -50,10 +56,10 @@ android {
         viewBinding true
         dataBinding true
     }
-
-    lintOptions {
+    lint {
         checkReleaseBuilds false
     }
+
 }
 
 dependencies {
@@ -120,8 +126,8 @@ dependencies {
 
     //Retrofit
     def retrofitVersion = "2.10.0"
-    implementation "com.squareup.retrofit2:retrofit:2.11.0"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:retrofitVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     implementation "com.squareup.okhttp3:okhttp:4.12.0"
