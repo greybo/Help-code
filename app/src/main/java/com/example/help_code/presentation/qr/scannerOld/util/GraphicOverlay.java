@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.help_code.presentation.scannerOld.util;
+package com.example.help_code.presentation.qr.scannerOld.util;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;

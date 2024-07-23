@@ -53,7 +53,7 @@
 
     <fragment
         android:id="@+id/BarcodeScanningFragment"
-        android:name="com.example.help_code.presentation.scanner.BarcodeScanningFragment"
+        android:name="com.example.help_code.presentation.qr.scanner.BarcodeScanningFragment"
         android:label="BarcodeScanningFragment"
         tools:layout="@layout/fragment_barcode_scanning" />
 
@@ -68,7 +68,7 @@
 
     <fragment
         android:id="@+id/GmsBarcodeScannerFragment"
-        android:name="com.example.help_code.presentation.scannergms.GmsBarcodeScannerFragment"
+        android:name="com.example.help_code.presentation.qr.scannergms.GmsBarcodeScannerFragment"
         android:label="BarcodeScanningFragment"
         tools:layout="@layout/fragment_barcode_scanning" />
 
@@ -221,7 +221,7 @@
         app:popExitAnim="@anim/slide_out_right" />
     <activity
         android:id="@+id/QrScannerActivity"
-        android:name="com.example.help_code.presentation.scanner.QrScannerActivity"
+        android:name="com.example.help_code.presentation.qr.scanner.QrScannerActivity"
         android:label="QrScannerActivity" />
 
 

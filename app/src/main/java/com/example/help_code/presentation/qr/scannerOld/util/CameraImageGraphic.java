@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.example.help_code.presentation.scannerOld.util;
+package com.example.help_code.presentation.qr.scannerOld.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-import com.example.help_code.presentation.scannerOld.util.GraphicOverlay.Graphic;
+import com.example.help_code.presentation.qr.scannerOld.util.GraphicOverlay.Graphic;
 
 /** Draw camera image to background. */
 public class CameraImageGraphic extends Graphic {

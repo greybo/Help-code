@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.example.help_code.presentation.scannerOld.barcode
+package com.example.help_code.presentation.qr.scannerOld.barcode
 
 import android.content.Context
 import android.util.Log
-import com.example.help_code.presentation.scannerOld.util.GraphicOverlay
+import com.example.help_code.presentation.qr.scannerOld.util.GraphicOverlay
 import com.google.android.gms.tasks.Task
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions

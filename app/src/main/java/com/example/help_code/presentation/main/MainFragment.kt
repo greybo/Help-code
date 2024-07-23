@@ -9,7 +9,7 @@ import com.example.help_code.HelpCodeApplication
 import com.example.help_code.MainRouter
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentMainBinding
-import com.example.help_code.presentation.scannerOld.LivePreviewActivity
+import com.example.help_code.presentation.qr.scannerOld.LivePreviewActivity
 
 class MainFragment : BaseBindingFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
 

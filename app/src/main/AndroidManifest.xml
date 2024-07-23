@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.scannerOld.LivePreviewActivity"
+            android:name=".presentation.qr.scannerOld.LivePreviewActivity"
             android:exported="true"
             android:theme="@style/NoActionBar"
             tools:ignore="Instantiatable">
@@ -52,7 +52,7 @@
 <!--            </intent-filter>-->
         </activity>
         <activity
-            android:name=".presentation.scanner.QrScannerActivity"
+            android:name=".presentation.qr.scanner.QrScannerActivity"
             android:exported="true"
             android:theme="@style/NoActionBar"
             tools:ignore="Instantiatable">

@@ -20,14 +20,14 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:fitsSystemWindows="false"
-        tools:context=".presentation.scanner.BarcodeScanningFragment">
+        tools:context=".presentation.qr.scanner.BarcodeScanningFragment">
 
         <!--        <androidx.camera.view.PreviewView-->
         <!--            android:id="@+id/cameraPreview"-->
         <!--            android:layout_width="match_parent"-->
         <!--            android:layout_height="match_parent" />-->
 
-        <com.example.help_code.presentation.scanner.ViewFinderOverlayScan
+        <com.example.help_code.presentation.qr.scanner.ViewFinderOverlayScan
             android:id="@+id/overlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

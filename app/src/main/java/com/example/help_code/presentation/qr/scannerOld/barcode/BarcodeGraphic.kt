@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.example.help_code.presentation.scannerOld.barcode
+package com.example.help_code.presentation.qr.scannerOld.barcode
 
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
-import com.example.help_code.presentation.scannerOld.util.GraphicOverlay
-import com.example.help_code.presentation.scannerOld.util.GraphicOverlay.Graphic
+import com.example.help_code.presentation.qr.scannerOld.util.GraphicOverlay
+import com.example.help_code.presentation.qr.scannerOld.util.GraphicOverlay.Graphic
 import com.google.mlkit.vision.barcode.common.Barcode
 import kotlin.math.max
 import kotlin.math.min

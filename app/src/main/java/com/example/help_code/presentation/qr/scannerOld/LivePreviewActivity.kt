@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.help_code.presentation.scannerOld
+package com.example.help_code.presentation.qr.scannerOld
 
 //import com.google.android.gms.vision.CameraSource
 //import com.google.mlkit.common.model.LocalModel
@@ -51,11 +51,11 @@ import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.help_code.R
-import com.example.help_code.presentation.scannerOld.barcode.BarcodeScannerProcessor
-import com.example.help_code.presentation.scannerOld.util.CameraSource
-import com.example.help_code.presentation.scannerOld.util.CameraSourcePreview
-import com.example.help_code.presentation.scannerOld.util.GraphicOverlay
-import com.example.help_code.presentation.scannerOld.util.PreferenceUtils
+import com.example.help_code.presentation.qr.scannerOld.barcode.BarcodeScannerProcessor
+import com.example.help_code.presentation.qr.scannerOld.util.CameraSource
+import com.example.help_code.presentation.qr.scannerOld.util.CameraSourcePreview
+import com.example.help_code.presentation.qr.scannerOld.util.GraphicOverlay
+import com.example.help_code.presentation.qr.scannerOld.util.PreferenceUtils
 import com.google.android.gms.common.annotation.KeepName
 import com.google.mlkit.vision.barcode.ZoomSuggestionOptions.ZoomCallback
 import java.io.IOException

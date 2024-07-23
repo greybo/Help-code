@@ -1,4 +1,4 @@
-package com.example.help_code.presentation.scanner
+package com.example.help_code.presentation.qr.scanner
 
 import android.content.Context
 import android.graphics.Canvas

@@ -1,4 +1,4 @@
-package com.example.help_code.presentation.scannergms
+package com.example.help_code.presentation.qr.scannergms
 
 import android.content.Context
 import com.example.help_code.utilty.dialog.LoadingDialog

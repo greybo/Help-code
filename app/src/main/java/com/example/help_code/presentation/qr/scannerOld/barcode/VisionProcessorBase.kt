@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.help_code.presentation.scannerOld.barcode
+package com.example.help_code.presentation.qr.scannerOld.barcode
 
 //import com.google.mlkit.vision.demo.BitmapUtils
 //import com.google.mlkit.vision.demo.CameraImageGraphic
@@ -35,14 +35,14 @@ import androidx.annotation.GuardedBy
 import androidx.annotation.RequiresApi
 import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageProxy
-import com.example.help_code.presentation.scannerOld.util.BitmapUtils
-import com.example.help_code.presentation.scannerOld.util.CameraImageGraphic
-import com.example.help_code.presentation.scannerOld.util.FrameMetadata
-import com.example.help_code.presentation.scannerOld.util.GraphicOverlay
-import com.example.help_code.presentation.scannerOld.util.InferenceInfoGraphic
-import com.example.help_code.presentation.scannerOld.util.PreferenceUtils
-import com.example.help_code.presentation.scannerOld.util.ScopedExecutor
-import com.example.help_code.presentation.scannerOld.util.VisionImageProcessor
+import com.example.help_code.presentation.qr.scannerOld.util.BitmapUtils
+import com.example.help_code.presentation.qr.scannerOld.util.CameraImageGraphic
+import com.example.help_code.presentation.qr.scannerOld.util.FrameMetadata
+import com.example.help_code.presentation.qr.scannerOld.util.GraphicOverlay
+import com.example.help_code.presentation.qr.scannerOld.util.InferenceInfoGraphic
+import com.example.help_code.presentation.qr.scannerOld.util.PreferenceUtils
+import com.example.help_code.presentation.qr.scannerOld.util.ScopedExecutor
+import com.example.help_code.presentation.qr.scannerOld.util.VisionImageProcessor
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task

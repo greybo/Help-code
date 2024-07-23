@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.help_code.presentation.scanner2
+package com.example.help_code.presentation.qr.scanner2
 
 import android.content.Intent
 import android.graphics.Rect

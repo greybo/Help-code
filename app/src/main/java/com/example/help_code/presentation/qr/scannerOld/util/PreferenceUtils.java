@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.help_code.presentation.scannerOld.util;
+package com.example.help_code.presentation.qr.scannerOld.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -22,7 +22,7 @@ import android.preference.PreferenceManager;
 
 import androidx.annotation.Nullable;
 
-import com.example.help_code.presentation.scannerOld.util.CameraSource.SizePair;
+import com.example.help_code.presentation.qr.scannerOld.util.CameraSource.SizePair;
 import com.google.android.gms.common.images.Size;
 import com.google.common.base.Preconditions;
 //import com.google.mlkit.vision.demo.R;
