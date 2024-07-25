@@ -3,38 +3,37 @@ package com.example.help_code.presentation.reactive
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentReactiveBinding
-import com.example.help_code.utilty.createBinding
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import timber.log.Timber
 
-//class ReactiveFragment : BaseBindingFragment<FragmentReactiveBinding>(FragmentReactiveBinding::inflate) {
-class ReactiveFragment : Fragment() {
+class ReactiveFragment :
+    BaseBindingFragment<FragmentReactiveBinding>(FragmentReactiveBinding::inflate) {
 
-    lateinit var binding: FragmentReactiveBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = createBinding(FragmentReactiveBinding::inflate)
-        return binding.root
-    }
+    private val viewMode by viewModels<ReactiveViewModel>()
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        test3()
+//        test3()
 //        test2()
 //        test1()
 //        test0()
-        binding.reactiveDisplayedText.text = "Hello binding"
-
+        binding.reactiveDisplayedButton1.text = "Actor example"
+        binding.reactiveDisplayedButton1.setOnClickListener {
+            viewMode.actorTest()
+        }
+        binding.reactiveDisplayedButton2.text = "Synchronized example."
+        binding.reactiveDisplayedButton2.setOnClickListener {
+            viewMode.syncTest()
+        }
+        viewMode.itemsFlow.observe(viewLifecycleOwner) {
+            binding.reactiveDisplayedText.text = it.joinToString("\n")
+        }
     }
 
     fun test3() = runBlocking<Unit> {
