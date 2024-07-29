@@ -1,17 +1,16 @@
-package com.example.help_code.presentation.blank
+package com.example.help_code.presentation.reactive.collect
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.example.help_code.base.BaseBindingFragment
-import com.example.help_code.databinding.FragmentBlankBinding
-import com.example.help_code.presentation.blank.coroutine.LatestNewsViewModel
-import com.example.help_code.presentation.jackson.JacksonMapperViewModel
+import com.example.help_code.databinding.FragmentCollectionCoroutineBinding
+import com.example.help_code.presentation.reactive.collect.coroutine.LatestNewsViewModel
 import timber.log.Timber
 
 
-class BlankFragment : BaseBindingFragment<FragmentBlankBinding>(FragmentBlankBinding::inflate) {
+class CollectionCoroutineFragment : BaseBindingFragment<FragmentCollectionCoroutineBinding>(FragmentCollectionCoroutineBinding::inflate) {
 
     private val viewModel: BlankViewModel by viewModels()
     private val viewModel2: LatestNewsViewModel by viewModels()

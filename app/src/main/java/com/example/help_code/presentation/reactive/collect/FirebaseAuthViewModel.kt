@@ -1,4 +1,4 @@
-package com.example.help_code.presentation.blank
+package com.example.help_code.presentation.reactive.collect
 
 import com.example.help_code.HelpCodeApplication
 import com.example.help_code.R
@@ -37,7 +37,7 @@ class FirebaseAuthViewModel : CompositeViewModel() {
                     Timber.d(task.result.credential.toString())
                 } else {
                     // If sign in fails, display a message to the user.
-                    Timber.w(BlankFragment.TAG, "createUserWithEmail:failure", task.exception)
+                    Timber.w(CollectionCoroutineFragment.TAG, "createUserWithEmail:failure", task.exception)
                 }
             }
     }

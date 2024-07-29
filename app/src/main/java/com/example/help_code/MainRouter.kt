@@ -24,9 +24,10 @@ class MainRouter(private val controller: NavController) {
             FragmentNameEnum.TooltipFragment -> controller.navigate(R.id.toTooltipFragment)
             FragmentNameEnum.ReactiveFragment -> controller.navigate(R.id.toReactiveFragment)
             FragmentNameEnum.BiometricFragment -> controller.navigate(R.id.toBiometricFragment)
-            FragmentNameEnum.BlankFragment -> controller.navigate(R.id.toBlankFragment)
+            FragmentNameEnum.CoroutineFragment -> controller.navigate(R.id.toCollectionCoroutineFragment)
             FragmentNameEnum.WebViewCameraFragment -> controller.navigate(R.id.toWebViewCameraFragment)
             FragmentNameEnum.JacksonFragment -> controller.navigate(R.id.toJacksonFragment)
+            FragmentNameEnum.BlankFragment -> controller.navigate(R.id.toBlankFragment)
             else -> TODO()
         }
     }

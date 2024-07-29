@@ -4,8 +4,8 @@ package com.example.help_code.data.testgateway
 import com.example.help_code.data.rest.createNetworkClient
 import com.example.help_code.data.rest.getJsonHeader
 import com.example.help_code.data.rest.getJsonHeaderVault
-import com.example.help_code.presentation.blank.LoginVault
-import com.example.help_code.presentation.blank.RedeemCardVault
+import com.example.help_code.presentation.reactive.collect.LoginVault
+import com.example.help_code.presentation.reactive.collect.RedeemCardVault
 import okhttp3.ResponseBody
 import retrofit2.HttpException
 import retrofit2.Response

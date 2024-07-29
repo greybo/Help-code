@@ -1,4 +1,4 @@
-package com.example.help_code.presentation.blank.coroutine
+package com.example.help_code.presentation.reactive.collect.coroutine
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

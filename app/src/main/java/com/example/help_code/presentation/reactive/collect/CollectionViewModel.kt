@@ -1,4 +1,4 @@
-package com.example.help_code.presentation.blank
+package com.example.help_code.presentation.reactive.collect
 
 import androidx.lifecycle.ViewModel
 import timber.log.Timber

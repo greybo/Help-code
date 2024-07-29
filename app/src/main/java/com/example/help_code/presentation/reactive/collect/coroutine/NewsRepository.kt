@@ -1,4 +1,4 @@
-package com.example.help_code.presentation.blank.coroutine
+package com.example.help_code.presentation.reactive.collect.coroutine
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -10,7 +10,7 @@ import timber.log.Timber
 class NewsRepository() {
     private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO
     private val newsRemoteDataSource =
-        com.example.help_code.presentation.blank.coroutine.NewsRemoteDataSource()
+        com.example.help_code.presentation.reactive.collect.coroutine.NewsRemoteDataSource()
     private val myTimber2 = Timber.tag("LatestNewsViewModel")
 
     fun fetchTest(time: TimeModel): Flow<TimeModel> =

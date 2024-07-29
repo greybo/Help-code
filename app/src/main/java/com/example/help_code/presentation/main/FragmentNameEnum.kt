@@ -14,9 +14,10 @@ enum class FragmentNameEnum(val rawValue: String) {
     TooltipFragment("Tooltip"),
     ReactiveFragment("Reactive"),
     BiometricFragment("Biometric"),
-    BlankFragment("Blank"),
+    CoroutineFragment("Coroutine"),
     WebViewCameraFragment("WebView Camera"),
     JacksonFragment("Jackson parser"),
+    BlankFragment("Blank"),
     ;
 
     companion object {
