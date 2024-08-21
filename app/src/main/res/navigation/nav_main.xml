@@ -222,7 +222,7 @@
 
     <fragment
         android:id="@+id/BlankFragment"
-        android:name="com.example.help_code.presentation.module_test.BlankFragment"
+        android:name="com.example.help_code.presentation.blank_test.BlankFragment"
         android:label="biometric_fragment"
         tools:layout="@layout/biometric_fragment" />
 
