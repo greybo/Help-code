@@ -6,11 +6,7 @@ import androidx.fragment.app.viewModels
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentBlank2Binding
 import com.example.help_code.presentation.xlsx.CustomerModel
-import com.example.help_code.presentation.xlsx.JsonToExcelExporter
-import com.example.help_code.presentation.xlsx.jsonToExcelFetch
-//import com.example.help_code.presentation.xlsx.WriteToExcelFile
 import com.example.help_code.presentation.xlsx.writeToExcel
-import com.example.help_code.utilty.toastDebug
 
 
 class BlankFragment : BaseBindingFragment<FragmentBlank2Binding>(FragmentBlank2Binding::inflate) {
@@ -25,13 +21,20 @@ class BlankFragment : BaseBindingFragment<FragmentBlank2Binding>(FragmentBlank2B
 //        val country = current?.country
 //        toastDebug("country: $country")
 
-//        requireContext().writeToExcel(arrayOf(
-//            CustomerModel("1","name 1","address 1",23),
-//            CustomerModel("2","name 2","address 2",676),
-//            CustomerModel("3","name 3","address 3",33),
-//            CustomerModel("4","name 4","address 4",345),
-//        ))
+        requireContext().writeToExcel(arrayOf(
+            CustomerModel("1","name 1","address 1",23),
+            CustomerModel("2","name 2","address 2",676),
+            CustomerModel("3","name 3","address 3",33),
+            CustomerModel("4","name 4","address 4",345),
+        ))
 
-        requireContext().jsonToExcelFetch()
+//        requireContext().jsonToExcelFetch(
+//            arrayListOf(
+//                CustomerModel("1", "name 1", "address 1", 23),
+//                CustomerModel("2", "name 2", "address 2", 676),
+//                CustomerModel("3", "name 3", "address 3", 33),
+//                CustomerModel("4", "name 4", "address 4", 345),
+//            )
+//        )
     }
 }

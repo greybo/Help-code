@@ -1,15 +1,14 @@
 package com.example.help_code.presentation.xlsx
-import java.net.Inet4Address
 
 class CustomerModel {
     var id: String? = null
     var name: String? = null
-    var address : String? = null
-    var age : Int? = 0
+    var address: String? = null
+    var age: Int? = 0
 
     constructor()
 
-    constructor(id:String? , name: String? , address: String? , age: Int?){
+    constructor(id: String?, name: String?, address: String?, age: Int? = 0) {
         this.id = id
         this.name = name
         this.address = address

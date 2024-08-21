@@ -8,12 +8,7 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
 
-class JsonToExcelExporter {
-
-
-}
-
-fun Context.jsonToExcelFetch() {
+fun Context.jsonToExcelFetch(arrayListOf: ArrayList<CustomerModel>) {
     // Provide the path to your JSON file
     val jsonFilePath = "country_state.json" //"path/to/your/data.json"
 
