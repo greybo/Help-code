@@ -1,564 +1,562 @@
-{
-  "list": [
-    {
-      "CountryCode": "AUS",
-      "Code": "ACT",
-      "Name": "AUSTRALIAN CAPITAL TERRITORY"
-    },
-    {
-      "CountryCode": "AUS",
-      "Code": "NSW",
-      "Name": "NEW SOUTH WALES"
-    },
-    {
-      "CountryCode": "AUS",
-      "Code": "NT",
-      "Name": "NORTHERN TERRITORY"
-    },
-    {
-      "CountryCode": "AUS",
-      "Code": "QLD",
-      "Name": "QUEENSLAND"
-    },
-    {
-      "CountryCode": "AUS",
-      "Code": "SA",
-      "Name": "SOUTH AUSTRALIA"
-    },
-    {
-      "CountryCode": "AUS",
-      "Code": "TAS",
-      "Name": "TASMANIA"
-    },
-    {
-      "CountryCode": "AUS",
-      "Code": "VIC",
-      "Name": "VICTORIA"
-    },
-    {
-      "CountryCode": "AUS",
-      "Code": "WA",
-      "Name": "WESTERN AUSTRALIA"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "ANH",
-      "Name": "ANHUI PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "BEI",
-      "Name": "BEIJING"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "CHG",
-      "Name": "CHANGCHUN"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "CKG",
-      "Name": "CHONGQING"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "FUJ",
-      "Name": "FUJIAN PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "GAN",
-      "Name": "GANSU PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "GUA",
-      "Name": "GUANGDONG PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "GUX",
-      "Name": "GUANGXI ZHUANG"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "GUZ",
-      "Name": "GUIZHOU PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "HAI",
-      "Name": "HAINAN PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "HEB",
-      "Name": "HEBEI PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "HEI",
-      "Name": "HEILONGJIANG PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "HEN",
-      "Name": "HENAN PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "HUB",
-      "Name": "HUBEI PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "HUN",
-      "Name": "HUNAN PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "JIA",
-      "Name": "JIANGSU PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "JIL",
-      "Name": "JILIN PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "JIX",
-      "Name": "JIANGXI PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "LIA",
-      "Name": "LIAONING PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "MON",
-      "Name": "INNER MONGOLIA"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "NIN",
-      "Name": "NINGXIA HUI"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "QIN",
-      "Name": "QINGHAI PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "SHA",
-      "Name": "SHANGHAI"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "SHD",
-      "Name": "SHANDONG PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "SHN",
-      "Name": "SHANXI PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "SHX",
-      "Name": "SHAANXI PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "SIC",
-      "Name": "SICHUAN PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "TIA",
-      "Name": "TIANJIN"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "TIB",
-      "Name": "TIBET (XIZANG)"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "XIN",
-      "Name": "XINJIANG UYGUR"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "YUN",
-      "Name": "YUNNAN PROVINCE"
-    },
-    {
-      "CountryCode": "CHN",
-      "Code": "ZHE",
-      "Name": "ZHEJIANG PROVINCE"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "KUL",
-      "Name": "KUALA LUMPUR"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "KTN",
-      "Name": "KELANTAN DARUL NAIM"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "PLS",
-      "Name": "PERLIS INDERA KAYANGAN"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "PJY",
-      "Name": "PUTRAJAYA"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "SBH",
-      "Name": "SABAH"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "SGR",
-      "Name": "SELANGOR DARUL EHSAN"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "TRG",
-      "Name": "TERENGGANU DARUL IMAN"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "AK",
-      "Name": "ALASKA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "AL",
-      "Name": "ALABAMA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "AR",
-      "Name": "ARKANSAS"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "AZ",
-      "Name": "ARIZONA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "CA",
-      "Name": "CALIFORNIA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "CO",
-      "Name": "COLORADO"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "CT",
-      "Name": "CONNECTICUT"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "DE",
-      "Name": "DELAWARE"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "FL",
-      "Name": "FLORIDA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "GA",
-      "Name": "GEORGIA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "GU",
-      "Name": "GUAM"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "HI",
-      "Name": "HAWAII"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "IA",
-      "Name": "IOWA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "ID",
-      "Name": "IDAHO"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "IL",
-      "Name": "ILLINOIS"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "IN",
-      "Name": "INDIANA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "KS",
-      "Name": "KANSAS"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "KY",
-      "Name": "KENTUCKY"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "LA",
-      "Name": "LOUISIANA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "MA",
-      "Name": "MASSACHUSETTS"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "MD",
-      "Name": "MARYLAND"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "ME",
-      "Name": "MAINE"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "MI",
-      "Name": "MICHIGAN"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "MN",
-      "Name": "MINNESOTA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "MO",
-      "Name": "MISSOURI"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "MS",
-      "Name": "MISSISSIPPI"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "MT",
-      "Name": "MONTANA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "NC",
-      "Name": "NORTH CAROLINA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "ND",
-      "Name": "NORTH DAKOTA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "NE",
-      "Name": "NEBRASKA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "NH",
-      "Name": "NEW HAMPSHIRE"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "NJ",
-      "Name": "NEW JERSEY"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "NM",
-      "Name": "NEW MEXICO"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "NV",
-      "Name": "NEVADA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "NY",
-      "Name": "NEW YORK"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "OH",
-      "Name": "OHIO"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "OK",
-      "Name": "OKLAHOMA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "OR",
-      "Name": "OREGON"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "PA",
-      "Name": "PENNSYLVANIA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "RI",
-      "Name": "RHODE ISLAND"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "SC",
-      "Name": "SOUTH CAROLINA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "SD",
-      "Name": "SOUTH DAKOTA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "TN",
-      "Name": "TENNESSEE"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "TX",
-      "Name": "TEXAS"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "UT",
-      "Name": "UTAH"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "VA",
-      "Name": "VIRGINIA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "VI",
-      "Name": "VIRGIN ISLANDS"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "VT",
-      "Name": "VERMONT"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "WA",
-      "Name": "WASHINGTON"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "WI",
-      "Name": "WISCONSIN"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "WV",
-      "Name": "WEST VIRGINIA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "WY",
-      "Name": "WYOMING"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "JHR",
-      "Name": "JOHOR DARUL TA\u0027ZIM"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "KDH",
-      "Name": "KEDAH DARUL AMAN"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "MLK",
-      "Name": "MALACCA"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "NSN",
-      "Name": "NEGERI SEMBILAN DARUL KHUSUS"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "PHG",
-      "Name": "PAHANG DARUL MAKMUR"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "PNG",
-      "Name": "PENANG"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "PRK",
-      "Name": "PERAK DARUL RIDZUAN"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "SWK",
-      "Name": "SARAWAK"
-    },
-    {
-      "CountryCode": "MYS",
-      "Code": "LBN",
-      "Name": "LABUAN"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "AS",
-      "Name": "AMERICAN SAMOA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "DC",
-      "Name": "DISTRICT OF COLUMBIA"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "MP",
-      "Name": "NORTHERN MARIANA ISLANDS"
-    },
-    {
-      "CountryCode": "USA",
-      "Code": "PR",
-      "Name": "PUERTO RICO"
-    }
-  ]
-}
+[
+  {
+    "CountryCode": "AUS",
+    "Code": "ACT",
+    "Name": "AUSTRALIAN CAPITAL TERRITORY"
+  },
+  {
+    "CountryCode": "AUS",
+    "Code": "NSW",
+    "Name": "NEW SOUTH WALES"
+  },
+  {
+    "CountryCode": "AUS",
+    "Code": "NT",
+    "Name": "NORTHERN TERRITORY"
+  },
+  {
+    "CountryCode": "AUS",
+    "Code": "QLD",
+    "Name": "QUEENSLAND"
+  },
+  {
+    "CountryCode": "AUS",
+    "Code": "SA",
+    "Name": "SOUTH AUSTRALIA"
+  },
+  {
+    "CountryCode": "AUS",
+    "Code": "TAS",
+    "Name": "TASMANIA"
+  },
+  {
+    "CountryCode": "AUS",
+    "Code": "VIC",
+    "Name": "VICTORIA"
+  },
+  {
+    "CountryCode": "AUS",
+    "Code": "WA",
+    "Name": "WESTERN AUSTRALIA"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "ANH",
+    "Name": "ANHUI PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "BEI",
+    "Name": "BEIJING"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "CHG",
+    "Name": "CHANGCHUN"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "CKG",
+    "Name": "CHONGQING"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "FUJ",
+    "Name": "FUJIAN PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "GAN",
+    "Name": "GANSU PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "GUA",
+    "Name": "GUANGDONG PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "GUX",
+    "Name": "GUANGXI ZHUANG"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "GUZ",
+    "Name": "GUIZHOU PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "HAI",
+    "Name": "HAINAN PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "HEB",
+    "Name": "HEBEI PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "HEI",
+    "Name": "HEILONGJIANG PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "HEN",
+    "Name": "HENAN PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "HUB",
+    "Name": "HUBEI PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "HUN",
+    "Name": "HUNAN PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "JIA",
+    "Name": "JIANGSU PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "JIL",
+    "Name": "JILIN PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "JIX",
+    "Name": "JIANGXI PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "LIA",
+    "Name": "LIAONING PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "MON",
+    "Name": "INNER MONGOLIA"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "NIN",
+    "Name": "NINGXIA HUI"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "QIN",
+    "Name": "QINGHAI PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "SHA",
+    "Name": "SHANGHAI"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "SHD",
+    "Name": "SHANDONG PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "SHN",
+    "Name": "SHANXI PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "SHX",
+    "Name": "SHAANXI PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "SIC",
+    "Name": "SICHUAN PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "TIA",
+    "Name": "TIANJIN"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "TIB",
+    "Name": "TIBET (XIZANG)"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "XIN",
+    "Name": "XINJIANG UYGUR"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "YUN",
+    "Name": "YUNNAN PROVINCE"
+  },
+  {
+    "CountryCode": "CHN",
+    "Code": "ZHE",
+    "Name": "ZHEJIANG PROVINCE"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "KUL",
+    "Name": "KUALA LUMPUR"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "KTN",
+    "Name": "KELANTAN DARUL NAIM"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "PLS",
+    "Name": "PERLIS INDERA KAYANGAN"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "PJY",
+    "Name": "PUTRAJAYA"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "SBH",
+    "Name": "SABAH"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "SGR",
+    "Name": "SELANGOR DARUL EHSAN"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "TRG",
+    "Name": "TERENGGANU DARUL IMAN"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "AK",
+    "Name": "ALASKA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "AL",
+    "Name": "ALABAMA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "AR",
+    "Name": "ARKANSAS"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "AZ",
+    "Name": "ARIZONA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "CA",
+    "Name": "CALIFORNIA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "CO",
+    "Name": "COLORADO"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "CT",
+    "Name": "CONNECTICUT"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "DE",
+    "Name": "DELAWARE"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "FL",
+    "Name": "FLORIDA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "GA",
+    "Name": "GEORGIA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "GU",
+    "Name": "GUAM"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "HI",
+    "Name": "HAWAII"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "IA",
+    "Name": "IOWA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "ID",
+    "Name": "IDAHO"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "IL",
+    "Name": "ILLINOIS"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "IN",
+    "Name": "INDIANA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "KS",
+    "Name": "KANSAS"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "KY",
+    "Name": "KENTUCKY"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "LA",
+    "Name": "LOUISIANA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "MA",
+    "Name": "MASSACHUSETTS"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "MD",
+    "Name": "MARYLAND"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "ME",
+    "Name": "MAINE"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "MI",
+    "Name": "MICHIGAN"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "MN",
+    "Name": "MINNESOTA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "MO",
+    "Name": "MISSOURI"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "MS",
+    "Name": "MISSISSIPPI"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "MT",
+    "Name": "MONTANA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "NC",
+    "Name": "NORTH CAROLINA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "ND",
+    "Name": "NORTH DAKOTA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "NE",
+    "Name": "NEBRASKA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "NH",
+    "Name": "NEW HAMPSHIRE"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "NJ",
+    "Name": "NEW JERSEY"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "NM",
+    "Name": "NEW MEXICO"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "NV",
+    "Name": "NEVADA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "NY",
+    "Name": "NEW YORK"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "OH",
+    "Name": "OHIO"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "OK",
+    "Name": "OKLAHOMA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "OR",
+    "Name": "OREGON"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "PA",
+    "Name": "PENNSYLVANIA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "RI",
+    "Name": "RHODE ISLAND"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "SC",
+    "Name": "SOUTH CAROLINA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "SD",
+    "Name": "SOUTH DAKOTA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "TN",
+    "Name": "TENNESSEE"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "TX",
+    "Name": "TEXAS"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "UT",
+    "Name": "UTAH"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "VA",
+    "Name": "VIRGINIA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "VI",
+    "Name": "VIRGIN ISLANDS"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "VT",
+    "Name": "VERMONT"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "WA",
+    "Name": "WASHINGTON"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "WI",
+    "Name": "WISCONSIN"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "WV",
+    "Name": "WEST VIRGINIA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "WY",
+    "Name": "WYOMING"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "JHR",
+    "Name": "JOHOR DARUL TA\u0027ZIM"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "KDH",
+    "Name": "KEDAH DARUL AMAN"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "MLK",
+    "Name": "MALACCA"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "NSN",
+    "Name": "NEGERI SEMBILAN DARUL KHUSUS"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "PHG",
+    "Name": "PAHANG DARUL MAKMUR"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "PNG",
+    "Name": "PENANG"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "PRK",
+    "Name": "PERAK DARUL RIDZUAN"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "SWK",
+    "Name": "SARAWAK"
+  },
+  {
+    "CountryCode": "MYS",
+    "Code": "LBN",
+    "Name": "LABUAN"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "AS",
+    "Name": "AMERICAN SAMOA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "DC",
+    "Name": "DISTRICT OF COLUMBIA"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "MP",
+    "Name": "NORTHERN MARIANA ISLANDS"
+  },
+  {
+    "CountryCode": "USA",
+    "Code": "PR",
+    "Name": "PUERTO RICO"
+  }
+]

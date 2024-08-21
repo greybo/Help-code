@@ -2,26 +2,24 @@ package com.example.help_code.presentation.xlsx
 
 import android.content.Context
 import org.apache.poi.ss.usermodel.Sheet
-import org.apache.poi.xssf.streaming.SXSSFWorkbook
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.json.JSONArray
 import java.io.File
 import java.io.FileInputStream
-import java.io.FileOutputStream
 import java.io.IOException
 
 class JsonToExcelExporter {
-
 
 
 }
 
 fun Context.jsonToExcelFetch() {
     // Provide the path to your JSON file
-    val jsonFilePath ="country_state.json" //"path/to/your/data.json"
+    val jsonFilePath = "country_state.json" //"path/to/your/data.json"
 
     // Load JSON data from file
-    val jsonArray = readJsonFile(jsonFilePath)
+//    val jsonArray = readJsonFile(jsonFilePath)
+    val jsonArray = readJsonFileAssets(jsonFilePath)
 
     // Create Excel workbook and sheet
 //    val excelWorkBook = SXSSFWorkbook(/*SXSSFWorkbook.DEFAULT_WINDOW_SIZE*/)
@@ -51,6 +49,19 @@ fun Context.jsonToExcelFetch() {
     }
 }
 
+private fun Context.readJsonFileAssets(jsonFilePath: String): JSONArray {
+    try {
+        assets.open(jsonFilePath).use { inputStream ->
+            val buffer = ByteArray(inputStream.available())
+            inputStream.read(buffer)
+            val jsonData = String(buffer)
+            return JSONArray(jsonData)
+        }
+    } catch (e: IOException) {
+        e.printStackTrace()
+        return JSONArray()
+    }
+}
 private fun readJsonFile(jsonFilePath: String): JSONArray {
     try {
         FileInputStream(jsonFilePath).use { inputStream ->

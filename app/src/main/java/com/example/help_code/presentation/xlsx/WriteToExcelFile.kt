@@ -4,6 +4,7 @@ import android.content.Context
 import org.apache.poi.ss.usermodel.IndexedColors
 import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import org.json.JSONArray
 
 
 private val excelColumns = arrayOf("Id", "Name" , "Address" , "Age")
@@ -48,4 +49,19 @@ fun Context.writeToExcel(customerArray:Array<CustomerModel>) {
     val generatedExcelFile = openFileOutput("customer.xlsx", Context.MODE_PRIVATE);
     excelWorkBook.write(generatedExcelFile)
     excelWorkBook.close()
+}
+
+private fun createHeaderRow(sheet: Sheet, jsonArray: JSONArray) {
+    if (jsonArray.length() == 0) {
+        return  // No data to create headers
+    }
+
+    val firstObject = jsonArray.getJSONObject(0)
+    val headerRow = sheet.createRow(0)
+
+    var cellIndex = 0
+    for (key in firstObject.keys()) {
+        val cell = headerRow.createCell(cellIndex++)
+        cell.setCellValue(key)
+    }
 }
