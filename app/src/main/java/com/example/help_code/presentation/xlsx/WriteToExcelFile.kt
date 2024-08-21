@@ -2,15 +2,16 @@ package com.example.help_code.presentation.xlsx
 
 import android.content.Context
 import org.apache.poi.ss.usermodel.IndexedColors
+import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 
 
 private val excelColumns = arrayOf("Id", "Name" , "Address" , "Age")
 fun Context.writeToExcel(customerArray:Array<CustomerModel>) {
+
     val excelWorkBook = XSSFWorkbook()
     val createHelper = excelWorkBook.creationHelper
-
-    val sheet = excelWorkBook.createSheet()
+    val sheet: Sheet = excelWorkBook.createSheet()
 
     val headerFont = excelWorkBook.createFont()
     headerFont.color = IndexedColors.BLUE.getIndex()
