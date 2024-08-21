@@ -161,4 +161,8 @@ dependencies {
 
     // Object detection feature with bundled default classifier
     implementation 'com.google.mlkit:object-detection:17.0.1'
+
+    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+    implementation("org.apache.poi:poi-ooxml:5.2.5")
+
 }
