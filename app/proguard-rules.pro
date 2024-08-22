@@ -21,3 +21,5 @@
 #-renamesourcefileattribute SourceFile
 
 #-keepresourcefiles assets/io/michaelrocks/libphonenumber/android/**
+
+-dontwarn org.slf4j.**

@@ -1,18 +1,23 @@
 package com.example.help_code.presentation.xlsx
 
 import android.content.Context
+import androidx.fragment.app.Fragment
 import org.apache.poi.ss.usermodel.IndexedColors
 import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.BufferedInputStream
 import java.io.BufferedOutputStream
+import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 
+const val exelFileName = "customer.xlsx"
+const val zipFileName = "test.zip"
 
-fun Context.writeToExcel(array: Array<ToExelModel>) {
+
+fun Context.writeToExcel(array: Array<ToExelModel>/*, fileName: String = exelFileName*/) {
 
     val excelColumns = listOf("ID", "SKU", "Название", "К-во", "Закупочная цена")
 
@@ -57,29 +62,13 @@ fun Context.writeToExcel(array: Array<ToExelModel>) {
             cellStyle = priceCellStyle
         }
     }
-    getFilesDir()
-    val generatedExcelFile = openFileOutput("customer.xlsx", Context.MODE_PRIVATE)
+    val generatedExcelFile = openFileOutput(exelFileName, Context.MODE_PRIVATE)
     excelWorkBook.write(generatedExcelFile)
     excelWorkBook.close()
+
+    toZip(
+        pathToFiles = listOf(File(filesDir.absoluteFile, exelFileName).path),
+        pathToZip = File(filesDir.absoluteFile, zipFileName).path
+    )
 }
 
-fun fileToZip(
-    pathToFiles: Array<String> = arrayOf(
-        "/home/matte/theres_no_place.png",
-        "/home/matte/vladstudio_the_moon_and_the_ocean_1920x1440_signed.jpg"
-    ),
-    pathToZip: String = "/home/matte/Desktop/test.zip"
-) {
-
-    ZipOutputStream(BufferedOutputStream(FileOutputStream(pathToZip))).use { out ->
-        for (file in pathToFiles) {
-            FileInputStream(file).use { fi ->
-                BufferedInputStream(fi).use { origin ->
-                    val entry = ZipEntry(file.substring(file.lastIndexOf("/")))
-                    out.putNextEntry(entry)
-                    origin.copyTo(out, 1024)
-                }
-            }
-        }
-    }
-}
