@@ -4,14 +4,21 @@ import android.content.Context
 import org.apache.poi.ss.usermodel.IndexedColors
 import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import java.io.BufferedInputStream
+import java.io.BufferedOutputStream
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.util.zip.ZipEntry
+import java.util.zip.ZipOutputStream
 
 
-fun Context.writeToExcel(customerArray: Array<CustomerModel>) {
-    val excelColumns = customerArray[0].javaClass.declaredFields.map { it.name }
+fun Context.writeToExcel(array: Array<ToExelModel>) {
+
+    val excelColumns = listOf("ID", "SKU", "Название", "К-во", "Закупочная цена")
 
     val excelWorkBook = XSSFWorkbook()
     val createHelper = excelWorkBook.creationHelper
-    val sheet: Sheet = excelWorkBook.createSheet()
+    val sheet: Sheet = excelWorkBook.createSheet("Worksheet")
 
     val headerFont = excelWorkBook.createFont()
     headerFont.color = IndexedColors.BLUE.getIndex()
@@ -30,25 +37,49 @@ fun Context.writeToExcel(customerArray: Array<CustomerModel>) {
     }
 
     //cell style for age
-    val ageCellStyle = excelWorkBook.createCellStyle()
-    ageCellStyle.dataFormat = createHelper.createDataFormat().getFormat("#")
+    val countCellStyle = excelWorkBook.createCellStyle()
+    countCellStyle.dataFormat = createHelper.createDataFormat().getFormat("#")
+    val priceCellStyle = excelWorkBook.createCellStyle()
+    priceCellStyle.dataFormat = createHelper.createDataFormat().getFormat("#,##")
 
     var rowIndex = 1
-    for (customer in customerArray) {
+    for (customer in array) {
         val row = sheet.createRow(rowIndex++)
         row.createCell(0).setCellValue(customer.id)
-        row.createCell(1).setCellValue(customer.name)
-        row.createCell(2).setCellValue(customer.address)
-
-        val ageCell = row.createCell(3)
-
-        customer.age?.toDouble()?.let {
-            ageCell.setCellValue(it)
+        row.createCell(1).setCellValue(customer.sku)
+        row.createCell(2).setCellValue(customer.name)
+        row.createCell(3).apply {
+            setCellValue(customer.count.toDouble() ?: 0.0)
+            cellStyle = countCellStyle
         }
-        ageCell.cellStyle = ageCellStyle
+        row.createCell(4).apply {
+            setCellValue(customer.price)
+            cellStyle = priceCellStyle
+        }
     }
-
-    val generatedExcelFile = openFileOutput("customer.xlsx", Context.MODE_PRIVATE);
+    getFilesDir()
+    val generatedExcelFile = openFileOutput("customer.xlsx", Context.MODE_PRIVATE)
     excelWorkBook.write(generatedExcelFile)
     excelWorkBook.close()
+}
+
+fun fileToZip(
+    pathToFiles: Array<String> = arrayOf(
+        "/home/matte/theres_no_place.png",
+        "/home/matte/vladstudio_the_moon_and_the_ocean_1920x1440_signed.jpg"
+    ),
+    pathToZip: String = "/home/matte/Desktop/test.zip"
+) {
+
+    ZipOutputStream(BufferedOutputStream(FileOutputStream(pathToZip))).use { out ->
+        for (file in pathToFiles) {
+            FileInputStream(file).use { fi ->
+                BufferedInputStream(fi).use { origin ->
+                    val entry = ZipEntry(file.substring(file.lastIndexOf("/")))
+                    out.putNextEntry(entry)
+                    origin.copyTo(out, 1024)
+                }
+            }
+        }
+    }
 }

@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentBlank2Binding
-import com.example.help_code.presentation.xlsx.CustomerModel
+import com.example.help_code.presentation.xlsx.ToExelModel
 import com.example.help_code.presentation.xlsx.writeToExcel
 
 
@@ -22,19 +22,19 @@ class BlankFragment : BaseBindingFragment<FragmentBlank2Binding>(FragmentBlank2B
 //        toastDebug("country: $country")
 
         requireContext().writeToExcel(arrayOf(
-            CustomerModel("1","name 1","address 1",23),
-            CustomerModel("2","name 2","address 2",676),
-            CustomerModel("3","name 3","address 3",33),
-            CustomerModel("4","name 4","address 4",345),
+            ToExelModel("1","address 1","name 1",23),
+            ToExelModel("2","address 2","name 2",676),
+            ToExelModel("3","address 3","name 3",33),
+            ToExelModel("4","address 4","name 4",345),
         ))
 
 //        requireContext().jsonToExcelFetch(
-//            arrayListOf(
-//                CustomerModel("1", "name 1", "address 1", 23),
-//                CustomerModel("2", "name 2", "address 2", 676),
-//                CustomerModel("3", "name 3", "address 3", 33),
-//                CustomerModel("4", "name 4", "address 4", 345),
-//            )
+//        arrayOf(
+//            ToExelModel("1","address 1","name 1",23),
+//            ToExelModel("2","address 2","name 2",676),
+//            ToExelModel("3","address 3","name 3",33),
+//            ToExelModel("4","address 4","name 4",345),
+//        )
 //        )
     }
 }
