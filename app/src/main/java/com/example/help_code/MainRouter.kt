@@ -28,6 +28,7 @@ class MainRouter(private val controller: NavController) {
             FragmentNameEnum.WebViewCameraFragment -> controller.navigate(R.id.toWebViewCameraFragment)
             FragmentNameEnum.JacksonFragment -> controller.navigate(R.id.toJacksonFragment)
             FragmentNameEnum.BlankFragment -> controller.navigate(R.id.toBlankFragment)
+            FragmentNameEnum.OpenIntentFragment -> controller.navigate(R.id.toOpenIntentFragment)
             else -> TODO()
         }
     }

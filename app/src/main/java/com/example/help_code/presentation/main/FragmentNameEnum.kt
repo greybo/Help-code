@@ -18,6 +18,7 @@ enum class FragmentNameEnum(val rawValue: String) {
     WebViewCameraFragment("WebView Camera"),
     JacksonFragment("Jackson parser"),
     BlankFragment("Blank"),
+    OpenIntentFragment("Open intent"),
     ;
 
     companion object {

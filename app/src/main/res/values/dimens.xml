@@ -4,11 +4,12 @@
     <dimen name="trouble_text_size">16sp</dimen>
     <dimen name="button_line_height">16sp</dimen>
     <dimen name="button_text_size">16sp</dimen>
-    <item name="button_letter_spacing" type="integer" format="float">0.05</item>
+    <item name="button_letter_spacing" format="float" type="integer">0.05</item>
 
     <dimen name="barcode_reticle_stroke_width">4dp</dimen>
     <dimen name="barcode_reticle_corner_radius">8dp</dimen>
     <dimen name="tooltip_offset_4">4dp</dimen>
     <dimen name="tooltip_edit_detail">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>

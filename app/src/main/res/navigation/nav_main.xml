@@ -227,6 +227,20 @@
         tools:layout="@layout/biometric_fragment" />
 
     <action
+        android:id="@+id/toOpenIntentFragment"
+        app:destination="@+id/OpenIntentFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/OpenIntentFragment"
+        android:name="com.example.help_code.presentation.intent.OpenIntentFragment"
+        android:label="OpenIntentFragment"
+        tools:layout="@layout/fragment_open_intent" />
+
+    <action
         android:id="@+id/toQrScannerActivity"
         app:destination="@+id/QrScannerActivity"
         app:enterAnim="@anim/slide_in_right"
