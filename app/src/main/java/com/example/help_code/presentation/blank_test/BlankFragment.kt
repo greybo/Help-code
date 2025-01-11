@@ -4,29 +4,48 @@ import android.os.Bundle
 import android.view.View
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentBlank2Binding
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import timber.log.Timber
+import java.sql.Timestamp
 
 
 class BlankFragment : BaseBindingFragment<FragmentBlank2Binding>(FragmentBlank2Binding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val oneMinute = 60 * 1000
+        val date1 = System.currentTimeMillis()
+        val date2 = System.currentTimeMillis() + 3 * oneMinute
+        val different = date2 - date1
+        val differentTimestamp = Timestamp(different)
 
-        val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, exception ->
-            println("Handle $exception in CoroutineExceptionHandler")
-        }
+        val timeStamp1 = Timestamp(date1)
+        val timeStamp2 = Timestamp(date2)
 
-        val topLevelScope = CoroutineScope(Job())
+        Timber.i(
+            "timeStamp1: $date1, \n" +
+                    "timeStamp2: $date2, \n" +
+                    "compare1: ${date1 > date2}, \n" +
+                    "compare2: ${date2 > date1}, \n" +
+                    "different: ${different}, \n" +
+                    "differentTime: ${differentTimestamp}, \n"
 
-        topLevelScope.launch {
-            launch(coroutineExceptionHandler) {
-                throw RuntimeException("RuntimeException in nested coroutine")
-            }
-        }
-
-        Thread.sleep(100)
+        )
     }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, exception ->
+//            println("Handle $exception in CoroutineExceptionHandler")
+//        }
+//
+//        val topLevelScope = CoroutineScope(Job())
+//
+//        topLevelScope.launch {
+//            launch(coroutineExceptionHandler) {
+//                throw RuntimeException("RuntimeException in nested coroutine")
+//            }
+//        }
+//
+//        Thread.sleep(100)
+//    }
 }
