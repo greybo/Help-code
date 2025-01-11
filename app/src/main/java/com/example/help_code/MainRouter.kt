@@ -29,7 +29,8 @@ class MainRouter(private val controller: NavController) {
             FragmentNameEnum.JacksonFragment -> controller.navigate(R.id.toJacksonFragment)
             FragmentNameEnum.BlankFragment -> controller.navigate(R.id.toBlankFragment)
             FragmentNameEnum.OpenIntentFragment -> controller.navigate(R.id.toOpenIntentFragment)
-            else -> TODO()
+            FragmentNameEnum.ConvertToExelFragment -> controller.navigate(R.id.toConvertToExelFragment)
+            FragmentNameEnum.ScannerFragmentOld -> TODO()
         }
     }
 

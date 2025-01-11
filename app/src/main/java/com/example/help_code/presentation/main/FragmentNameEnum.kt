@@ -1,6 +1,10 @@
 package com.example.help_code.presentation.main
 
 enum class FragmentNameEnum(val rawValue: String) {
+    BlankFragment("Blank"),
+    ConvertToExelFragment("Convert to exel"),
+    OpenIntentFragment("Open intent"),
+    JacksonFragment("Jackson parser"),
     DropDown("InputTextViews"),
     PagerFragment("Pager Fragment"),
     ScannerFragment("Scanner QR"),
@@ -16,9 +20,6 @@ enum class FragmentNameEnum(val rawValue: String) {
     BiometricFragment("Biometric"),
     CoroutineFragment("Coroutine"),
     WebViewCameraFragment("WebView Camera"),
-    JacksonFragment("Jackson parser"),
-    BlankFragment("Blank"),
-    OpenIntentFragment("Open intent"),
     ;
 
     companion object {
