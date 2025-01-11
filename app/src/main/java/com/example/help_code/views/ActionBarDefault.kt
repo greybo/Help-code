@@ -2,27 +2,25 @@ package com.example.help_code.views
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.widget.FrameLayout
 import com.example.help_code.R
-import kotlinx.android.synthetic.main.action_bar_custom.view.*
+import com.example.help_code.databinding.ActionBarCustomBinding
+import com.example.help_code.utilty.inflateAdapter
 
 class ActionBarView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    init {
-        View.inflate(context, R.layout.action_bar_custom, this)
-    }
+    var binding = inflateAdapter(ActionBarCustomBinding::inflate)
 
     fun setData(model: ActionBarModel) {
         model.homeCallback?.let {
-            toolbar.setNavigationIcon(ArrowId.Black.id)
-            toolbar.setNavigationOnClickListener {
+            binding.toolbar.setNavigationIcon(ArrowId.Black.id)
+            binding.toolbar.setNavigationOnClickListener {
                 it()
             }
         }
-        model.title?.let { toolbar_custom_title.text = it }
+        model.title?.let { binding.toolbarCustomTitle.text = it }
     }
 }
 

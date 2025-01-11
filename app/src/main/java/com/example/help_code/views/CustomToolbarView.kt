@@ -213,13 +213,13 @@ data class ToolbarModel(
 
 sealed class ToolbarThemeStyle(val homeIconId: Int, val bgColor: Int, val titleColor: Int) {
     object Dark : ToolbarThemeStyle(
-        homeIconId = R.drawable.ic_arrow_back_white_24dp,
+        homeIconId = R.drawable.ic_arrow_white_24dp,
         bgColor = R.color.black,
         titleColor = R.color.white
     )
 
     object Light : ToolbarThemeStyle(
-        homeIconId = R.drawable.ic_arrow_back_black_24dp,
+        homeIconId = R.drawable.ic_arrow_back_24dp,
         bgColor = R.color.white,
         titleColor = R.color.black
     )

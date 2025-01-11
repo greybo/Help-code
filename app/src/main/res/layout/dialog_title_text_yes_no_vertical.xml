@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_charcoal"
+    android:paddingTop="20dp"
+    android:paddingBottom="16dp">
+
+    <!--        style="@style/H6_high"-->
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Scan ID again" />
+
+    <!--        style="@style/Subtitle1_medium"-->
+    <TextView
+        android:id="@+id/dialog_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_title"
+        tools:text="We couldn’t match your photos. Please scan your ID again and if the issue persist go to a Rewards desk." />
+
+    <TextView
+        android:id="@+id/dialog_button_positive"
+        style="@style/Button_label"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_message"
+        tools:text="OK" />
+
+    <TextView
+        android:id="@+id/dialog_button_negative"
+        style="@style/Button_label"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_button_positive"
+        tools:text="CANCEL" />
+</androidx.constraintlayout.widget.ConstraintLayout>

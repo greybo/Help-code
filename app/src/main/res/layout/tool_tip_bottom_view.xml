@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolTipLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="invisible">
+
+    <LinearLayout
+        android:id="@+id/toolTipTextLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tool_tip_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/toolTipMessageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="16dp"
+            android:textColor="@color/white"
+            tools:text="We need to collect some details for Anti-Money Laundering and Counter-Terrorism Financing purposes" />
+
+        <ImageView
+            android:id="@+id/toolTipCloseButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_weight="0"
+            android:padding="10dp"
+            android:src="@drawable/ic_across_close"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/toolTipArrowView"
+        android:layout_width="20dp"
+        android:layout_height="17dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="-2dp"
+        android:background="@color/gold" />
+
+</LinearLayout>

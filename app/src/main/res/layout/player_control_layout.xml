@@ -88,6 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="48dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -108,7 +109,7 @@
             android:layout_height="26dp"
             android:layout_weight="1"
             app:played_color="@color/colorPrimaryDark"
-            app:unplayed_color="@color/gray" />
+            app:unplayed_color="@color/grey" />
 
         <TextView
             android:id="@id/exo_duration"

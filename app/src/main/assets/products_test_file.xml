@@ -1,0 +1,12 @@
+<Products>
+    <Product>
+        <Id>1</Id>
+        <Name>Product 1</Name>
+        <Price>100</Price>
+    </Product>
+    <Product>
+        <Id>2</Id>
+        <Name>Product 2</Name>
+        <Price>200</Price>
+    </Product>
+</Products>

@@ -4,14 +4,12 @@ package com.example.help_code.utilty
 import android.content.Context
 import android.content.res.Resources
 import android.text.TextUtils
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.LayoutRes
+import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
 
 /**
@@ -67,9 +65,15 @@ fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-fun androidx.fragment.app.Fragment.toast(message: String) {
+fun Fragment.toast(message: String) {
     if (context != null)
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+}
+fun Fragment.toastDebug(message: String) {
+    forDebugBuild {
+        if (context != null)
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
 }
 
 fun TextInputLayout.simpleError() {
@@ -109,3 +113,11 @@ fun View.setTextOrGoneByResId(idString: Int?) {
 
 val DP_IN_PX = Resources.getSystem().displayMetrics.density
 val SP_IN_PX = Resources.getSystem().displayMetrics.scaledDensity
+
+fun View.getButtonName(): String {
+    return when (this) {
+        is TextView -> this.text.toString()
+        else -> ""
+    }
+}
+

@@ -53,9 +53,24 @@
 
     <fragment
         android:id="@+id/BarcodeScanningFragment"
-        android:name="com.example.help_code.presentation.scanner.BarcodeScanningFragment"
+        android:name="com.example.help_code.presentation.qr.scanner.BarcodeScanningFragment"
         android:label="BarcodeScanningFragment"
-        tools:layout="@layout/fragment_barcode_scanning"></fragment>
+        tools:layout="@layout/fragment_barcode_scanning" />
+
+
+    <action
+        android:id="@+id/toGmsBarcodeScannerFragment"
+        app:destination="@+id/GmsBarcodeScannerFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/GmsBarcodeScannerFragment"
+        android:name="com.example.help_code.presentation.qr.scannergms.GmsBarcodeScannerFragment"
+        android:label="BarcodeScanningFragment"
+        tools:layout="@layout/fragment_barcode_scanning" />
 
 
     <action
@@ -70,7 +85,7 @@
         android:id="@+id/VideoPlayerFragment"
         android:name="com.example.help_code.presentation.video.VideoPlayerFragment"
         android:label="VideoPlayerFragment"
-        tools:layout="@layout/fragment_video_player"></fragment>
+        tools:layout="@layout/fragment_video_player" />
 
     <action
         android:id="@+id/toBehaviorFragment"
@@ -109,7 +124,133 @@
 
     <fragment
         android:id="@+id/PhoneFormattingFragment"
-        android:name="com.example.help_code.PhoneFormattingFragment"
+        android:name="com.example.help_code.presentation.mask.PhoneFormattingFragment"
         android:label="phone_formatting"
         tools:layout="@layout/fragment_phone_formatting" />
+
+    <action
+        android:id="@+id/toTooltipFragment"
+        app:destination="@+id/TooltipFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/TooltipFragment"
+        android:name="com.example.help_code.presentation.tooltip.TooltipFragment"
+        android:label="tooltip_fragment"
+        tools:layout="@layout/fragment_tooltip" />
+
+    <action
+        android:id="@+id/toReactiveFragment"
+        app:destination="@+id/ReactiveFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/ReactiveFragment"
+        android:name="com.example.help_code.presentation.reactive.ReactiveFragment"
+        android:label="tooltip_fragment"
+        tools:layout="@layout/fragment_tooltip" />
+
+    <action
+        android:id="@+id/toBiometricFragment"
+        app:destination="@+id/BiometricFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/BiometricFragment"
+        android:name="com.example.help_code.presentation.biometric.BiometricFragment"
+        android:label="biometric_fragment"
+        tools:layout="@layout/biometric_fragment" />
+
+    <action
+        android:id="@+id/toCollectionCoroutineFragment"
+        app:destination="@+id/CollectionCoroutineFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/CollectionCoroutineFragment"
+        android:name="com.example.help_code.presentation.reactive.collect.CollectionCoroutineFragment"
+        android:label="biometric_fragment"
+        tools:layout="@layout/biometric_fragment" />
+
+    <action
+        android:id="@+id/toWebViewCameraFragment"
+        app:destination="@+id/WebViewCameraFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/WebViewCameraFragment"
+        android:name="com.example.help_code.presentation.webcamera.WebViewCameraFragment"
+        android:label="web_view_camera_fragment"
+        tools:layout="@layout/fragment_web_view_camera" />
+
+    <action
+        android:id="@+id/toJacksonFragment"
+        app:destination="@+id/JacksonFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/JacksonFragment"
+        android:name="com.example.help_code.presentation.jackson.JacksonFragment"
+        android:label="biometric_fragment"
+        tools:layout="@layout/biometric_fragment" />
+
+    <action
+        android:id="@+id/toBlankFragment"
+        app:destination="@+id/BlankFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/BlankFragment"
+        android:name="com.example.help_code.presentation.blank_test.BlankFragment"
+        android:label="biometric_fragment"
+        tools:layout="@layout/biometric_fragment" />
+
+    <action
+        android:id="@+id/toOpenIntentFragment"
+        app:destination="@+id/OpenIntentFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/OpenIntentFragment"
+        android:name="com.example.help_code.presentation.intent.OpenIntentFragment"
+        android:label="OpenIntentFragment"
+        tools:layout="@layout/fragment_open_intent" />
+
+    <action
+        android:id="@+id/toQrScannerActivity"
+        app:destination="@+id/QrScannerActivity"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <activity
+        android:id="@+id/QrScannerActivity"
+        android:name="com.example.help_code.presentation.qr.scanner.QrScannerActivity"
+        android:label="QrScannerActivity" />
+
+
 </navigation>

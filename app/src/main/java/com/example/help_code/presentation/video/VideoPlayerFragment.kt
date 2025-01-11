@@ -8,14 +8,21 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import com.example.help_code.base.BaseBindingFragment
 import com.example.help_code.databinding.FragmentVideoPlayerBinding
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 // https://developer.android.com/codelabs/exoplayer-intro?hl=ru#2
-
+// ID's name  https://exoplayer.dev/doc/reference/com/google/android/exoplayer2/ui/StyledPlayerControlView.html
 //https://stackoverflow.com/questions/33647496/custom-ui-on-exoplayer-sample  !!!
 //https://stackoverflow.com/questions/72592440/custom-buttons-in-exoplayer
 //https://stackoverflow.com/questions/12482203/how-to-create-custom-ui-for-android-mediacontroller
@@ -24,12 +31,16 @@ class VideoPlayerFragment :
 
     private val viewModel: VideoPlayerViewModel by viewModels()
     private var mMediaPlayer: ExoPlayer? = null
+    private val timber = Timber.tag("VideoPlayerFragment")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        timber.i("onViewCreated: ")
+
         initializePlayer()
     }
 
+    @androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)
     private fun initializePlayer() {
         mMediaPlayer = ExoPlayer.Builder(requireContext())
             .build()
@@ -44,6 +55,7 @@ class VideoPlayerFragment :
                 exoPlayer.prepare()
                 exoPlayer.pause()
                 exoPlayer.addListener(playerListener)
+//                binding.videoView.videoSurfaceView?.findViewById<ImageView>(R.id.exo_volume)
             }
     }
 
@@ -58,8 +70,32 @@ class VideoPlayerFragment :
         override fun onIsPlayingChanged(isPlaying: Boolean) {
             super.onIsPlayingChanged(isPlaying)
             viewModel.videoPlaying = isPlaying
+            lifecycleScope.launch {
+                if (isPlaying) pollCurrentDuration()
+                    .catch {
+                        timber.e(it, "pollCurrentDuration: %s", it.message)
+                    }
+                    .onEach {
+                        timber.i("pollCurrentDuration: $it")
+                    }
+            }
         }
+
     }
+    val DURATION_OFFSET = 500
+    val DEFAULT_DELAY_MS: (Boolean) -> Unit = {
+        timber.i("DEFAULT_DELAY_MS: $it")
+    }
+
+    private fun pollCurrentDuration() = flow {
+        timber.i("pollCurrentDuration:")
+        val check = (((mMediaPlayer?.currentPosition ?: 0) + DURATION_OFFSET)
+                <= (mMediaPlayer?.duration ?: 0))
+        while (check) {
+            emit((mMediaPlayer?.currentPosition ?: 0) + DURATION_OFFSET)
+            delay(DEFAULT_DELAY_MS)
+        }
+    }.conflate()
 
     private fun changeStatePlaying() {
         if (viewModel.videoPlaying) {

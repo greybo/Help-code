@@ -1,20 +1,16 @@
 package com.example.help_code.presentation.main
 
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.help_code.R
-import kotlinx.android.synthetic.main.item_fragment_name.view.*
+import com.example.help_code.databinding.ItemFragmentNameBinding
+import com.example.help_code.utilty.inflateAdapter
 
-class MainAdapter(enumItem: Array<FragmentName>, val callback: (FragmentName) -> Unit) :
+class MainAdapter(enumItem: Array<FragmentNameEnum>, val callback: (FragmentNameEnum) -> Unit) :
     RecyclerView.Adapter<MainAdapter.Holder>() {
 
-    private val listItems: List<FragmentName> = enumItem.toList()
+    private val listItems: List<FragmentNameEnum> = enumItem.toList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_fragment_name, parent, false)
-        )
+        return Holder(parent.inflateAdapter(ItemFragmentNameBinding::inflate))
     }
 
     override fun getItemCount(): Int {
@@ -25,10 +21,11 @@ class MainAdapter(enumItem: Array<FragmentName>, val callback: (FragmentName) ->
         holder.bind(listItems[position])
     }
 
-    inner class Holder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(s: FragmentName) {
-            itemView.mainfragmentText1.text = s.rawValue
-            itemView.mainfragmentText1.setOnClickListener {
+    inner class Holder(val binding: ItemFragmentNameBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(s: FragmentNameEnum) {
+            binding.mainfragmentText1.text = s.rawValue
+            binding.mainfragmentText1.setOnClickListener {
                 callback(s)
             }
         }

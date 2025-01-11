@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.main_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+
+
     }
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {

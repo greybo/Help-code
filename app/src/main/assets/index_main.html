@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Web Page</title>
+    <style>
+        #video, #capturedImage {
+            width: 100%; /* Set the width to 100% of the parent container (device screen) */
+            height: auto; /* Maintain the aspect ratio */
+            object-fit: cover; /* Cover the entire container while maintaining aspect ratio */
+        }
+         button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<button id="startButton">Start Camera</button>
+<button id="takePictureButton" disabled>Take Picture</button>
+<span>  </span>
+<video id="video" autoplay playsinline></video>
+<canvas id="canvas" style="display:none;"></canvas>
+<img id="capturedImage" style="display:none;">
+
+<script>
+        let video = document.querySelector('#video');
+        let canvas = document.querySelector('#canvas');
+        let capturedImage = document.querySelector('#capturedImage');
+        let takePictureButton = document.querySelector('#takePictureButton');
+
+        let capturedImageData;
+        let videoStream;
+
+        document.getElementById('startButton').addEventListener('click', function () {
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+                .then(function (stream) {
+                    videoStream = stream;
+                    video.srcObject = stream;
+                    takePictureButton.disabled = false; // Enable the button once the camera is started
+                })
+                .catch(function (error) {
+                    console.log('Error accessing camera:', error);
+                });
+        });
+
+        takePictureButton.addEventListener('click', function () {
+            // Draw the current video frame onto the canvas
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Convert the canvas content to a data URL and set it as the source for the image element
+            capturedImageData = canvas.toDataURL('image/png');
+
+            capturedImage.src = capturedImageData;
+
+            // Display the captured image
+            capturedImage.style.display = 'block';
+
+            // You can now use the 'capturedImage' element to display or save the captured image
+            uploadImage()
+        });
+
+        function uploadImage() {
+            // Check if an image is captured
+            if (!capturedImageData) {
+                alert("Please capture an image first.");
+                return;
+            }
+            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            const targetUrl = 'https://weu-api-digital-tst.azure-api.net/api/member-details/v1/cacheless';
+            // Use JavaScript to send the captured image data to a server
+            fetch(proxyUrl + targetUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Ocp-Apim-Subscription-Key' : '464dcdeb2107469bb539c1b83a565dce',
+                },
+                body: JSON.stringify({ "img": capturedImageData }),
+            })
+            .then(response => {
+                stopMediaStream();
+                alert('Image uploaded successfully.');
+                window.webkit.messageHandlers.alertHandler.postMessage("Image uploaded successfully.");
+            })
+            .catch(error => {
+                stopMediaStream();
+                console.error('Error uploading image:', error);
+                alert('Error uploading image.');
+                window.webkit.messageHandlers.alertHandler.postMessage("Error uploading image.");
+            });
+        }
+
+        function stopMediaStream() {
+            if (videoStream) {
+                let tracks = videoStream.getTracks();
+                tracks.forEach(track => track.stop());
+            }
+        }
+    </script>
+
+</body>
+</html>

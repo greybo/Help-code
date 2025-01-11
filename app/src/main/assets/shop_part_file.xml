@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<yml_catalog date="2024-03-30 14:55">
+    <shop>
+        <name>База заявок 1</name>
+        <company>База заявок 1</company>
+        <currencies>
+            <currency id="UAH" rate="1"/>
+            <currency id="USD" rate="28.000000"/>
+            <currency id="EUR" rate="35.000000"/>
+        </currencies>
+        <categories>
+            <category id="100698820" parentId="100698824">Суміші пряно-ароматичні</category>
+            <category id="100698821" parentId="100698824">Суміші спецій для перших страв</category>
+            <category id="100698822" parentId="100698824">Пряні суміші каррі</category>
+            <category id="100698823" parentId="100698824">Пряно-ароматичні суміші спецій для посолу риби та морепродуктів</category>
+            <category id="100698824" parentId="60006248">Суміші спецій</category>
+            <category id="60006248">Спеції</category>
+            <category id="60006600" parentId="100698824">Крафтові суміші спецій</category>
+            <category id="61188806">Сухофрукти</category>
+            <category id="61445709" parentId="60006248">Декоративні посипки</category>
+            <category id="66612684">Інгредієнти для кондитерів</category>
+            <category id="66645614" parentId="60006248">Пряні трави</category>
+            <category id="66772445">Ковбасна оболонка розетка</category>
+            <category id="66772511">Допоміжні товари</category>
+            <category id="71198855">Діючі добавки</category>
+            <category id="84813524">Суперфуд</category>
+            <category id="85398348" parentId="60006248">Перці</category>
+            <category id="85398465" parentId="60006248">Різновиди солей</category>
+            <category id="85398480">Сушені овочі</category>
+            <category id="85406076" parentId="60006248">Копчені спеції</category>
+            <category id="85409773" parentId="60006248">Мелені спеції</category>
+            <category id="85409778" parentId="60006248">Цілі спеції</category>
+        </categories>
+        <offers>
+            <offer id="9768875634_16-57" group_id="2646" available="false">
+                <price>39</price>
+                <currencyId>UAH</currencyId>
+                <name>Цибуля смажена сушена Польща 100 г</name>
+                <quantity_in_stock>0</quantity_in_stock>
+                <categoryId>85398480</categoryId>
+                <vendorCode>9768875634</vendorCode>
+                <barcode>978020137980</barcode>
+                <description>
+                    <![CDATA[<p><span class="VIiyi" jsaction="mouseup:BR6jm" jsname="jqKxS" lang="uk" style="-webkit-tap-highlight-color: transparent; display: inline;"><span jsaction="agoMJf:PFBcW;usxOmf:aWLT7;jhKsnd:P7O7bd,F8DmGf;Q4AGo:Gm7gYd,qAKMYb;uFUCPb:pvnm0e,pfE8Hb,PFBcW;f56efd:dJXsye;EnoYf:KNzws,ZJsZZ,JgVSJc;zdMJQc:cCQNKb,ZJsZZ,zchEXc;Ytrrj:JJDvdc;tNR8yc:GeFvjb;oFN6Ye:hij5Wb;bmeZHc:iURhpf;Oxj3Xe:qAKMYb,yaf12d" jsname="txFAF" class="JLqJ4b ChMk0b" data-language-for-alternatives="uk" data-language-to-translate-into="ru" data-phrase-index="0" data-number-of-phrases="3" jscontroller="Zl5N8" jsdata="uqLsIf;_;$237" jsmodel="SsMkhd" style="-webkit-tap-highlight-color: transparent; cursor: pointer;"><span jsaction="click:qtZ4nf,GFf3ac,tMZCfe; contextmenu:Nqw7Te,QP7LD; mouseout:Nqw7Te; mouseover:qtZ4nf,c2aHje" jsname="W297wb" style="-webkit-tap-highlight-color: transparent;">Маючи пікантний насичений смак і аромат, часник є обов'язковим інгредієнтом тисяч страв народів усього світу.</span></span><span jsaction="agoMJf:PFBcW;usxOmf:aWLT7;jhKsnd:P7O7bd,F8DmGf;Q4AGo:Gm7gYd,qAKMYb;uFUCPb:pvnm0e,pfE8Hb,PFBcW;f56efd:dJXsye;EnoYf:KNzws,ZJsZZ,JgVSJc;zdMJQc:cCQNKb,ZJsZZ,zchEXc;Ytrrj:JJDvdc;tNR8yc:GeFvjb;oFN6Ye:hij5Wb;bmeZHc:iURhpf;Oxj3Xe:qAKMYb,yaf12d" jsname="txFAF" class="JLqJ4b ChMk0b" data-language-for-alternatives="uk" data-language-to-translate-into="ru" data-phrase-index="1" data-number-of-phrases="3" jscontroller="Zl5N8" jsdata="uqLsIf;_;$238" jsmodel="SsMkhd" style="-webkit-tap-highlight-color: transparent; cursor: pointer;"><span jsaction="click:qtZ4nf,GFf3ac,tMZCfe; contextmenu:Nqw7Te,QP7LD; mouseout:Nqw7Te; mouseover:qtZ4nf,c2aHje" jsname="W297wb" style="-webkit-tap-highlight-color: transparent;">Він чудово гармонує з будь-яким м'ясом, прикрашає страви з птиці, чудово доповнює страви з овочів та грибів, добре поєднується з сиром та сиром.</span></span><span jsaction="agoMJf:PFBcW;usxOmf:aWLT7;jhKsnd:P7O7bd,F8DmGf;Q4AGo:Gm7gYd,qAKMYb;uFUCPb:pvnm0e,pfE8Hb,PFBcW;f56efd:dJXsye;EnoYf:KNzws,ZJsZZ,JgVSJc;zdMJQc:cCQNKb,ZJsZZ,zchEXc;Ytrrj:JJDvdc;tNR8yc:GeFvjb;oFN6Ye:hij5Wb;bmeZHc:iURhpf;Oxj3Xe:qAKMYb,yaf12d" jsname="txFAF" class="JLqJ4b ChMk0b" data-language-for-alternatives="uk" data-language-to-translate-into="ru" data-phrase-index="2" data-number-of-phrases="3" jscontroller="Zl5N8" jsdata="uqLsIf;_;$239" jsmodel="SsMkhd" style="-webkit-tap-highlight-color: transparent; cursor: pointer;"><span jsaction="click:qtZ4nf,GFf3ac,tMZCfe; contextmenu:Nqw7Te,QP7LD; mouseout:Nqw7Te; mouseover:qtZ4nf,c2aHje" jsname="W297wb" style="-webkit-tap-highlight-color: transparent;">Часто часник додають у соуси на основі сметани та майонезу.</span></span></span></p><p><span class="VIiyi" jsaction="mouseup:BR6jm" jsname="jqKxS" lang="uk" style="-webkit-tap-highlight-color: transparent; display: inline;"><span jsaction="agoMJf:PFBcW;usxOmf:aWLT7;jhKsnd:P7O7bd,F8DmGf;Q4AGo:Gm7gYd,qAKMYb;uFUCPb:pvnm0e,pfE8Hb,PFBcW;f56efd:dJXsye;EnoYf:KNzws,ZJsZZ,JgVSJc;zdMJQc:cCQNKb,ZJsZZ,zchEXc;Ytrrj:JJDvdc;tNR8yc:GeFvjb;oFN6Ye:hij5Wb;bmeZHc:iURhpf;Oxj3Xe:qAKMYb,yaf12d" jsname="txFAF" class="JLqJ4b ChMk0b" data-language-for-alternatives="uk" data-language-to-translate-into="ru" data-phrase-index="2" data-number-of-phrases="3" jscontroller="Zl5N8" jsdata="uqLsIf;_;$239" jsmodel="SsMkhd" style="-webkit-tap-highlight-color: transparent; cursor: pointer;"><span jsaction="click:qtZ4nf,GFf3ac,tMZCfe; contextmenu:Nqw7Te,QP7LD; mouseout:Nqw7Te; mouseover:qtZ4nf,c2aHje" jsname="W297wb" style="-webkit-tap-highlight-color: transparent;">Смажена цибуля широко поширена у кулінарії. Різні страви, заправки, підливи, соуси, іноді її їдять просто як закуску.<br></span></span></span> </p>]]>
+                </description>
+                <url>https://gurman-vn.com/index.php?route=product/product&amp;product_id=1479504389</url>
+                <picture>https://gurman-vn.com/image/catalog/photo/tsybulia-smazhena-polshcha-5.png</picture>
+                <picture>https://gurman-vn.com/image/catalog/photo/tsybulia-smazhena-polshcha-6.png</picture>
+                <param name="Вага">100г</param>
+            </offer>
+            <offer id="16053100101562_18-69" group_id="2645" available="true" in_stock="true">
+                <price>94</price>
+                <currencyId>UAH</currencyId>
+                <name>Колагенова Оболонка Колір Цибульний калібр 45 мм 5 м.</name>
+                <quantity_in_stock>14</quantity_in_stock>
+                <categoryId>66772445</categoryId>
+                <vendorCode>16053100101562</vendorCode>
+                <barcode>978020138683</barcode>
+                <description>
+                    <![CDATA[<p>Оболонка Fabios призначається для м'ясної промисловості та використовується для виробництва копчених та варено-копчених ковбасних виробів. Для виробництва білкових ковбасних оболонок використовуються високосортні колагенові волокна зі спилка великої рогатої худоби.</p><p>Структура оболонки дозволяє пропускати дим, а також водяну пару, що впливає на високі смакові якості кінцевого продукту. При цьому оболонки дуже прості у вживанні і добре тримають параметри. Прості оболонки міцні, еластичні, піддаються кліпуванню і покращують якість ковбасних виробів, що випускаються, які набувають апетитного вигляду. Це найбільш поширений тип оболонки, що випускається фірмою Fabios, який користується визнанням клієнтів усього світу.</p><p>Завдяки спеціальним технологічним операціям досягається зниження адгезії оболонки до фаршу, що дозволяє легко знімати "упаковку" з готового виробу. Також як традиційні та кільцеві оболонки вони виготовляються з колагену найвищої якості та піддаються всім необхідним виробничим процесам, які мають на меті отримати виріб найвищої якості. Їхні властивості такі ж, як у випадку традиційних, але додатково характеризує їхнє легке відділення від фаршу.</p><p>Оболонка – паро-, димопроникна, забезпечує проникнення при копченні ароматичних речовин у продукт та дозволяють зберегти аромат виробів протягом терміну зберігання.</p><p>Штучна білкова оболонка застосовується для всіх видів ковбасних виробів: сиров'ялених, сирокопчених, варено-копчених, напівкопчених, копченостей, варених ковбас, шинок в оболонці, сардельок, ковбасних виробів з м'яса птиці.</p><p>ПІДГОТОВКА ДО НАБИВАННЯ:</p><p>Заочити у теплій воді на 3-5 хвилин для надання еластичності.</p><p>МАТЕРІАЛ:</p><p>Штучні білкові оболонки виготовляються з колагенових волокон, виділених у процесі обробки зі спилку шкур великої рогатої худоби</p><p><br></p><p>ВЛАСТИВОСТІ ТА ПЕРЕВАГИ:</p><p>- перевершує натуральну оболонку за еластичністю, міцністю, бактеріальною чистотою;</p><p>- Забезпечує стабільну форму ковбасних виробів при формуванні (стабільність діаметра), що дозволяє випускати дозовану продукцію;</p><p>- паро-, димопроникність оболонки забезпечують проникнення при копченні ароматичних речовин у продукт та дозволяють зберегти аромат виробів протягом терміну зберігання;</p><p>- здатність до термоусадки дозволяє зберегти форму виробу при охолодженні та зберіганні, крім утворення порожнеч і бульйонних набряків у ковбасному батоні;</p><p>&nbsp;- дозволяє отримати традиційний смак ковбас, натуральний вид продукту.</p><p><br></p><p>УМОВИ ЗБЕРІГАННЯ І ТЕРМІНИ ПОДІЇ:</p><p>- оболонку зберігають в упаковці виробника в сухих приміщеннях, захищених від сонячного світла, при температурі 20...25С на відстані не менше 1 м від нагрівальних приладів при відносній вологості повітря 70...75%.</p><p>- Гарантійний термін зберігання оболонки 12 місяців.</p>]]>
+                </description>
+                <url>https://gurman-vn.com/index.php?route=product/product&amp;product_id=1479504363</url>
+                <picture>https://gurman-vn.com/image/catalog/photo/45-tsybulia-1.png</picture>
+                <picture>https://gurman-vn.com/image/catalog/photo/45-tsybulia-2.png</picture>
+                <param name="Довжина">5 м.</param>
+            </offer>
+        </offers>
+    </shop>
+</yml_catalog>
