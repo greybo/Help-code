@@ -5,8 +5,8 @@ import com.example.help_code.R
 import com.example.help_code.base.CompositeViewModel
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.auth.auth
+import com.google.firebase.Firebase
 import timber.log.Timber
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -37,7 +37,10 @@ class FirebaseAuthViewModel : CompositeViewModel() {
                     Timber.d(task.result.credential.toString())
                 } else {
                     // If sign in fails, display a message to the user.
-                    Timber.w(CollectionCoroutineFragment.TAG, "createUserWithEmail:failure", task.exception)
+                    Timber.w(
+                        task.exception,
+                        "${CollectionCoroutineFragment.TAG},createUserWithEmail:failure",
+                    )
                 }
             }
     }
@@ -95,7 +98,7 @@ class FirebaseAuthViewModel : CompositeViewModel() {
                         Timber.d("$user")
                     } else {
                         // If sign in fails, display a message to the user.
-                        Timber.w("signInWithCustomToken:failure", task.exception)
+                        Timber.w(task.exception, "signInWithCustomToken:failure")
                     }
                 }
         }
